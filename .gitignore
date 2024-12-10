@@ -119,5 +119,8 @@ dist
 tsconfig.tsbuildinfo
 
 # configs
-packages/**/src/config/*
-!packages/**/src/config/index.ts
+**/**/src/config/*
+!**/**/src/config/index.ts
+*.yaml
+*.yml
+!.github/*

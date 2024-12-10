@@ -1,4 +1,3 @@
 packages:
-  - "Auth/*"
-  - "Trip/*"
+  - "Apps/*"
   - "Libs/*"
