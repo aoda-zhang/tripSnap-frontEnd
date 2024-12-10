@@ -1,0 +1,68 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80,
+    "attributePosition": "auto"
+  },
+  "organizeImports": { "enabled": true },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "nursery": {
+        "recommended": true
+      },
+      "a11y": {
+        "useKeyWithClickEvents": "off"
+      },
+      "correctness": {
+        "noUnusedVariables": {
+          "level": "warn",
+          "fix": "unsafe"
+        },
+        "noUnusedLabels": "warn",
+        "noUnusedPrivateClassMembers": "warn"
+      }
+    },
+    "ignore": [
+      "./.vscode/*",
+      "node_modules",
+      "src/shared/i18n/*",
+      "src/shared/libs/*",
+      "src/shared/assets/**/*/",
+      "build"
+    ]
+  },
+  "javascript": {
+    "jsxRuntime": "reactClassic",
+    "linter": {
+      "enabled": true
+    },
+    "formatter": {
+      "quoteStyle": "double",
+      "lineWidth": 120
+    }
+  },
+  "json": {
+    "linter": {
+      "enabled": true
+    },
+    "parser": {
+      "allowComments": true
+    }
+  },
+  "css": {
+    "parser": { "cssModules": true },
+    "formatter": {
+      "enabled": true
+    },
+    "linter": {
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin column {
+  display: flex;
+  flex-direction: column;
+}
+
+.success_info {
+  background-color: $green3;
+  border: 1px solid $green8;
+  border-radius: 10px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 50px;
+}
+
+.sub_title {
+  font-weight: 700;
+  font-size: 1.23rem;
+}
+
+.globalLanSwitcher {
+  width: 1.54rem;
+  margin-right: 0.77rem;
+}

@@ -1,0 +1,25 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.54rem;
+  @include medias(($l, $xl)) {
+    padding: 0 30%;
+    padding-top: 6rem;
+  }
+  .icon {
+    width: 10.69rem;
+    margin-bottom: 3rem;
+  }
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.77rem;
+  }
+  .submitBtn {
+    width: 100%;
+    height: 3.08rem;
+    margin-top: 1.54rem;
+  }
+}

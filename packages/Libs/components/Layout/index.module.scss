@@ -1,0 +1,58 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 0.38rem;
+  height: 100%;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border-bottom: 1px solid $gray2;
+    position: sticky;
+    background-color: $white;
+    top: 0;
+    padding: 0.62rem;
+    z-index: 999;
+    .brand {
+      cursor: pointer;
+      font-size: 1.38rem;
+      font-weight: 800;
+    }
+    .right {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6vw;
+      .login {
+        padding: 0.15rem 1.08rem;
+        border-radius: 1.08rem;
+        background-color: $blue6;
+        color: $white;
+      }
+      .item {
+        cursor: pointer;
+      }
+    }
+  }
+  .content {
+    width: 100%;
+    flex: 1;
+    box-sizing: border-box;
+    padding: 0 3.85rem;
+    background-color: $light;
+    @include medias(($s, $m)) {
+      padding: 0.77rem;
+    }
+  }
+  .footer {
+    padding: 1.88rem;
+    border-top: 1px solid $gray3;
+    background-color: $light;
+    text-align: center;
+  }
+}
+:global(.ant-drawer-close) {
+  font-size: 1.54rem !important;
+}

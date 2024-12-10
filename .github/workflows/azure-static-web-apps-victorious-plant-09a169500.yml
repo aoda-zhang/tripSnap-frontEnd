@@ -1,0 +1,38 @@
+name: Release to Azure web
+
+on:
+  workflow_dispatch:
+permissions:
+  security-events: write
+  actions: read
+  contents: read
+  issues: write
+
+jobs:
+  # CodeScan:
+  #   uses: aoda-zhang/shared-devops/.github/workflows/code_scan.yaml@master
+  #   with:
+  #     app_repository: ${{ github.repository }}
+
+  Build:
+    if: github.ref == 'refs/heads/main'
+    uses: aoda-zhang/shared-devops/.github/workflows/shared_build.yaml@master
+    with:
+      app_repository: ${{ github.repository }}
+      app_branch: ${{ github.ref }}
+      config_folder: honey-web
+      currentEnvironment: PROD
+      build_name: honey-web-PROD
+      build_script: build:PROD
+    secrets:
+      PAT: ${{ secrets.PAT }}
+
+  Deploy:
+    needs: [Build]
+    uses: aoda-zhang/shared-devops/.github/workflows/deploy_azure_web.yaml@master
+    with:
+      currentEnvironment: PROD
+      build_name: honey-web-PROD
+    secrets:
+      PAT: ${{ secrets.PAT }}
+      AZURE_WEB_TOKEN: ${{ secrets.AZURE_WEB_TOKEN }}

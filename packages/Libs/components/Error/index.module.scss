@@ -1,0 +1,13 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 6%;
+  font-size: larger;
+  .login {
+    padding: 0 0.62rem;
+    color: $green6;
+    cursor: pointer;
+  }
+}

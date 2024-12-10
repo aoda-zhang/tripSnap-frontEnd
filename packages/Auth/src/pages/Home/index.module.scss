@@ -1,0 +1,35 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 1.54rem;
+  .slog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.46rem;
+    align-items: center;
+    margin-top: 2.31rem;
+    border-radius: 1.54rem;
+    height: 34vh;
+    background-image: url(https://s1.locimg.com/2024/10/10/0d48bc37701b8.jpg);
+    .title {
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .subTitle {
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+  .destinations {
+    display: flex;
+    flex-direction: column;
+    gap: 1.54rem;
+    .title {
+      font-size: 1.23rem;
+      font-weight: 700;
+    }
+  }
+}
