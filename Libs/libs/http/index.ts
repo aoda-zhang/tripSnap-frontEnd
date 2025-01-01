@@ -3,7 +3,7 @@ import LocaleKeys from "@/shared/constants/localeKey";
 import storage from "@/shared/utils/storage";
 import globalStore from "@/store/globalStore";
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosRequestHeaders } from "axios";
-import { generateHMAC, getUTCTimestamp } from "./encrypt";
+import { generateSign, getUTCTimestamp } from "./encrypt";
 import httpErrorHandler from "./errorHandle";
 import { HttpResponseType, commonHeader } from "./types";
 const Http = axios.create({
@@ -17,7 +17,7 @@ const getHttpHeaders = (config: Record<string, any>) => {
     Accept: "application/json",
     "Access-Token": storage.get(commonHeader?.["access-token"]),
     "X-timestamp": `${timestamp}`,
-    "X-Api-Key": generateHMAC({ config, timestamp }),
+    "X-sign": generateSign({ config, timestamp }),
     Locale: globalStore?.getState()?.locale ?? LocaleKeys.zh_CN,
   };
 };
@@ -55,19 +55,35 @@ Http.interceptors.response.use(interceptorsResSuccess, (error) => {
   return Promise.reject(error);
 });
 const httpService = {
-  async getAPI<T extends unknown>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
+  async getAPI<T extends unknown>(
+    url: string,
+    params?: Record<string, any>,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
     // @ts-ignore
     return Http.get<T>(url, { params, ...config });
   },
-  deleteAPI<T extends unknown>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
+  deleteAPI<T extends unknown>(
+    url: string,
+    params?: Record<string, any>,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
     // @ts-ignore
     return Http.delete<T>(url, { params, ...config });
   },
-  postAPI<T extends unknown>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
+  postAPI<T extends unknown>(
+    url: string,
+    data?: Record<string, any>,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
     // @ts-ignore
     return Http.post<T>(url, data, { ...config });
   },
-  putAPI<T extends unknown>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
+  putAPI<T extends unknown>(
+    url: string,
+    data?: Record<string, any>,
+    config?: AxiosRequestConfig
+  ): Promise<T> {
     // @ts-ignore
     return Http.put<T>(url, data, { ...config });
   },
