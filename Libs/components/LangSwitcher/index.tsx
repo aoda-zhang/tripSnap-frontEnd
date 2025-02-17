@@ -6,7 +6,7 @@ import { Dropdown, type MenuProps, Space } from "antd";
 import { memo } from "react";
 import { IoChevronDownOutline } from "react-icons/io5";
 
-const LanSwitcher = () => {
+const LangSwitcher = () => {
   const { setLocale, locale } = globalStore();
   const items: MenuProps["items"] = [
     {
@@ -45,4 +45,4 @@ const LanSwitcher = () => {
     </div>
   );
 };
-export default memo(LanSwitcher);
+export default memo(LangSwitcher);

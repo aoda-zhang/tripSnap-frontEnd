@@ -15,7 +15,7 @@ import authAPI from "../apis";
 
 import envConfig from "@/config";
 import ImageWithSkeleton from "@/shared/components/ImageWithSkeleton";
-import LanSwitcher from "@/shared/components/LanSwitcher";
+import LangSwitcher from "@/shared/components/LangSwitcher";
 import style from "./index.module.scss";
 
 const Login: FC = () => {
@@ -45,7 +45,7 @@ const Login: FC = () => {
       <div className={style.loginForm}>
         <div className={style.welcome}>
           <span className={style.text}>{t("login.welcome")}</span>
-          <LanSwitcher />
+          <LangSwitcher />
         </div>
         <Form
           layout="vertical"
