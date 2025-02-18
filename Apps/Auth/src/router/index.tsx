@@ -64,6 +64,8 @@ const routerOptions: RouteObject[] = [
     element: <ErrorPage />,
   },
 ];
-const Routers = createBrowserRouter(routerOptions);
 
-export default Routers;
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+const BrowerRouters: any = createBrowserRouter(routerOptions);
+
+export default BrowerRouters;

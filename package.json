@@ -12,11 +12,7 @@
   "scripts": {
     "prepare": "husky",
     "biome:check": "biome check . --write --unsafe --files-ignore-unknown=true --no-errors-on-unmatched",
-    "lint-staged": "tsc && lint-staged",
-    "dev": "vite --mode dev",
-    "uat": "vite --mode uat",
-    "build:PROD": "tsc && vite build --mode prod",
-    "build:UAT": "tsc && vite build --mode uat"
+    "lint-staged": "tsc && lint-staged"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx,js,jsx,json,md}": [

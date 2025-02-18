@@ -10,7 +10,7 @@ const Http = axios.create({
   timeout: 20000,
   baseURL: envConfig?.http?.baseURL,
 });
-// 自定义请求头 函数式调用可及时更新local获取的参数
+// Define Headers
 const getHttpHeaders = (config: Record<string, any>) => {
   const timestamp = `${getUTCTimestamp()}`;
   return {
@@ -22,7 +22,7 @@ const getHttpHeaders = (config: Record<string, any>) => {
   };
 };
 
-// 成功请求config处理
+// Success Request Interceptor
 const interceptorsReq = (config: AxiosRequestHeaders) => {
   // @ts-ignore
   config.headers = {
@@ -32,14 +32,14 @@ const interceptorsReq = (config: AxiosRequestHeaders) => {
   return config;
 };
 
-// 请求拦截处理
+// Error Response Interceptor
 // @ts-ignore
 Http.interceptors.request.use(interceptorsReq, (err) => {
   httpErrorHandler(err);
   return Promise.reject(err?.message);
 });
 
-// 成功响应拦截处理
+// Success Response Interceptor
 const interceptorsResSuccess = (response: AxiosResponse<HttpResponseType>) => {
   if (response?.data?.status >= 200 && response?.data?.status < 400 && response?.data?.isSuccess) {
     return Promise.resolve(response?.data?.data);
