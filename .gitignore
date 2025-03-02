@@ -121,5 +121,3 @@ tsconfig.tsbuildinfo
 # configs
 **/**/src/config/*
 !**/**/src/config/index.ts
-*.yaml
-*.yml
