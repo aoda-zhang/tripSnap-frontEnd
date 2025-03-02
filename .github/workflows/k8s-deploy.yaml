@@ -28,8 +28,7 @@ permissions:
   issues: write
 
 jobs:
-  Assembly_Project:
-    if: github.ref != 'refs/heads/main'
+  Stage1:
     uses: aoda-zhang/shared-devops/.github/workflows/assembly_project.yaml@master
     with:
       app_repository: ${{ github.repository }}
@@ -40,8 +39,8 @@ jobs:
     secrets:
       PAT: ${{ secrets.PAT }}
 
-  Build_Push_Image:
-    needs: [Assembly_Project]
+  Stage2:
+    needs: [Stage1]
     uses: aoda-zhang/shared-devops/.github/workflows/image_build.yaml@master
     with:
       app_branch: ${{ github.ref }}
