@@ -6,17 +6,11 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.singleQuote": false,
   "prettier.trailingComma": "all",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "html"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html"],
   "prettier.arrowParens": "avoid",
   "prettier.printWidth": 80,
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

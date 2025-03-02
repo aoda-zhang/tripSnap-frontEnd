@@ -45,8 +45,6 @@
     "zustand": "^4.4.7"
   },
   "scripts": {
-    "prepare": "husky",
-    "biome:check": "biome check . --write --unsafe --files-ignore-unknown=true --no-errors-on-unmatched",
     "dev": "vite --mode dev",
     "uat": "vite --mode uat",
     "build:PROD": "tsc && vite build --mode prod",
