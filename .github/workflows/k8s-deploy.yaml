@@ -16,6 +16,11 @@ on:
         type: choice
         options: [UAT, TEST]
         default: UAT
+      AppPath:
+        description: "The app path to deploy"
+        required: true
+        type: choice
+        options: [Apps/Auth, Apps/Security]
 permissions:
   security-events: write
   actions: read
@@ -39,8 +44,8 @@ jobs:
     needs: [Assembly_Project]
     uses: aoda-zhang/shared-devops/.github/workflows/image_build.yaml@master
     with:
+      app_folder_path: ${{inputs.AppPath}}
       currentEnvironment: ${{ inputs.environment || 'UAT'}}
-      build_name: honey-web-${{ inputs.environment || 'UAT' }}
     secrets:
       AZURE_ACR_NAME: ${{ secrets.AZURE_ACR_NAME }}
       AZURE_ACR_USERNAME: ${{ secrets.AZURE_ACR_USERNAME }}
