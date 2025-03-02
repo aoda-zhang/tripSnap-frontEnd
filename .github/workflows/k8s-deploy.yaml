@@ -44,9 +44,10 @@ jobs:
     needs: [Assembly_Project]
     uses: aoda-zhang/shared-devops/.github/workflows/image_build.yaml@master
     with:
+      app_branch: ${{ github.ref }}
       app_folder_path: Apps/${{inputs.AppName}}
       currentEnvironment: ${{ inputs.environment || 'UAT'}}
     secrets:
-      AZURE_ACR_NAME: ${{ secrets.AZURE_ACR_NAME }}
-      AZURE_ACR_USERNAME: ${{ secrets.AZURE_ACR_USERNAME }}
-      AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
+      AZURE_ACR_SERVER: ${{ secrets.ACR_SERVER_UAT }}
+      AZURE_ACR_USERNAME: ${{ secrets.ACR_USERNAME_UAT }}
+      AZURE_ACR_PASSWORD: ${{ secrets.ACR_PWD_UAT }}
