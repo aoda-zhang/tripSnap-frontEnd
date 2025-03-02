@@ -123,4 +123,3 @@ tsconfig.tsbuildinfo
 !**/**/src/config/index.ts
 *.yaml
 *.yml
-!.github/*
