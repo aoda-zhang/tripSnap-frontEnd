@@ -29,7 +29,7 @@ permissions:
 
 jobs:
   Stage1:
-    uses: aoda-zhang/shared-devops/.github/workflows/assembly_project.yaml@master
+    uses: aoda-zhang/shared-devops/.github/workflows/project_prepare.yaml@master
     with:
       app_repository: ${{ github.repository }}
       app_branch: ${{ github.ref }}
