@@ -1,3 +1,7 @@
 packages:
-  - "Apps/*"
-  - "Libs"
+  - Apps/*
+  - Libs
+ignoredBuiltDependencies:
+  - '@biomejs/biome'
+  - '@parcel/watcher'
+  - esbuild

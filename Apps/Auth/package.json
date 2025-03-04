@@ -5,7 +5,7 @@
   "private": true,
   "engines": {
     "node": "22.x",
-    "pnpm": ">=9"
+    "pnpm": ">=10"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -56,5 +56,5 @@
     "@vitejs/plugin-react": "^4.2.1",
     "vite": "^5.0.13"
   },
-  "packageManager": "pnpm@9.13.0"
+  "packageManager": "pnpm@10.5.2"
 }
