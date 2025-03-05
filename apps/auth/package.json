@@ -47,8 +47,8 @@
   "scripts": {
     "dev": "vite --mode dev",
     "uat": "vite --mode uat",
-    "build:PROD": "tsc && vite build --mode prod",
-    "build:UAT": "tsc && vite build --mode uat"
+    "build:prod": "tsc && vite build --mode prod",
+    "build:uat": "tsc && vite build --mode uat"
   },
   "devDependencies": {
     "@modyfi/vite-plugin-yaml": "^1.1.0",

@@ -1,6 +1,6 @@
-import devYaml from "./DEV/env/index.yaml";
-import prodYaml from "./PROD/env/index.yaml";
-import uatYaml from "./UAT/env/index.yaml";
+import devYaml from "./dev/env/index.yaml";
+import prodYaml from "./prod/env/index.yaml";
+import uatYaml from "./uat/env/index.yaml";
 const environment = import.meta.env;
 const currentEnv = environment?.MODE ?? "dev";
 

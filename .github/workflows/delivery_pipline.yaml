@@ -20,7 +20,7 @@ on:
         description: "The app name to deploy"
         required: true
         type: choice
-        options: [Auth, Security]
+        options: [auth, security]
 permissions:
   security-events: write
   actions: read
