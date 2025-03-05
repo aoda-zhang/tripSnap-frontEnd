@@ -1,0 +1,81 @@
+name: Delivery pipline
+
+on:
+  push:
+    branches: main
+    paths-ignore:
+      - "**/.github/**"
+      - "**/*.txt"
+      - "**/*.MD"
+      - "**/*.md"
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "The environment to deploy"
+        required: true
+        type: choice
+        options: [UAT, TEST]
+        default: UAT
+      AppName:
+        description: "The app name to deploy"
+        required: true
+        type: choice
+        options: [Auth, Security]
+permissions:
+  security-events: write
+  actions: read
+  contents: read
+  issues: write
+
+jobs:
+  Inputoptions-summary:
+    runs-on: ubuntu-latest
+    steps:
+      - name: summary
+        id: summary
+        run: |
+          # Set outputs to be accessed by other jobs
+          echo "AppName=${{ inputs.AppName }}" >> $GITHUB_ENV
+          echo "AppFolderPath=Apps/${{ inputs.AppName }}" >> $GITHUB_ENV
+          echo "ConfigFolderPath=fullStack-frontEnd/${{ inputs.AppName }}" >> $GITHUB_ENV
+          echo "CurrentEnvironment=${{ inputs.environment || 'UAT' }}" >> $GITHUB_ENV
+
+
+          # Print out detailed information to the log
+          echo "-----------Please check all the input options when troubleshooting----------------"
+          echo "The deployed app/service is : ${{ inputs.AppName }}"
+          echo "The deployed app/service path is : ${{ env.AppFolderPath }}"
+          echo "Current deployed branch is :  ${{ github.ref }}"
+          echo "The config folder Path for current deployed app is : ${{ env.ConfigFolderPath }}"
+          echo "Current deployed environment is: ${{ env.CurrentEnvironment }}"
+          echo "-----------Please check all the input options when troubleshooting----------------"
+
+    outputs:
+      AppName: ${{ steps.summary.outputs.AppName }}
+      AppFolderPath: ${{ steps.summary.outputs.AppFolderPath }}
+      ConfigFolderPath: ${{ steps.summary.outputs.ConfigFolderPath }}
+      CurrentEnvironment: ${{ steps.summary.outputs.CurrentEnvironment }}
+
+  Prepare-project:
+    needs: [Inputoptions-summary]
+    uses: aoda-zhang/shared-devops/.github/workflows/project_prepare.yaml@master
+    with:
+      app_repository: ${{ github.repository }}
+      app_branch: ${{ github.ref }}
+      app_folder_path: ${{  needs.Inputoptions-summary.outputs.AppFolderPath }}
+      config_folder_path: ${{ needs.Inputoptions-summary.outputs.ConfigFolderPath }}
+      currentEnvironment: ${{ needs.Inputoptions-summary.outputs.CurrentEnvironment }}
+    secrets:
+      PAT: ${{ secrets.PAT }}
+
+  Build-push-image:
+    needs: [Inputoptions-summary, Prepare-project]
+    uses: aoda-zhang/shared-devops/.github/workflows/image_build.yaml@master
+    with:
+      app_branch: ${{ github.ref }}
+      app_folder_path: ${{ needs.Inputoptions-summary.outputs.AppFolderPath }}
+      currentEnvironment: ${{ needs.Inputoptions-summary.outputs.CurrentEnvironment }}
+    secrets:
+      AZURE_ACR_SERVER: ${{ secrets.ACR_SERVER_UAT }}
+      AZURE_ACR_USERNAME: ${{ secrets.ACR_USERNAME_UAT }}
+      AZURE_ACR_PASSWORD: ${{ secrets.ACR_PWD_UAT }}
