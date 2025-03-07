@@ -29,16 +29,19 @@ permissions:
 
 jobs:
   CICD-pipline:
-    uses: aoda-zhang/shared-devops/.github/workflows/shared_delivery_pipline.yaml@master
-    with:
-      app_repository: ${{ github.repository }}
-      app_branch: ${{ github.ref }}
-      currentEnvironment: ${{ inputs.environment }}
-      deployed_app: ${{ inputs.deployedApp }}
-      deploye_type: "WEBAPP"
-      config_path: ${{ inputs.deployed_app }}
-    secrets:
-      PAT: ${{ secrets.PAT }}
-      AZURE_ACR_SERVER: ${{ secrets.AZURE_ACR_SERVER }}
-      AZURE_ACR_USERNAME: ${{ secrets.AZURE_ACR_USERNAME }}
-      AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Run shared delivery pipeline
+        uses: aoda-zhang/shared-devops/.github/workflows/shared_delivery_pipline.yaml@master
+        with:
+          app_repository: ${{ github.repository }}
+          app_branch: ${{ github.ref }}
+          currentEnvironment: ${{ inputs.environment }}
+          deployed_app: ${{ inputs.deployedApp }}
+          deploye_type: "WEBAPP"
+          config_path: ${{ inputs.deployed_app }}
+          PAT: ${{ secrets.PAT }}
+          AZURE_ACR_SERVER: ${{ secrets.AZURE_ACR_SERVER }}
+          AZURE_ACR_USERNAME: ${{ secrets.AZURE_ACR_USERNAME }}
+          AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
