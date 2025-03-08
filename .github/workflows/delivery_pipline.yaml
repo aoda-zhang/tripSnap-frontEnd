@@ -1,11 +1,13 @@
+name: Deployment-pipiline
 on:
-  push:
-    branches: main
-    paths-ignore:
-      - "**/.github/**"
-      - "**/*.txt"
-      - "**/*.MD"
-      - "**/*.md"
+  # Only auto deploy when push to develope branch
+  # push:
+  #   branches: develope
+  #   paths-ignore:
+  #     - "**/.github/**"
+  #     - "**/*.txt"
+  #     - "**/*.MD"
+  #     - "**/*.md"
   workflow_dispatch:
     inputs:
       deployedEnvironment:
