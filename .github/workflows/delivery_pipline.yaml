@@ -1,5 +1,3 @@
-name: Delivery pipline
-
 on:
   push:
     branches: main
@@ -10,17 +8,18 @@ on:
       - "**/*.md"
   workflow_dispatch:
     inputs:
-      environment:
+      deployedEnvironment:
         description: "The environment to deploy"
         required: true
         type: choice
         options: [uat, test]
         default: uat
       deployedApp:
-        description: "The app to deployed"
+        description: "The app name to deploy"
         required: true
         type: choice
         options: [apps/auth, apps/security]
+
 permissions:
   security-events: write
   actions: read
@@ -28,20 +27,17 @@ permissions:
   issues: write
 
 jobs:
-  CICD-pipline:
-    runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
-    steps:
-      - name: Run shared delivery pipeline
-        uses: aoda-zhang/shared-devops/.github/workflows/shared_delivery_pipline.yaml@master
-        with:
-          app_repository: ${{ github.repository }}
-          app_branch: ${{ github.ref }}
-          currentEnvironment: ${{ inputs.environment }}
-          deployed_app: ${{ inputs.deployedApp }}
-          deploye_type: "WEBAPP"
-          config_path: ${{ inputs.deployed_app }}
-          PAT: ${{ secrets.PAT }}
-          AZURE_ACR_SERVER: ${{ secrets.AZURE_ACR_SERVER }}
-          AZURE_ACR_USERNAME: ${{ secrets.AZURE_ACR_USERNAME }}
-          AZURE_ACR_PASSWORD: ${{ secrets.AZURE_ACR_PASSWORD }}
+  Deployment-pipiline:
+    uses: aoda-zhang/shared-devops/.github/workflows/shared_delivery_pipline.yaml@master
+    with:
+      app_repository: ${{ github.repository }}
+      app_branch: ${{ github.ref }}
+      deployed_app: ${{ inputs.deployedApp }}
+      deploye_type: WEBAPP
+      config_path: ${{inputs.deployedApp}}
+      currentEnvironment: ${{inputs.deployedEnvironment}}
+    secrets:
+      PAT: ${{ secrets.PAT }}
+      AZURE_ACR_SERVER: ${{ secrets[format('AZURE_ACR_SERVER_{0}', inputs.deployedEnvironment)] }}
+      AZURE_ACR_USERNAME: ${{ secrets[format('AZURE_ACR_USERNAME_{0}', inputs.deployedEnvironment)] }}
+      AZURE_ACR_PASSWORD: ${{ secrets[format('AZURE_ACR_PASSWORD_{0}', inputs.deployedEnvironment)] }}
