@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-deploy-test
+  namespace: namespace-workflow-1741789480081
+  labels:
+    app.kubernetes.io/name: aks-deploy-test
+    kubernetes.azure.com/generator: devhub
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: aks-deploy-test
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
