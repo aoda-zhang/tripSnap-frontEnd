@@ -40,6 +40,6 @@ jobs:
       currentEnvironment: ${{inputs.deployedEnvironment}}
     secrets:
       PAT: ${{ secrets.PAT }}
-      AZURE_ACR_SERVER: ${{ secrets[format('AZURE_ACR_SERVER_{0}', inputs.deployedEnvironment)] }}
-      AZURE_ACR_USERNAME: ${{ secrets[format('AZURE_ACR_USERNAME_{0}', inputs.deployedEnvironment)] }}
-      AZURE_ACR_PASSWORD: ${{ secrets[format('AZURE_ACR_PASSWORD_{0}', inputs.deployedEnvironment)] }}
+      DOCKER_SERVER: ${{ secrets[format('DOCKER_SERVER_{0}', inputs.deployedEnvironment)] }}
+      DOCKER_USERNAME: ${{ secrets[format('DOCKER_USERNAME_{0}', inputs.deployedEnvironment)] }}
+      DOCKER_PASSWORD: ${{ secrets[format('DOCKER_PASSWORD_{0}', inputs.deployedEnvironment)] }}
