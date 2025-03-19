@@ -19,9 +19,9 @@ RUN pnpm run $BUILD_COMMAND
 
 FROM nginx:alpine
 
-COPY --from=builder /app/build /app/k8s/nginx/html
+COPY --from=builder /app/build /app/nginx/html
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY k8s/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
 
