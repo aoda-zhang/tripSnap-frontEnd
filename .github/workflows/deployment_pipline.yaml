@@ -1,4 +1,4 @@
-name: Deployment-pipiline
+name: Deployment-pipiline （Non Prod）
 on:
   # Only auto deploy when push to develope branch
   # push:
@@ -40,6 +40,12 @@ jobs:
       currentEnvironment: ${{inputs.deployedEnvironment}}
     secrets:
       PAT: ${{ secrets.PAT }}
-      DOCKER_SERVER: ${{ secrets[format('DOCKER_SERVER_{0}', inputs.deployedEnvironment)] }}
-      DOCKER_USERNAME: ${{ secrets[format('DOCKER_USERNAME_{0}', inputs.deployedEnvironment)] }}
-      DOCKER_PASSWORD: ${{ secrets[format('DOCKER_PASSWORD_{0}', inputs.deployedEnvironment)] }}
+      # Dynamic get secrets by environment example,like DOCKER_SERVER_UAT,DOCKER_SERVER_TEST
+      # DOCKER_SERVER: ${{ secrets[format('DOCKER_SERVER_{0}', inputs.deployedEnvironment)] }}
+      DOCKER_SERVER: ${{ secrets.DOCKER_SERVER_DEV }}
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME_DEV }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD_DEV }}
+      AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS_DEV }}
+      AZURE_RESOURCE_GROUP: ${{ secrets.AZURE_RESOURCE_GROUP_DEV }}
+      AKS_CLUSTER_NAME: ${{ secrets.AKS_CLUSTER_NAME_DEV }}
+      AKS_NAMESPACE: ${{ secrets.AKS_NAMESPACE_DEV }}
