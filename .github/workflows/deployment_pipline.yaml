@@ -38,7 +38,7 @@ jobs:
       deploye_type: WEBAPP
       config_path: ${{inputs.deployedApp}}
       currentEnvironment: ${{inputs.deployedEnvironment}}
-      dockerfile_path: k8s-base/Dockerfile
+      dockerfile_path: k8s/Dockerfile
     secrets:
       PAT: ${{ secrets.PAT }}
       # Dynamic get secrets by environment example,like DOCKER_SERVER_UAT,DOCKER_SERVER_TEST
