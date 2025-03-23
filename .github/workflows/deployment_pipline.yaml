@@ -27,6 +27,7 @@ permissions:
   actions: read
   contents: read
   issues: write
+  id-token: write
 
 jobs:
   Deployment-pipiline:
