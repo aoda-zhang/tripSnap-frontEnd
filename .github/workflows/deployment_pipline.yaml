@@ -51,5 +51,6 @@ jobs:
       AKS_CLUSTER_NAME: ${{ secrets.AKS_CLUSTER_NAME_DEV }}
       AKS_NAMESPACE: ${{ secrets.AKS_NAMESPACE_DEV }}
       AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID_DEV }}
+      AZURE_CREDS: ${{ secrets.AZURE_CREDS_DEV }}
       AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID_DEV }}
       AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}
