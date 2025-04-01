@@ -22,19 +22,20 @@ export default defineConfig({
     outDir: "build",
   },
   plugins: [react(), ViteYaml()],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "./src/shared/assets/styles/theme.scss";
-        @import "./src/shared/assets/styles/medias.scss";
-        @import "./src/shared/assets/styles/font.scss";
-        @import "./src/shared/assets/styles/common.scss";`,
-      },
-    },
-  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
+        additionalData: `@use "@/shared/assets/styles/theme.scss" as *;
+        @use "@/shared/assets/styles/medias.scss" as *;
+        @use "@/shared/assets/styles/font.scss" as *;
+        @use "@/shared/assets/styles/common.scss" as *;`,
+      },
     },
   },
 });

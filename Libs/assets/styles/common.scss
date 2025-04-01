@@ -1,3 +1,7 @@
+@use "./theme.scss" as *;
+@use "./medias.scss" as *;
+@use "./font.scss" as *;
+
 .center {
   display: flex;
   align-items: center;
