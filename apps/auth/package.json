@@ -54,7 +54,7 @@
     "@modyfi/vite-plugin-yaml": "^1.1.0",
     "@types/ramda": "^0.27.44",
     "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.0.13"
+    "vite": "^5.4.16"
   },
   "packageManager": "pnpm@10.5.2"
 }
