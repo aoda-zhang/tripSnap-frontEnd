@@ -5,7 +5,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   envPrefix: "REACT_APP_",
-  base: "./",
+  base: "/",
   server: {
     port: 3001,
     proxy: {
