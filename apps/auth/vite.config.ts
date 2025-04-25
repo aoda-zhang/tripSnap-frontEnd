@@ -7,10 +7,10 @@ export default defineConfig({
   envPrefix: "REACT_APP_",
   base: "/",
   server: {
-    port: 3001,
+    port: 3000,
     proxy: {
-      "/api/v1": {
-        target: "http://localhost:2826",
+      "/api": {
+        target: "http://localhost:8080",
         changeOrigin: true,
         // rewrite: path => path.replace(/^\/api/, ""),
       },

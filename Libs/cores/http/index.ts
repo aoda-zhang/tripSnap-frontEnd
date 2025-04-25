@@ -2,10 +2,10 @@ import envConfig from "@/config";
 import LocaleKeys from "@/shared/constants/localeKey";
 import storage from "@/shared/utils/storage";
 import globalStore from "@/store/globalStore";
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosRequestHeaders } from "axios";
+import axios, { type AxiosRequestConfig, type AxiosResponse, type AxiosRequestHeaders } from "axios";
 import { generateSign, getUTCTimestamp } from "./encrypt";
 import httpErrorHandler from "./errorHandle";
-import { HttpResponseType, commonHeader } from "./types";
+import { type HttpResponseType, commonHeader } from "./types";
 const Http = axios.create({
   timeout: 20000,
   baseURL: envConfig?.http?.baseURL,
