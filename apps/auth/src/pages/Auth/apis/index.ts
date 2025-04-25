@@ -1,17 +1,14 @@
-import httpService from "@/shared/libs/http";
+import httpService from "@/shared/cores/http";
 import type { AuthFieldType, LoginInfo } from "@/typings/auth.types";
-class AuthAPI {
-  register = (userInfo: AuthFieldType) => {
-    return httpService.postAPI("/auth/register", userInfo);
-  };
+const register = (userInfo: AuthFieldType) => {
+  return httpService.post("/auth/register", userInfo);
+};
 
-  login = (userInfo: Omit<AuthFieldType, "phoneNumber">) => {
-    return httpService.postAPI<LoginInfo>("/auth/login", userInfo);
-  };
+const login = (userInfo: Omit<AuthFieldType, "phoneNumber">) => {
+  return httpService.post<LoginInfo>("/auth/login", userInfo);
+};
 
-  refreshToken = (token: { refreshToken: string }) => {
-    return httpService.postAPI<LoginInfo>("/auth/refresh", token);
-  };
-}
-const authAPI = new AuthAPI();
-export default authAPI;
+const refreshToken = (token: { refreshToken: string }) => {
+  return httpService.post<LoginInfo>("/auth/refresh", token);
+};
+export { register, login, refreshToken };

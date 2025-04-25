@@ -1,22 +1,22 @@
 import envConfig from "@/config";
-import authAPI from "@/pages/Auth/apis";
-import storage from "@/shared/utils/storage";
 import { message } from "antd";
 import { HttpBusinessMappingCode, commonHeader } from "./types";
+import storageTool from "../../utils/storage";
+import { refreshToken } from "@/pages/Auth/apis";
 const jwtExpiredHandle = async () => {
   try {
-    if (storage.get(commonHeader.refreshToken)) {
-      const newAuthToken = await authAPI.refreshToken({
-        refreshToken: storage.get(commonHeader.refreshToken),
+    if (storageTool.get(commonHeader.refreshToken)) {
+      const newAuthToken = await refreshToken({
+        refreshToken: storageTool.get(commonHeader.refreshToken),
       });
-      await storage.set(commonHeader["access-token"], newAuthToken?.accessToken);
-      await storage.set(commonHeader.refreshToken, newAuthToken?.refreshToken);
+      await storageTool.set(commonHeader["access-token"], newAuthToken?.accessToken);
+      await storageTool.set(commonHeader.refreshToken, newAuthToken?.refreshToken);
     }
-    throw new Error(`登陆信息有误，请重新检查`);
+    throw new Error("登陆信息有误，请重新检查");
   } catch (error) {
     message.error(`登陆信息有误，请重新检查！${error}`);
-    await storage.remove(commonHeader["access-token"]);
-    await storage.remove(commonHeader.refreshToken);
+    await storageTool.remove(commonHeader["access-token"]);
+    await storageTool.remove(commonHeader.refreshToken);
     window.location.href = "/login";
   }
 };

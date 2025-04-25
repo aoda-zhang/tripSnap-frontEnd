@@ -1,7 +1,13 @@
 packages:
   - apps/*
   - Libs
+
 ignoredBuiltDependencies:
-  - "@biomejs/biome"
-  - "@parcel/watcher"
+  - '@biomejs/biome'
+  - '@parcel/watcher'
+  - esbuild
+
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - '@parcel/watcher'
   - esbuild

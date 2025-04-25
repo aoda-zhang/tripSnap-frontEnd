@@ -55,35 +55,19 @@ Http.interceptors.response.use(interceptorsResSuccess, (error) => {
   return Promise.reject(error);
 });
 const httpService = {
-  async getAPI<T extends unknown>(
-    url: string,
-    params?: Record<string, any>,
-    config?: AxiosRequestConfig
-  ): Promise<T> {
+  async get<T extends unknown>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     // @ts-ignore
     return Http.get<T>(url, { params, ...config });
   },
-  deleteAPI<T extends unknown>(
-    url: string,
-    params?: Record<string, any>,
-    config?: AxiosRequestConfig
-  ): Promise<T> {
+  delete<T extends unknown>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     // @ts-ignore
     return Http.delete<T>(url, { params, ...config });
   },
-  postAPI<T extends unknown>(
-    url: string,
-    data?: Record<string, any>,
-    config?: AxiosRequestConfig
-  ): Promise<T> {
+  post<T extends unknown>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     // @ts-ignore
     return Http.post<T>(url, data, { ...config });
   },
-  putAPI<T extends unknown>(
-    url: string,
-    data?: Record<string, any>,
-    config?: AxiosRequestConfig
-  ): Promise<T> {
+  put<T extends unknown>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     // @ts-ignore
     return Http.put<T>(url, data, { ...config });
   },

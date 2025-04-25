@@ -53,5 +53,5 @@
   "devDependencies": {
     "@types/ramda": "^0.27.44"
   },
-  "packageManager": "pnpm@10.5.2"
+  "packageManager": "pnpm@10.9.0"
 }

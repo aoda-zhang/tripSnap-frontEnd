@@ -8,17 +8,16 @@ import storage from "@/shared/utils/storage";
 import type { AuthFieldType } from "@/typings/auth.types";
 import StorageKeys from "@/typings/storage.types";
 
-import authAPI from "../apis";
-
 import style from "./index.module.scss";
+import { login, register } from "../apis";
 
 const Register: FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { mutate } = useMutation(authAPI.register, {
+  const { mutate } = useMutation(register, {
     onSuccess: async (isRegrester, value) => {
       if (isRegrester) {
-        const loginInfo = await authAPI.login({
+        const loginInfo = await login({
           userName: value?.userName,
           password: value?.password,
         });

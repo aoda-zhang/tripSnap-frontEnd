@@ -11,18 +11,17 @@ import globalStore from "@/store/globalStore";
 import type { AuthFieldType } from "@/typings/auth.types";
 import StorageKeys from "@/typings/storage.types";
 
-import authAPI from "../apis";
-
 import envConfig from "@/config";
 import ImageWithSkeleton from "@/shared/components/ImageWithSkeleton";
 import LangSwitcher from "@/shared/components/LangSwitcher";
 import style from "./index.module.scss";
+import { login } from "../apis";
 
 const Login: FC = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { setUserInfo } = globalStore();
-  const { mutate, isLoading } = useMutation(authAPI.login, {
+  const { mutate, isLoading } = useMutation(login, {
     onSuccess: (loginInfo) => {
       if (loginInfo?.accessToken && loginInfo?.refreshToken) {
         storage.set(StorageKeys.accessToken, loginInfo?.accessToken);

@@ -3,14 +3,12 @@ export type DestinationType = {
   id: string;
   name: string;
 };
-class MapAPI {
-  getHospitalList = async () => {
-    return httpService.getAPI<DestinationType[]>("/destination/list");
-  };
+const getHospitalList = async () => {
+  return httpService.get<DestinationType[]>("/destination/list");
+};
 
-  addHospitals = async (destinations: unknown[]) => {
-    return httpService.postAPI<number>("/destination/add", destinations);
-  };
-}
-const mapAPI = new MapAPI();
-export default mapAPI;
+const addHospitals = async (destinations: unknown[]) => {
+  return httpService.post<number>("/destination/add", destinations);
+};
+
+export { getHospitalList, addHospitals };

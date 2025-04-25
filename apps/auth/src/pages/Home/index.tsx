@@ -1,6 +1,9 @@
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import styles from "./index.module.scss";
+import { memo } from "react";
+import { useQuery } from "react-query";
+import { getDefaultTripView, HomeQueryKes } from "./apis";
 const imagesData = [
   {
     img: "https://www.travelandleisure.com/thmb/LtxHE8ECg6zBz1tM3KtCheUnZO4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/TAL-colosseum-WORLDWONDERS0523-74ede1158daf493f97aa2a8c8474f9cf.jpg",
@@ -41,7 +44,7 @@ const imagesData = [
     title: "home.destinations_egypt",
   },
 ];
-export default function Home() {
+const Home = () => {
   const { t } = useTranslation();
   const srcset = (image: string, size: number, rows = 1, cols = 1) => {
     return {
@@ -49,6 +52,7 @@ export default function Home() {
       srcSet: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format&dpr=2 2x`,
     };
   };
+  const { data: defaultViews } = useQuery([HomeQueryKes.GET_DEFAULT_TRIP_VIEW], getDefaultTripView);
 
   return (
     <div className={styles.home}>
@@ -59,7 +63,7 @@ export default function Home() {
       <div className={styles.destinations}>
         <div className={styles.title}>{t("home.destinations")}</div>
         <ImageList variant="quilted" cols={4} rowHeight={121}>
-          {imagesData.map((item) => (
+          {defaultViews?.map((item) => (
             <ImageListItem key={item.img} cols={item.cols || 1} rows={item.rows || 1}>
               <img {...srcset(item.img, 121, item.rows, item.cols)} alt={item.title} loading="lazy" />
               <ImageListItemBar title={t(item?.title)} />
@@ -69,4 +73,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default memo(Home);
