@@ -9,6 +9,6 @@ type TripViewType = {
   cols?: number;
 };
 const getDefaultTripView = () => {
-  return httpService.get<TripViewType[]>("v1/document/default-trip-views");
+  return httpService.get<TripViewType[]>("document/v1/default-trip-views");
 };
 export { getDefaultTripView };

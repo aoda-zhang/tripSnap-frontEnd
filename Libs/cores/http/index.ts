@@ -43,10 +43,9 @@ Http.interceptors.request.use(interceptorsReq, (err) => {
 const interceptorsResSuccess = (response: AxiosResponse<HttpResponseType>) => {
   if (response?.data?.status >= 200 && response?.data?.status < 400 && response?.data?.isSuccess) {
     return Promise.resolve(response?.data?.data);
-  } else {
-    httpErrorHandler(response?.data);
-    return Promise.reject();
   }
+  httpErrorHandler(response?.data);
+  return Promise.reject();
 };
 // 响应拦截处理
 // @ts-ignore
@@ -55,19 +54,19 @@ Http.interceptors.response.use(interceptorsResSuccess, (error) => {
   return Promise.reject(error);
 });
 const httpService = {
-  async get<T extends unknown>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
+  async get<T>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     // @ts-ignore
     return Http.get<T>(url, { params, ...config });
   },
-  delete<T extends unknown>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
+  delete<T>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     // @ts-ignore
     return Http.delete<T>(url, { params, ...config });
   },
-  post<T extends unknown>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
+  post<T>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     // @ts-ignore
     return Http.post<T>(url, data, { ...config });
   },
-  put<T extends unknown>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
+  put<T>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
     // @ts-ignore
     return Http.put<T>(url, data, { ...config });
   },
