@@ -1,4 +1,5 @@
 name: Deployment-pipiline （Non Prod）
+run-name: Deploying ${{ inputs.deployedApp }} to ${{ inputs.deployedEnvironment }}
 on:
   # Only auto deploy when push to develope branch
   # push:
