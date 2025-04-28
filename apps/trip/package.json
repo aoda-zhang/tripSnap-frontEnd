@@ -55,5 +55,11 @@
     "@vitejs/plugin-react": "^4.2.1",
     "vite": "^5.4.16"
   },
-  "packageManager": "pnpm@10.5.2"
+  "packageManager": "pnpm@10.5.2",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild"
+    ]
+  }
 }
