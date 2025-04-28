@@ -11,13 +11,13 @@ export const getUTCTimestamp = () => {
   return Math.floor(dayjs.utc().valueOf() / 1000);
 };
 const formatUrl = (url: string) => {
-  return url.replace(envConfig?.http?.prefix, "").replace(/\//g, "")?.toLowerCase();
+  return url.replace(envConfig?.http?.apiPrefix, "").replace(/\//g, "")?.toLowerCase();
 };
 export const generateSign = ({ config, timestamp }: SignParams): string => {
   const { data, url = "", method = "" } = config;
   const bodyString = data ? JSON.stringify(data) : "";
   return CryptoJS.HmacSHA256(
     `${formatUrl(url)}>${bodyString}+${method?.toUpperCase()}|${timestamp}`,
-    envConfig?.http?.auth?.privateKey
+    envConfig?.http?.auth?.privateKey,
   ).toString(CryptoJS.enc.Hex);
 };
