@@ -12,7 +12,4 @@ type TripViewType = {
 const getDefaultTripView = () => {
   return httpService.get<TripViewType[]>("document/v1/default-trip-views");
 };
-const addTrip = () => {
-  return httpService.post("trip/v1/addTrip", { destination: "German", date: "2025-10-01", note: "Zhr shone Staht!" });
-};
-export { getDefaultTripView, addTrip };
+export { getDefaultTripView };

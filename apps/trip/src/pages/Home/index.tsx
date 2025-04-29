@@ -1,9 +1,9 @@
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import styles from "./index.module.scss";
-import { memo, useEffect } from "react";
+import { memo } from "react";
 import { useQuery } from "react-query";
-import { addTrip, getDefaultTripView, HomeQueryKes } from "./apis";
+import { getDefaultTripView, HomeQueryKes } from "./apis";
 const Home = () => {
   const { t } = useTranslation();
   const srcset = (image: string, size: number, rows = 1, cols = 1) => {
@@ -13,12 +13,6 @@ const Home = () => {
     };
   };
   const { data: defaultViews } = useQuery([HomeQueryKes.GET_DEFAULT_TRIP_VIEW], getDefaultTripView);
-  useQuery([HomeQueryKes.ADD_TRIP], addTrip, {
-    onError: (error) => {
-      console.error("Failed to add trip:", error);
-    },
-    retry: false,
-  });
 
   return (
     <div className={styles.home}>
