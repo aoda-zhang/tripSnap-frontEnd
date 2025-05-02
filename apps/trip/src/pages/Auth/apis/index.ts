@@ -5,10 +5,10 @@ const register = (userInfo: AuthFieldType) => {
 };
 
 const login = (userInfo: Omit<AuthFieldType, "phoneNumber">) => {
-  return httpService.post<LoginInfo>("/auth/login", userInfo);
+  return httpService.post<LoginInfo>("/auth/v1/login", userInfo);
 };
 
 const refreshToken = (token: { refreshToken: string }) => {
-  return httpService.post<LoginInfo>("/auth/refresh", token);
+  return httpService.post<LoginInfo>("/auth/v1/refresh", token);
 };
 export { register, login, refreshToken };
