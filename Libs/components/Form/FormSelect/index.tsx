@@ -1,7 +1,7 @@
 import { FormControl, FormHelperText, MenuItem, Select, type SelectProps } from "@mui/material";
 import classNames from "classnames";
 import React, { memo, useMemo } from "react";
-import { Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styles from "../formBase.module.scss";
 import type { BaseFormType, BaseSelectType } from "../formBase.type";
@@ -10,13 +10,13 @@ const FormSelect: React.FC<BaseFormType & BaseSelectType & SelectProps> = ({
   name,
   label,
   options,
-  control,
   rules = {},
   defaultValue = "",
   fullWidth = true,
   ...props
 }) => {
   const { t } = useTranslation();
+  const { control } = useFormContext();
   const formRules = useMemo(() => {
     if (props?.required && !rules?.required) {
       return { ...rules, required: `${t(label)} ${t("common.required")}` };

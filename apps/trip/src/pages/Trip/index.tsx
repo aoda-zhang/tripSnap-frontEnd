@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { Outlet } from "react-router-dom";
 import styles from "./index.module.scss";
 import TripStore from "./store";
-const steps = ["trip.step1", "trip.step2", "trip.step3"];
+const steps = ["trip.step1", "trip.step2"];
 
 const Trip: FC = () => {
   const { t } = useTranslation();

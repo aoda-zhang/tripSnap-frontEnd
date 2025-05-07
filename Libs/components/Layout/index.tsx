@@ -24,9 +24,9 @@ const Layout: FC = () => {
   const navigate = useNavigate();
   const setStep = TripStore((state) => state.setStep);
 
-  if (!isNoToken && !isLogin) {
-    return <Navigate to="/login" replace />;
-  }
+  // if (!isNoToken && !isLogin) {
+  //   return <Navigate to="/login" replace />;
+  // }
 
   const Header = () => (
     <>

@@ -1,7 +1,6 @@
 export interface BaseFormType {
   name: string;
   label: string;
-  control: unknown;
   rules?: Record<string, unknown>;
   defaultValue?: string | number;
   type?: string;

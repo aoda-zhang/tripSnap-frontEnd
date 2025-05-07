@@ -1,14 +1,14 @@
-import FormInput from "@/shared/components/Form/FormInput";
-import FormPhoneNumber from "@/shared/components/Form/FormPhoneNumber";
+import FileUpload from "@/shared/components/FileUpload";
+import FormTextArea from "@/shared/components/Form/FormTextArea";
 import { Button } from "@mui/material";
-import classNames from "classnames";
 import { type FC, memo } from "react";
 import { type SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import styles from "../index.module.scss";
 import TripStore from "../store";
-export interface Step2FormType {
+
+export interface Step3FormType {
   tripName: string;
   departureDate: string;
   returnDate: string;
@@ -16,53 +16,43 @@ export interface Step2FormType {
   participants: string;
   transportation: string;
 }
-export const Step2FormMapping = {
-  HotalName: "hotalName",
-  HotalContact: "hotalContact",
-  Const: "const",
-  Destination: "destination",
+
+export const Step3FormMapping = {
+  TripViews: "tripViews",
+  Summary: "summary",
 };
 
-const Step2: FC = () => {
+const Step3: FC = () => {
   const { t } = useTranslation();
-  const { control, handleSubmit } = useForm<Step2FormType>();
-  const { setStep, tripStep } = TripStore();
+  const { control, handleSubmit } = useForm<Step3FormType>();
+  const { setStep } = TripStore();
   const navagite = useNavigate();
 
-  const onSubmit: SubmitHandler<Step2FormType> = (data) => {
+  const onSubmit: SubmitHandler<Step3FormType> = (data) => {
     console.log(data);
-    setStep(tripStep + 1);
-    navagite(`/trip/step${tripStep + 1}`);
   };
   const backToPrevious = () => {
-    setStep(tripStep - 1);
-    navagite(`/trip/step${tripStep - 1}`);
+    setStep(2);
+    navagite("/trip/step2");
+  };
+  const handleUpload = (files: File[]) => {
+    console.log("files-----------", files);
   };
   return (
     <>
       <form className={styles.record}>
-        <FormInput
-          className={styles.baseForm}
-          name={Step2FormMapping.HotalName}
-          label={t("trip.hotel_name")}
-          required={true}
-          control={control}
+        <FileUpload
+          className={styles.baseButton}
+          onUpload={(event) => {
+            handleUpload(event);
+          }}
         />
-        <FormPhoneNumber
-          className={classNames([styles.baseForm, styles.phoneNumber])}
-          name={Step2FormMapping.HotalContact}
-          label={t("trip.hotel_contact")}
-          required={true}
-          control={control}
-        />
-        <FormInput
+        <FormTextArea
           className={styles.baseForm}
-          name={Step2FormMapping.Const}
-          label={t("trip.cost")}
+          name={Step3FormMapping.Summary}
+          label={t(`trip.${Step3FormMapping.Summary}`)}
           required={true}
           control={control}
-          type="number"
-          defaultPrefix={true}
         />
       </form>
       <div className={styles.buttons}>
@@ -77,4 +67,4 @@ const Step2: FC = () => {
   );
 };
 
-export default memo(Step2);
+export default memo(Step3);

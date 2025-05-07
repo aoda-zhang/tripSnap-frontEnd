@@ -7,7 +7,6 @@ import Home from "@/pages/Home";
 import Trip from "@/pages/Trip";
 import Step1 from "@/pages/Trip/Step1";
 import Step2 from "@/pages/Trip/Step2";
-import Step3 from "@/pages/Trip/Step3";
 import ErrorPage from "@/shared/components/Error";
 import Layout from "@/shared/components/Layout";
 
@@ -33,10 +32,6 @@ const routerOptions: RouteObject[] = [
           {
             path: "step2",
             element: <Step2 />,
-          },
-          {
-            path: "step3",
-            element: <Step3 />,
           },
         ],
       },

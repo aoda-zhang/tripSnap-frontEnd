@@ -4,7 +4,7 @@ import { FormControl, FormHelperText } from "@mui/material";
 import classNames from "classnames";
 import { MuiTelInput, type MuiTelInputProps } from "mui-tel-input";
 import React, { memo, useMemo } from "react";
-import { Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styles from "../formBase.module.scss";
 import type { BaseFormType } from "../formBase.type";
@@ -12,13 +12,13 @@ import type { BaseFormType } from "../formBase.type";
 const FormPhoneNumber: React.FC<BaseFormType & MuiTelInputProps> = ({
   name,
   label,
-  control,
   rules = {},
   defaultValue = "",
   fullWidth = true,
   ...props
 }) => {
   const { t } = useTranslation();
+  const { control } = useFormContext();
   const locale = globalStore((state) => state?.locale);
   const formRules = useMemo(() => {
     if (props?.required && !rules?.required) {

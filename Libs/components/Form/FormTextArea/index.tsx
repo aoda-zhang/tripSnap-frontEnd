@@ -1,7 +1,7 @@
 import { FormControl, FormHelperText, TextareaAutosize, type TextareaAutosizeProps } from "@mui/material";
 import classNames from "classnames";
 import React, { memo, useMemo } from "react";
-import { Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styles from "../formBase.module.scss";
 import type { BaseFormType } from "../formBase.type";
@@ -9,13 +9,13 @@ import type { BaseFormType } from "../formBase.type";
 const FormTextArea: React.FC<BaseFormType & TextareaAutosizeProps> = ({
   name,
   label,
-  control,
   rules = {},
   defaultValue = "",
   fullWidth = true,
   ...props
 }) => {
   const { t } = useTranslation();
+  const { control } = useFormContext();
   const formRules = useMemo(() => {
     if (props?.required && !rules?.required) {
       return { ...rules, required: `${t(label)} ${t("common.required")}` };
