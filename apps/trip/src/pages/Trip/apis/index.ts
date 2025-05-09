@@ -1,14 +1,15 @@
 import httpService from "@/shared/cores/http";
-export type DestinationType = {
-  id: string;
-  name: string;
+import type { Step1FormType } from "../Step1";
+import { Step2FormType } from "../Step2";
+
+const addTripBasicInfo = (info: Step1FormType) => {
+  return httpService.post<{ tripId: string }>("/trip/tripInfo/add", info);
 };
-const getHospitalList = async () => {
-  return httpService.get<DestinationType[]>("/destination/list");
+const uploadTripFiles = (files: File[]) => {
+  return httpService.post<{ fileIds: string[] }>("/trip/tripView/upload", files);
+}
+const addTripSummary = (data: Step2FormType) => {
+  return httpService.post<Boolean>("/trip/tripDetail/add", data);
 };
 
-const addHospitals = async (destinations: unknown[]) => {
-  return httpService.post<number>("/destination/add", destinations);
-};
-
-export { getHospitalList, addHospitals };
+export { addTripBasicInfo, addTripSummary, uploadTripFiles };

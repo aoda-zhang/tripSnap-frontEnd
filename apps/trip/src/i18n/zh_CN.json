@@ -11,22 +11,6 @@
       "previous": "上一步"
     },
     "trip": {
-      "title": "费用",
-      "allMileage": "导航里程",
-      "driveTime": "驾驶时长",
-      "driveTime_pattern": "请填写4个数字",
-      "average": "平均速度",
-      "maxSpend": "最快速度",
-      "expectedOil": "预估油费",
-      "with": "一键跟走",
-      "check_mapDetails": "查看详情",
-      "mapDetails": "详情",
-      "info": "TripInfo",
-      "edit": "编辑",
-      "create_again": "再次创建",
-      "edit_startTime": "出发时间 示例 16:24",
-      "edit_startPlace": "出发地点",
-      "edit_endPlace": "到达地点",
       "login_again": "重新登录",
       "sys_error": "系统出错,请点击此处",
       "type_mapDetails": "填写详情",
@@ -48,7 +32,11 @@
       "cost": "花费",
       "precautions": "其他注意事项",
       "tripViews": "旅途美景分享",
-      "summary": "旅途总结"
+      "summary": "旅途总结",
+      "numOfTravelers": "同行人数",
+      "car": "汽车",
+      "plane": "飞机",
+      "train": "火车"
     },
     "login": {
       "primary_login": "登录",

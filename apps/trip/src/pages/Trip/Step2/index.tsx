@@ -2,68 +2,98 @@ import FileUpload from "@/shared/components/FileUpload";
 import FormTextArea from "@/shared/components/Form/FormTextArea";
 import { Button } from "@mui/material";
 import { type FC, memo } from "react";
-import { type SubmitHandler, useForm } from "react-hook-form";
+import { FormProvider, type SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "../index.module.scss";
 import TripStore from "../store";
+import storageTool from "@/shared/utils/storage";
+import { useMutation } from "react-query";
+import { addTripSummary, uploadTripFiles } from "../apis";
 
-export interface Step3FormType {
-  tripName: string;
-  departureDate: string;
-  returnDate: string;
-  destination: string;
-  participants: string;
-  transportation: string;
+export interface Step2FormType {
+  tripViews: string[];
+  summary: string;
+  tripId: string;
 }
 
-export const Step3FormMapping = {
+export const Step2FormMapping = {
   TripViews: "tripViews",
   Summary: "summary",
 };
 
 const Step3: FC = () => {
   const { t } = useTranslation();
-  const { control, handleSubmit } = useForm<Step3FormType>();
+  const { tripId } = useParams();
+  const formProps = useForm<Step2FormType>();
+  const { handleSubmit } = formProps;
   const { setStep } = TripStore();
   const navagite = useNavigate();
 
-  const onSubmit: SubmitHandler<Step3FormType> = (data) => {
+  const { mutate } = useMutation({
+    mutationFn: addTripSummary,
+    onSuccess: data => {
+      console.log("success", data);
+      // 成功后跳转到 trip 成功页面
+      navagite(`/trip/${tripId}`);
+    },
+  });
+
+  const uploadTripFilesMutation = useMutation({
+    mutationFn: uploadTripFiles,
+    onSuccess: data => {
+      // 提示 文件已上传成功
+      storageTool.set("tripFiles", data?.fileIds);
+    },
+  });
+
+  const onSubmit: SubmitHandler<Step2FormType> = data => {
     console.log(data);
+    const tripViews = storageTool.get("tripFiles");
+    mutate({ ...data, tripId, tripViews });
   };
   const backToPrevious = () => {
-    setStep(2);
-    navagite("/trip/step2");
+    setStep(1);
+    navagite("/trip/step1");
   };
   const handleUpload = (files: File[]) => {
-    console.log("files-----------", files);
+    uploadTripFilesMutation.mutate(files);
   };
   return (
-    <>
+    <FormProvider {...formProps}>
       <form className={styles.record}>
         <FileUpload
           className={styles.baseButton}
-          onUpload={(event) => {
+          onUpload={event => {
             handleUpload(event);
           }}
         />
         <FormTextArea
           className={styles.baseForm}
-          name={Step3FormMapping.Summary}
-          label={t(`trip.${Step3FormMapping.Summary}`)}
+          name={Step2FormMapping.Summary}
+          label={t(`trip.${Step2FormMapping.Summary}`)}
           required={true}
-          control={control}
         />
       </form>
       <div className={styles.buttons}>
-        <Button className={styles.baseButton} variant="contained" color="primary" onClick={backToPrevious}>
+        <Button
+          className={styles.baseButton}
+          variant="contained"
+          color="primary"
+          onClick={backToPrevious}
+        >
           {t("common.previous")}
         </Button>
-        <Button className={styles.baseButton} variant="contained" color="primary" onClick={handleSubmit(onSubmit)}>
+        <Button
+          className={styles.baseButton}
+          variant="contained"
+          color="primary"
+          onClick={handleSubmit(onSubmit)}
+        >
           {t("common.save_continue")}
         </Button>
       </div>
-    </>
+    </FormProvider>
   );
 };
 

@@ -11,20 +11,6 @@
       "previous": "Previous"
     },
     "trip": {
-      "title": "map",
-      "allMileage": "allMileage",
-      "driveTime": "Drive Time",
-      "driveTime_pattern": "Please type in four number!",
-      "average": "Average",
-      "maxSpend": "Speed",
-      "expectedOil": "Oil",
-      "with": "just run",
-      "info": "TripInfo",
-      "edit": "Edit",
-      "create_again": "Create Again",
-      "edit_startTime": "Starting Time ex 16:24",
-      "edit_startPlace": "Begining Point",
-      "edit_endPlace": "Ending Point",
       "login_again": "login again",
       "sys_error": "System error , please click here",
       "type_mapDetails": "Submit Date",
@@ -46,7 +32,11 @@
       "cost": "Cost",
       "precautions": "Other precautions",
       "tripViews": "Trip Views share ❤️",
-      "summary": "Trip Summary"
+      "summary": "Trip Summary",
+      "numOfTravelers": "Number of Travelers",
+      "car": "Car",
+      "plane": "Plane",
+      "train": "Train"
     },
     "login": {
       "primary_login": "LOGIN",

@@ -30,7 +30,7 @@ const routerOptions: RouteObject[] = [
             element: <Step1 />,
           },
           {
-            path: "step2",
+            path: "step2/:id",
             element: <Step2 />,
           },
         ],
@@ -60,7 +60,6 @@ const routerOptions: RouteObject[] = [
   },
 ];
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 const BrowerRouters: any = createBrowserRouter(routerOptions);
 
 export default BrowerRouters;

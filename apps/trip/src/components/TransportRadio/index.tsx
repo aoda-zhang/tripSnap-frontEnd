@@ -2,6 +2,7 @@ import { useWatch, useFormContext } from "react-hook-form";
 import { memo } from "react";
 import FormRadio from "@/shared/components/Form/FormRadio";
 import FormInput from "@/shared/components/Form/FormInput";
+import { useTranslation } from "react-i18next";
 const TransportationOptions = {
   car: "Car",
   plane: "Plane",
@@ -10,15 +11,16 @@ const TransportationOptions = {
 
 const TransportRadio = () => {
   const { control } = useFormContext();
+  const { t } = useTranslation();
   const transport = useWatch({ control, name: "transport" });
   const TransportSwitch = () => {
     switch (transport) {
       case TransportationOptions.car:
-        return <FormInput name="carPlate" label="Car Plate Number" />;
+        return <FormInput name="transportNo" label="Car Plate Number" />;
       case TransportationOptions.plane:
-        return <FormInput name="flightNumber" label="Flight Number" />;
+        return <FormInput name="transportNo" label="Flight Number" />;
       case TransportationOptions.train:
-        return <FormInput name="trainNumber" label="Train Number" />;
+        return <FormInput name="transportNo" label="Train Number" />;
       default:
         return null;
     }
@@ -29,11 +31,11 @@ const TransportRadio = () => {
       <FormRadio
         required={true}
         name="transport"
-        label="主要交通方式"
+        label={t("trip.transportation")}
         options={[
-          { value: TransportationOptions.car, label: "Car" },
-          { value: TransportationOptions.plane, label: "Plane" },
-          { value: TransportationOptions.train, label: "Train" },
+          { value: TransportationOptions.car, label: t("trip.car") },
+          { value: TransportationOptions.plane, label: t("trip.plane") },
+          { value: TransportationOptions.train, label: t("trip.train") },
         ]}
       />
       <TransportSwitch />
