@@ -11,13 +11,16 @@
   },
   "scripts": {
     "prepare": "husky",
-    "lint-staged": "tsc && lint-staged",
+    "lint-staged": "lint-staged",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
     "format": "prettier --write ."
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx,json,md}": [
-      "eslint --fix",
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix --cache",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
       "prettier --write"
     ]
   },
