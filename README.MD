@@ -36,8 +36,4 @@ All built with modern, scalable tech—including React,Vite,NestJS,MongoDB,Azure
 
 Click the Ask DeepWiki button below — it’s an AI-powered documentation assistant trained on this project. You can ask it any question about the codebase, and it will respond with context-aware answers.
 
-💡 It’s not just documentation. It’s your interactive project mentor.
-
-Try it out and discover how DeepWiki can make understanding this codebase (or your own) a whole lot more intuitive.
-
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/aoda-zhang/fullStack-frontEnd)
