@@ -5,7 +5,7 @@ import App from "./App";
 import envConfig from "./config";
 
 import "./i18n";
-import { StrictMode } from "react";
+import React from "react";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,13 +14,10 @@ const queryClient = new QueryClient({
     },
   },
 });
-
-const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(
-  <StrictMode>
+createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
-  </StrictMode>,
+  </React.StrictMode>,
 );

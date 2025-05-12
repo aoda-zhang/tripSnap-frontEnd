@@ -6,7 +6,7 @@ import { type FC, memo } from "react";
 import { FormProvider, type SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import styles from "../index.module.scss";
+import styles from "../tripLayout.module.scss";
 import TripStore from "../store";
 import TransportRadio from "@/components/TransportRadio";
 import { useMutation } from "react-query";
@@ -42,14 +42,13 @@ const Step1: FC = () => {
   const navigate = useNavigate();
   const { mutate, isLoading } = useMutation({
     mutationFn: addTripBasicInfo,
-    onSuccess: (data) => {
+    onSuccess: data => {
       setStep(2);
       navigate(`/trip/step2/${data?.tripId}`);
     },
   });
 
-  const onSubmit: SubmitHandler<Step1FormType> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<Step1FormType> = data => {
     mutate(data);
   };
   return (

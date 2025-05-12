@@ -2,6 +2,7 @@ import path from "node:path";
 import ViteYaml from "@modyfi/vite-plugin-yaml";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   envPrefix: "REACT_APP_",
@@ -22,7 +23,7 @@ export default defineConfig({
   build: {
     outDir: "build",
   },
-  plugins: [react(), ViteYaml()],
+  plugins: [react(), ViteYaml(), tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),

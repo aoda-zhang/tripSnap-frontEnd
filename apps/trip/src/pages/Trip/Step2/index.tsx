@@ -5,7 +5,7 @@ import { type FC, memo } from "react";
 import { FormProvider, type SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
-import styles from "../index.module.scss";
+import styles from "../tripLayout.module.scss";
 import TripStore from "../store";
 import storageTool from "@/shared/utils/storage";
 import { useMutation } from "react-query";
@@ -33,8 +33,6 @@ const Step3: FC = () => {
   const { mutate } = useMutation({
     mutationFn: addTripSummary,
     onSuccess: data => {
-      console.log("success", data);
-      // 成功后跳转到 trip 成功页面
       navagite(`/trip/${tripId}`);
     },
   });

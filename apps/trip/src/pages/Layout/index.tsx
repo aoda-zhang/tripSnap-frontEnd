@@ -1,5 +1,5 @@
 import { type FC, memo } from "react";
-import { Navigate, Outlet, useMatches, useNavigate } from "react-router-dom";
+import { Outlet, useMatches, useNavigate } from "react-router-dom";
 
 import storageTool from "@/shared/utils/storage";
 import globalStore from "@/store/globalStore";
@@ -7,11 +7,12 @@ import StorageKeys from "@/typings/storage.types";
 import classNames from "classnames";
 
 import TripStore from "@/pages/Trip/store";
-import { RouterHandles } from "@/router";
+import { RouterHandles } from "@/routes";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
-import AvatarMenu from "../AvatarMenu";
+import AvatarMenu from "../../shared/components/AvatarMenu";
 import styles from "./index.module.scss";
+import "./index.css";
 
 const Layout: FC = () => {
   const { userInfo } = globalStore();
@@ -22,27 +23,24 @@ const Layout: FC = () => {
   const isNoToken = currentRouter?.handle?.[RouterHandles.noToken] ?? false;
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const setStep = TripStore((state) => state.setStep);
-
-  // if (!isNoToken && !isLogin) {
-  //   return <Navigate to="/login" replace />;
-  // }
+  const setStep = TripStore(state => state.setStep);
 
   const Header = () => (
     <>
       {isMenuAvaliable && (
         <header className={styles.header}>
           <>
-            <span
+            <button
+              // className="text-[1.25rem] font-bold cursor-pointer"
               className={classNames([styles.brand])}
               onClick={() => {
                 navigate("/");
               }}
             >
               {t("common.brand")}
-            </span>
+            </button>
             <div className={styles.right}>
-              <span
+              <button
                 className={styles.item}
                 onClick={() => {
                   setStep(1);
@@ -50,17 +48,17 @@ const Layout: FC = () => {
                 }}
               >
                 {t("common.record")}
-              </span>
+              </button>
               <span className={styles.item}>{t("common.history")}</span>
               {!isLogin && (
-                <span
+                <button
                   className={classNames([styles.item, styles.login])}
                   onClick={() => {
                     navigate("/login");
                   }}
                 >
                   {t("common.login")}
-                </span>
+                </button>
               )}
 
               {isLogin && <AvatarMenu userInfo={userInfo} />}
@@ -70,6 +68,20 @@ const Layout: FC = () => {
       )}
     </>
   );
+  const Content = () => {
+    // if (!(isNoToken && isLogin)) {
+    //   return <Navigate to="/login" replace />;
+    // }
+    return (
+      <>
+        <Header />
+        <main className={styles.content}>
+          <Outlet />
+        </main>
+        <Footer />
+      </>
+    );
+  };
   const Footer = () => (
     <div className={styles.footer}>
       {t("common.brand")} ©{dayjs().year()}
@@ -77,11 +89,8 @@ const Layout: FC = () => {
   );
   return (
     <div className={styles.layout}>
-      <Header />
-      <main className={styles.content}>
-        <Outlet />
-      </main>
-      <Footer />
+      {/* <div className="tripLayout"> */}
+      <Content />
     </div>
   );
 };

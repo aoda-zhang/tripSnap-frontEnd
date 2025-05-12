@@ -23,9 +23,13 @@ const Home = () => {
       <div className={styles.destinations}>
         <div className={styles.title}>{t("home.destinations")}</div>
         <ImageList variant="quilted" cols={4} rowHeight={121}>
-          {defaultViews?.map((item) => (
-            <ImageListItem key={item.img} cols={item.cols || 1} rows={item.rows || 1}>
-              <img {...srcset(item.img, 121, item.rows, item.cols)} alt={item.title} loading="lazy" />
+          {defaultViews?.map((item, index) => (
+            <ImageListItem key={index} cols={item.cols || 1} rows={item.rows || 1}>
+              <img
+                {...srcset(item.img, 121, item.rows, item.cols)}
+                alt={item.title}
+                loading="lazy"
+              />
               <ImageListItemBar title={t(item?.title)} />
             </ImageListItem>
           ))}
