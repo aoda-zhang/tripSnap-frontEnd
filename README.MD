@@ -14,23 +14,38 @@ With modern web development moving toward frontend-backend separation, the deman
 
 <b>Trip</b>—a full-stack project to help developers understand how the frontend and backend work together. Through this project, I’m sharing what I’ve learned, in hopes it helps others grow into confident full-stack developers too.
 
-Key features include:
+🔋 Features
 
-    • 🔐 User authentication (Sign up & Login)
-    • 📝 Creating and editing travel logs
-    • 📖 Browsing trip history
-    • 📄 Generating shareable PDF reports for each trip
-    • 🔧 More features coming soon: search, social sharing, advanced filters…
+- 🔐 User authentication (Sign up & Login)
+- 📝 Creating and editing trip
+- 📖 Browsing trip history
+- 📄 Generating shareable PDF reports for each trip
+- 📮 Sending Emails when record short trip successfuly
+- 🔧 More features coming soon: search, social sharing, advanced filters…
+
+⚙️ Tech Stack
+
+- React
+- Reat-router-V6
+- React-query
+- React-hook-form
+- Scss
+- Zustand
+- Zod
 
 🚀 How to Get Started
 
-1. Clone the BacckEnd code (https://github.com/aoda-zhang/fullStack-backEnd)
+Prerequisites
 
-2. Make sure you have Node.js installed
-3. Create a free MongoDB Atlas account
-4. Clone this repo
-5. Fill in your configuration in the /config folder
-6. Run the dev server and start building!
+Make sure you have the following installed on your local:
+
+- Git
+- Node.js
+- pnpm ( Node Package Manager )
+
+1. Clone the code to your local
+2. Fill in your configuration in the /config folder, please refer to the example.yaml in src/config
+3. Run the dev server by "pnpm run dev"
 
 🧠 Want Smart, Instant Documentation?
 
