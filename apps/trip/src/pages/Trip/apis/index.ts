@@ -1,6 +1,6 @@
 import httpService from "@/shared/cores/http";
-import type { Step1FormType } from "../Step1";
 import { Step2FormType } from "../Step2";
+import { Step1FormType } from "../Step1/validation";
 
 const addTripBasicInfo = (info: Step1FormType) => {
   return httpService.post<{ tripId: string }>("/trip/tripInfo/add", info);

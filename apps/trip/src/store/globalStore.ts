@@ -10,14 +10,14 @@ import type { UserInfoType } from "@/typings/auth.types";
 import type { DestinationItem } from "@/typings/destination.types";
 import StorageKeys from "@/typings/storage.types";
 import type { MapProcessStatusItem, TripFormType, TripProcessStatus } from "@/typings/trip.types";
-type GlobalStage = {
+type GlobalState = {
   destinations: DestinationItem[];
   tripStatus: TripProcessStatus;
   locale: LocaleKeys;
   userInfo: UserInfoType;
   latestTrip: TripFormType;
 };
-type GlobalAction = {
+type GlobalActions = {
   setDestination: (data: DestinationItem[]) => void;
   setTripStatus: (mapStatusItem: MapProcessStatusItem) => void;
   setUserInfo: (userInfo: UserInfoType) => void;
@@ -25,6 +25,7 @@ type GlobalAction = {
   setLatestTrip: (trip: TripFormType) => void;
   setDefaultTrip: () => void;
 };
+export type GlobalStoreSlice = GlobalState & GlobalActions;
 const defaultTrip = {
   mapInfo: [
     {
@@ -36,7 +37,7 @@ const defaultTrip = {
     },
   ],
 };
-const initialState: GlobalStage = {
+const initialState: GlobalState = {
   tripStatus: {
     isFillMapDate: true,
     isEdit: false,
@@ -50,7 +51,7 @@ const initialState: GlobalStage = {
     userName: "",
   },
 };
-const globalStorePersist = persist<GlobalStage & GlobalAction>(
+const globalStorePersist = persist<GlobalStoreSlice>(
   (set) => ({
     ...initialState,
     setDestination: (data = []) =>
@@ -70,5 +71,5 @@ const globalStorePersist = persist<GlobalStage & GlobalAction>(
   },
 );
 
-const globalStore = create<GlobalStage & GlobalAction>()(globalStorePersist);
+const globalStore = create<GlobalStoreSlice>()(globalStorePersist);
 export default globalStore;

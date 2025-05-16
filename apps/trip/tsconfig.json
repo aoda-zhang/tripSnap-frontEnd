@@ -23,7 +23,7 @@
     "composite": true,
     "types": ["node", "vite/client", "@modyfi/vite-plugin-yaml/modules"]
   },
-  "include": ["src", "src/store"],
+  "include": ["src", "src/store", "tailwind.config.js", "postcss.config.js"],
   "exclude": ["node_modules", "src/**/*.spec.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import AvatarMenu from "../../shared/components/AvatarMenu";
 import styles from "./index.module.scss";
 import "./index.css";
+import LangSwitcher from "@/shared/components/LangSwitcher";
 
 const Layout: FC = () => {
   const { userInfo } = globalStore();
@@ -62,6 +63,7 @@ const Layout: FC = () => {
               )}
 
               {isLogin && <AvatarMenu userInfo={userInfo} />}
+              <LangSwitcher />
             </div>
           </>
         </header>

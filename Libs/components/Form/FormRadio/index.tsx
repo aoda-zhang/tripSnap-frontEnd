@@ -27,7 +27,7 @@ const FormRadio: React.FC<BaseFormType & FormRadioProps> = ({ name, label, optio
       })}
     >
       <p className={formBasestyle.label}>{label}</p>
-      {options.map((option) => (
+      {options.map(option => (
         <label key={option.value} className={style.radioLabel}>
           <input
             type="radio"
@@ -40,7 +40,9 @@ const FormRadio: React.FC<BaseFormType & FormRadioProps> = ({ name, label, optio
           {option.label}
         </label>
       ))}
-      {errors[name] && <span className={formBasestyle.errorMessage}>{errors[name]?.message?.toString()}</span>}
+      {errors[name] && (
+        <span className={formBasestyle.errorMessage}>{errors[name]?.message?.toString()}</span>
+      )}
     </div>
   );
 };

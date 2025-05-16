@@ -27,7 +27,6 @@
       "destination": "旅途目的地",
       "participants": "旅途伴侣",
       "transportation": "主要交通方式",
-      "hotel_name": "酒店名称",
       "hotel_contact": "酒店联系方式",
       "cost": "花费",
       "precautions": "其他注意事项",
@@ -36,7 +35,8 @@
       "numOfTravelers": "同行人数",
       "car": "汽车",
       "plane": "飞机",
-      "train": "火车"
+      "train": "火车",
+      "trip_name_rules": "Trip 的名字必须包含大写字母和数字"
     },
     "login": {
       "primary_login": "登录",

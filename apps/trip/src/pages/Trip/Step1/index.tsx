@@ -1,8 +1,7 @@
-import FormDate from "@/shared/components/Form/FormDate";
 import FormInput from "@/shared/components/Form/FormInput";
 import { Button } from "@mui/material";
 import classNames from "classnames";
-import { type FC, memo } from "react";
+import { type FC, memo, useMemo } from "react";
 import { FormProvider, type SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -11,32 +10,14 @@ import TripStore from "../store";
 import TransportRadio from "@/components/TransportRadio";
 import { useMutation } from "react-query";
 import { addTripBasicInfo } from "../apis";
-export interface Step1FormType {
-  tripName: string;
-  departureDate: [Date | null, Date | null];
-  returnDate: string;
-  destination: string;
-  participants: string;
-  transportation: string;
-  transport: string;
-  transportNo: string;
-}
-export enum Step1FormMapping {
-  TripName = "tripName",
-  DepartureDate = "departureDate",
-  ReturnDate = "returnDate",
-  Destination = "destination",
-  Participants = "participants",
-  Transportation = "transportation",
-  Const = "const",
-}
+import { zodResolver } from "@hookform/resolvers/zod";
+import { getStep1schema, Step1FormMapping, Step1FormType } from "./validation";
 
 const Step1: FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const Step1schema = useMemo(() => getStep1schema(t), [i18n.language]);
   const formProps = useForm<Step1FormType>({
-    defaultValues: {
-      departureDate: [null, null],
-    },
+    resolver: zodResolver(Step1schema),
   });
   const { setStep } = TripStore();
   const navigate = useNavigate();
@@ -56,22 +37,19 @@ const Step1: FC = () => {
       <form className={styles.record}>
         <FormInput
           className={styles.baseForm}
+          name={Step1FormMapping.TripName}
+          label={t("trip.trip_name")}
+        />
+        <FormInput
+          className={styles.baseForm}
           name={Step1FormMapping.Destination}
           label={t("trip.destination")}
-          required={true}
-        />
-        <FormDate
-          className={styles.baseForm}
-          name={Step1FormMapping.DepartureDate}
-          label={t("trip.departure_return_date")}
-          required={true}
         />
         <FormInput
           className={styles.baseForm}
           name={Step1FormMapping.Participants}
           label={t("trip.numOfTravelers")}
           type="number"
-          required={true}
         />
         <TransportRadio />
       </form>

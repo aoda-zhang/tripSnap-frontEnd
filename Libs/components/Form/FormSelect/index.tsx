@@ -37,8 +37,13 @@ const FormSelect: React.FC<BaseFormType & BaseSelectType & SelectProps> = ({
           fullWidth={fullWidth}
         >
           <div className={styles.label}>{label}</div>
-          <Select {...field} {...props} variant={props?.variant ?? "standard"} required={props?.required}>
-            {options?.map((item) => (
+          <Select
+            {...field}
+            {...props}
+            variant={props?.variant ?? "standard"}
+            required={props?.required}
+          >
+            {options?.map(item => (
               <MenuItem key={item?.value} value={item?.value}>
                 {item?.label}
               </MenuItem>

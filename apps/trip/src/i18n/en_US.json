@@ -27,7 +27,6 @@
       "destination": "Destination",
       "participants": "Participants",
       "transportation": "Transportation",
-      "hotel_name": "Hotel Name",
       "hotel_contact": "Hotel Contact",
       "cost": "Cost",
       "precautions": "Other precautions",
@@ -36,7 +35,8 @@
       "numOfTravelers": "Number of Travelers",
       "car": "Car",
       "plane": "Plane",
-      "train": "Train"
+      "train": "Train",
+      "trip_name_rules": "Trip name can only contain letters and numbers"
     },
     "login": {
       "primary_login": "LOGIN",

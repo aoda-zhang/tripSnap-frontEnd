@@ -2,15 +2,17 @@
 
 🌍 Motivation
 
-As a software engineer at a Fortune 500 company, I’ve had the privilege of watching real-world projects evolve from scratch into complex, large-scale systems. Along the way, our team faced countless challenges—from architecture design to scaling under real-world constraints—and refined a set of best practices through deep exploration and iteration.
+I started out in tech as a frontend developer, mainly turning designs into websites. Over time, I got curious about how things work behind the scenes, so I began learning backend development. Fast forward to now—I’m a full-stack developer who can handle everything from system design to building the full application.
 
-In today’s software landscape, an increasing number of frontend and backend developers are transitioning into full-stack roles. They’re not just looking to learn new frameworks—they want to understand the entire development lifecycle and how systems work holistically.
+Along the way, I realized that frontend and backend go hand in hand. Frontend is all about user experience and design, while backend handles data and business logic. Learning both has helped me see the bigger picture and make smarter decisions when building apps.
 
-That’s why I created Trip—a full-stack practice project inspired by real-world enterprise experience. It’s a sandbox where I apply real project architecture, patterns, and decision-making, and continue to iterate on it. My goal is to help more developers confidently grow into full-stack engineers with practical, production-grade thinking.
+As I dove into backend topics like databases, APIs, and server deployment, I gained a deeper understanding of how systems fit together—and how to better work with other developers too.
+
+With modern web development moving toward frontend-backend separation, the demand for full-stack developers has really grown. Companies want people who can do both, and more developers are aiming to become full-stack.
 
 ✨ What is Trip?
 
-Trip is a full-stack travel journal app designed to help users log and revisit their travel experiences.
+<b>Trip</b>—a full-stack project to help developers understand how the frontend and backend work together. Through this project, I’m sharing what I’ve learned, in hopes it helps others grow into confident full-stack developers too.
 
 Key features include:
 
@@ -19,8 +21,6 @@ Key features include:
     • 📖 Browsing trip history
     • 📄 Generating shareable PDF reports for each trip
     • 🔧 More features coming soon: search, social sharing, advanced filters…
-
-All built with modern, scalable tech—including React,Vite,NestJS,MongoDB,Azure.
 
 🚀 How to Get Started
 

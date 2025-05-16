@@ -9,7 +9,7 @@ type TripViewType = {
   rows?: number;
   cols?: number;
 };
-const getDefaultTripView = () => {
-  return httpService.get<TripViewType[]>("document/v1/default-trip-views");
+const getDefaultTripView = (): Promise<TripViewType[]> => {
+  return httpService.get("document/v1/default-trip-views");
 };
 export { getDefaultTripView };
