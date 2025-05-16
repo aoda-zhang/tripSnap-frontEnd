@@ -1,29 +1,28 @@
-import { Button, Form, Input, message } from "antd";
-import type { FC } from "react";
-import { useTranslation } from "react-i18next";
-import { useMutation } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { Button, Form, Input, message } from 'antd';
+import { useTranslation } from 'react-i18next';
+import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 
-import storage from "@/shared/utils/storage";
-import type { AuthFieldType } from "@/typings/auth.types";
-import StorageKeys from "@/typings/storage.types";
+import storage from '@/shared/utils/storage';
+import { AuthFieldType } from '@/typings/auth.types';
+import StorageKeys from '@/typings/storage.types';
 
-import style from "./index.module.scss";
-import { login, register } from "../apis";
+import style from './index.module.scss';
+import { AuthAPI } from '@/apis';
 
-const Register: FC = () => {
+const Register = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { mutate } = useMutation(register, {
+  const { mutate } = useMutation(AuthAPI.register, {
     onSuccess: async (isRegrester, value) => {
       if (isRegrester) {
-        const loginInfo = await login({
+        const loginInfo = await AuthAPI.login({
           userName: value?.userName,
           password: value?.password,
         });
         await storage.set(StorageKeys.accessToken, loginInfo.accessToken);
         await storage.set(StorageKeys.refreshToken, loginInfo.refreshToken);
-        navigate("/trip");
+        navigate('/trip');
       }
     },
     onError: (error) => {
@@ -41,12 +40,15 @@ const Register: FC = () => {
         }}
         autoComplete="off"
       >
-        <Form.Item<AuthFieldType> name="userName" rules={[{ required: true, message: "请输入注册账户名" }]}>
-          <Input placeholder={t("login.userName")} />
+        <Form.Item name="userName" rules={[{ required: true, message: '请输入注册账户名' }]}>
+          <Input placeholder={t('login.userName')} />
         </Form.Item>
 
-        <Form.Item<AuthFieldType> name="password" rules={[{ required: true, message: "请输入注册密码" }]}>
-          <Input.Password placeholder={t("login.password")} />
+        <Form.Item<AuthFieldType>
+          name="password"
+          rules={[{ required: true, message: '请输入注册密码' }]}
+        >
+          <Input.Password placeholder={t('login.password')} />
         </Form.Item>
 
         <Form.Item>

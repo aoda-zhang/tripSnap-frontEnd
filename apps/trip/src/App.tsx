@@ -1,15 +1,15 @@
-import "normalize.css";
-import "@/shared/assets/styles/default.css";
-import "@/shared/assets/styles/global.css";
-import { Suspense, useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { RouterProvider } from "react-router-dom";
-import globalStore from "./store/globalStore";
-import routes from "./routes";
+import 'normalize.css';
+import '@/shared/assets/styles/default.css';
+import '@/shared/assets/styles/global.css';
+import { FC, Suspense, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { RouterProvider } from 'react-router-dom';
+import globalStore from './store/globalStore';
+import routes from './routes';
 
-const App = () => {
+const App: FC = () => {
   const { i18n } = useTranslation();
-  const locale = globalStore(state => state?.locale);
+  const locale = globalStore((state) => state?.locale);
   useEffect(() => {
     i18n.changeLanguage(locale);
   }, [i18n, locale]);
