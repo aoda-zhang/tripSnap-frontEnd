@@ -1,4 +1,3 @@
-import 'normalize.css';
 import '@/shared/assets/styles/default.css';
 import '@/shared/assets/styles/global.css';
 import { FC, Suspense, useEffect } from 'react';

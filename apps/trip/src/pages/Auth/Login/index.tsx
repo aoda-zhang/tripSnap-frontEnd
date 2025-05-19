@@ -1,14 +1,12 @@
-import { Button, Form, Input } from 'antd';
 import { type FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CiUser } from 'react-icons/ci';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import { FormProvider, useForm } from 'react-hook-form';
 
-import pwd from '@/shared/assets/images/password.png';
+import { Button } from '@mui/material';
 import storage from '@/shared/utils/storage';
 import globalStore from '@/store/globalStore';
-import type { AuthFieldType } from '@/typings/auth.types';
 import StorageKeys from '@/typings/storage.types';
 
 import envConfig from '@/config';
@@ -16,8 +14,10 @@ import ImageWithSkeleton from '@/shared/components/ImageWithSkeleton';
 import LangSwitcher from '@/shared/components/LangSwitcher';
 import style from './index.module.scss';
 import { AuthAPI } from '@/apis';
+import FormInput from '@/shared/components/Form/FormInput';
 
 const Login: FC = () => {
+  const formProps = useForm({});
   const navigate = useNavigate();
   const { t } = useTranslation();
   const { setUserInfo } = globalStore();
@@ -46,48 +46,38 @@ const Login: FC = () => {
           <span className={style.text}>{t('login.welcome')}</span>
           <LangSwitcher />
         </div>
-        <Form
-          layout="vertical"
-          className={style.form}
-          name="login"
-          onFinish={(value) => {
-            mutate({
-              userName: value?.userName,
-              password: value?.password,
-            });
-          }}
-          autoComplete="on"
-        >
-          <Form.Item<AuthFieldType>
-            label={t('login.userName')}
-            name="userName"
-            rules={[{ required: true, message: t('login.userName_required') }]}
-          >
-            <Input prefix={<CiUser />} size="large" />
-          </Form.Item>
-
-          <Form.Item<AuthFieldType>
-            label={t('login.password')}
-            name="password"
-            rules={[{ required: true, message: t('login.password_required') }]}
-          >
-            <Input.Password
-              size="large"
-              prefix={<img src={pwd} alt="password" className={style.pwd} />}
+        <FormProvider {...formProps}>
+          <form>
+            <FormInput
+              variant="outlined"
+              size="small"
+              className={style.baseForm}
+              label={t('login.userName')}
+              name="userName"
             />
-          </Form.Item>
-
-          <Form.Item>
+            <FormInput
+              type="password"
+              variant="outlined"
+              size="small"
+              label={t('login.password')}
+              name="password"
+            />
             <Button
-              loading={isLoading}
-              type="primary"
-              htmlType="submit"
+              disabled={isLoading}
+              type="submit"
               className={style.submitBtn}
+              variant="contained"
+              onClick={formProps.handleSubmit((data) => {
+                mutate({
+                  userName: data.userName,
+                  password: data.password,
+                });
+              })}
             >
               {t('login.primary_login')}
             </Button>
-          </Form.Item>
-        </Form>
+          </form>
+        </FormProvider>
       </div>
     </div>
   );

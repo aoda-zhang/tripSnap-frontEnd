@@ -1,23 +1,27 @@
-import envConfig from "@/config";
-import { message } from "antd";
-import { HttpBusinessMappingCode, commonHeader } from "./types";
-import storageTool from "../../utils/storage";
-import { refreshToken } from "@/pages/Auth/apis";
+import { message } from 'antd';
+import envConfig from '@/config';
+import { HttpBusinessMappingCode, commonHeader } from './types';
+import storageTool from '../../utils/storage';
+import { AuthAPI } from '@/apis';
+
 const jwtExpiredHandle = async () => {
   try {
     if (storageTool.get(commonHeader.refreshToken)) {
-      const newAuthToken = await refreshToken({
+      const newAuthToken = await AuthAPI.refreshToken({
         refreshToken: storageTool.get(commonHeader.refreshToken),
       });
-      await storageTool.set(commonHeader["access-token"], newAuthToken?.accessToken);
+      await storageTool.set(commonHeader['access-token'], newAuthToken?.accessToken);
       await storageTool.set(commonHeader.refreshToken, newAuthToken?.refreshToken);
     }
-    throw new Error("登陆信息有误，请重新检查");
+    throw new Error('登陆信息有误，请重新检查');
   } catch (error) {
     message.error(`登陆信息有误，请重新检查！${error}`);
-    await storageTool.remove(commonHeader["access-token"]);
+    await storageTool.remove(commonHeader['access-token']);
     await storageTool.remove(commonHeader.refreshToken);
-    window.location.href = "/login";
+    if (typeof window !== 'undefined') {
+      // eslint-disable-next-line no-undef
+      window.location.href = '/login';
+    }
   }
 };
 
@@ -34,7 +38,9 @@ const httpErrorHandler = async (error) => {
       message.error(`${envConfig?.systemSettings?.commonErrorMessage}`);
       break;
     default:
-      message.error(error?.message ? error?.message : `${envConfig?.systemSettings?.commonErrorMessage}`);
+      message.error(
+        error?.message ? error?.message : `${envConfig?.systemSettings?.commonErrorMessage}`
+      );
   }
 };
 

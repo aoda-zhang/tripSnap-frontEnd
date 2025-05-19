@@ -1,19 +1,19 @@
-import getCurrencyCode from "@/shared/utils/getCurrencyCode";
-import globalStore from "@/store/globalStore";
-import { InputAdornment, TextField, type TextFieldProps } from "@mui/material";
-import classNames from "classnames";
-import React, { memo, useMemo } from "react";
-import { Controller, useFormContext } from "react-hook-form";
-import { useTranslation } from "react-i18next";
-import styles from "../formBase.module.scss";
-import type { BaseFormType, BaseTextFieldType } from "../formBase.type";
+import { InputAdornment, TextField, type TextFieldProps } from '@mui/material';
+import classNames from 'classnames';
+import React, { memo, useMemo } from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import globalStore from '@/store/globalStore';
+import getCurrencyCode from '@/shared/utils/getCurrencyCode';
+import styles from '../formBase.module.scss';
+import type { BaseFormType, BaseTextFieldType } from '../formBase.type';
 
 const FormInput: React.FC<BaseFormType & TextFieldProps & BaseTextFieldType> = ({
   name,
   label,
   rules = {},
-  defaultValue = "",
-  type = "text",
+  defaultValue = '',
+  type = 'text',
   fullWidth = true,
   ...props
 }) => {
@@ -22,7 +22,7 @@ const FormInput: React.FC<BaseFormType & TextFieldProps & BaseTextFieldType> = (
   const locale = globalStore((state) => state?.locale);
   const formRules = useMemo(() => {
     if (props?.required && !rules?.required) {
-      return { ...rules, required: `${t(label)} ${t("common.required")}` };
+      return { ...rules, required: `${t(label)} ${t('common.required')}` };
     }
     return rules;
   }, [rules, props?.required, label, t]);
@@ -42,17 +42,21 @@ const FormInput: React.FC<BaseFormType & TextFieldProps & BaseTextFieldType> = (
             {...field}
             {...restProps}
             fullWidth={fullWidth}
-            variant={restProps?.variant ?? "standard"}
+            variant={restProps?.variant ?? 'standard'}
             required={restProps?.required}
             error={!!error}
             type={type}
             helperText={error?.message}
             InputProps={{
               startAdornment: (
-                <InputAdornment position="start">{defaultPrefix ? getCurrencyCode(locale) : prefix}</InputAdornment>
+                <InputAdornment position="start">
+                  {defaultPrefix ? getCurrencyCode(locale) : prefix}
+                </InputAdornment>
               ),
               endAdornment: (
-                <InputAdornment position="end">{defaultSuffix ? getCurrencyCode(locale) : suffix}</InputAdornment>
+                <InputAdornment position="end">
+                  {defaultSuffix ? getCurrencyCode(locale) : suffix}
+                </InputAdornment>
               ),
             }}
           />
