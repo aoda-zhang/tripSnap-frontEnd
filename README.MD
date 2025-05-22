@@ -14,6 +14,14 @@ With modern web development moving toward frontend-backend separation, the deman
 
 <b>Trip</b>—a full-stack project to help developers understand how the frontend and backend work together. Through this project, I’m sharing what I’ve learned, in hopes it helps others grow into confident full-stack developers too.
 
+🌟 Highlights
+
+- ⚡ Built with React + TypeScript + NestJS
+- 🔄 Implements full-stack authentication with JWT
+- 🧠 Form validation with Zod and React Hook Form
+- 📈 Fully typed API with shared interfaces
+- 🧪 90%+ test coverage with Jest
+
 🔋 Features
 
 - 🔐 User authentication (Sign up & Login)
