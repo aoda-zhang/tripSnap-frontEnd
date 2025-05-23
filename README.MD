@@ -1,16 +1,14 @@
 # FullStack FrontEnd
 
-✨ What is Trip?
-
-<b>Trip</b>—a full-stack project to help developers understand how the frontend and backend work together. Through this project, I’m sharing what I’ve learned, in hopes it helps others grow into confident full-stack developers too.
+✨ What is this?
+This project is a fullstack application built with React.js, designed with flexibility, readability, and maintainability at its core. It follows modern development practices, making it easy to scale, adapt, and collaborate on. Whether you’re adding new features or maintaining existing ones, the architecture ensures a smooth and efficient workflow for developers.
 
 🌟 Highlights
 
-- ⚡ Built with React + TypeScript + NestJS
+- ⚡ Built with React + TypeScript
 - 🔄 Implements full-stack authentication with JWT
 - 🧠 Form validation with Zod and React Hook Form
 - 📈 Fully typed API with shared interfaces
-- 🧪 90%+ test coverage with Jest
 
 🔋 Features
 
@@ -30,20 +28,6 @@
 - Scss
 - Zustand
 - Zod
-
-🚀 How to Get Started
-
-Prerequisites
-
-Make sure you have the following installed on your local:
-
-- Git
-- Node.js
-- pnpm ( Node Package Manager )
-
-1. Clone the code to your local
-2. Fill in your configuration in the /config folder, please refer to the example.yaml in src/config
-3. Run the dev server by "pnpm run dev"
 
 🧠 Want Smart, Instant Documentation?
 
