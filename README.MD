@@ -2,7 +2,7 @@
 
 ✨ What is this?
 
-This project is a fullstack application built with React.js, designed with flexibility, readability, and maintainability at its core. It follows modern development practices, making it easy to scale, adapt, and collaborate on. Whether you’re adding new features or maintaining existing ones, the architecture ensures a smooth and efficient workflow for developers.
+This is a fullstack application built with React.js, designed with flexibility, readability, and maintainability at its core. It follows modern development practices, making it easy to scale, adapt, and collaborate on. Whether you’re adding new features or maintaining existing ones, the architecture ensures a smooth and efficient workflow for developers.
 
 🌟 Highlights
 
