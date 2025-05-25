@@ -1,11 +1,15 @@
-import envConfig from "@/config";
-import LocaleKeys from "@/shared/constants/localeKey";
-import storage from "@/shared/utils/storage";
-import globalStore from "@/store/globalStore";
-import axios, { type AxiosRequestConfig, type AxiosResponse, type AxiosRequestHeaders } from "axios";
-import { generateSign, getUTCTimestamp } from "./encrypt";
-import httpErrorHandler from "./errorHandle";
-import { type HttpResponseType, commonHeader } from "./types";
+import axios, {
+  type AxiosRequestConfig,
+  type AxiosResponse,
+  type AxiosRequestHeaders,
+} from 'axios';
+import envConfig from '@/config';
+import storage from '../../utils/storage';
+import { generateSign, getUTCTimestamp } from './encrypt';
+import httpErrorHandler from './errorHandle';
+import { type HttpResponseType, commonHeader } from './types';
+import getLocale from '../../utils/getLocale';
+
 const Http = axios.create({
   timeout: 20000,
   baseURL: envConfig?.http?.baseURL,
@@ -14,22 +18,24 @@ const Http = axios.create({
 const getHttpHeaders = (config: Record<string, any>) => {
   const timestamp = `${getUTCTimestamp()}`;
   return {
-    Accept: "application/json",
-    "Access-Token": storage.get(commonHeader?.["access-token"]),
-    "X-timestamp": `${timestamp}`,
-    "X-sign": generateSign({ config, timestamp }),
-    Locale: globalStore?.getState()?.locale ?? LocaleKeys.zh_CN,
+    Accept: 'application/json',
+    'Access-Token': storage.get(commonHeader?.['access-token']),
+    'X-timestamp': `${timestamp}`,
+    'X-sign': generateSign({ config, timestamp }),
+    Locale: getLocale(),
   };
 };
 
 // Success Request Interceptor
 const interceptorsReq = (config: AxiosRequestHeaders) => {
-  // @ts-ignore
-  config.headers = {
-    ...(config?.headers ?? {}),
-    ...getHttpHeaders(config),
+  const updatedConfig = {
+    ...config,
+    headers: {
+      ...(config?.headers ?? {}),
+      ...getHttpHeaders(config),
+    },
   };
-  return config;
+  return updatedConfig;
 };
 
 // Error Response Interceptor

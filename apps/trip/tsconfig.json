@@ -8,12 +8,12 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
     "baseUrl": "./",
@@ -21,7 +21,7 @@
       "@/*": ["src/*"]
     },
     "composite": true,
-    "types": ["node", "vite/client", "@modyfi/vite-plugin-yaml/modules"]
+    "types": ["node", "vite/client", "vitest/globals", "@modyfi/vite-plugin-yaml/modules"]
   },
   "include": ["src", "src/store", "tailwind.config.js", "postcss.config.js"],
   "exclude": ["node_modules", "src/**/*.spec.ts"],

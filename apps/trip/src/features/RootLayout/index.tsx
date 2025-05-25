@@ -1,18 +1,19 @@
-import { memo } from 'react';
-import { Link, Outlet, useMatches } from 'react-router-dom';
-
 import classNames from 'classnames';
 import dayjs from 'dayjs';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link, Outlet, useMatches } from 'react-router-dom';
+
+import AvatarMenu from '../../shared/components/AvatarMenu';
+
+import styles from './index.module.scss';
+
+import './index.css';
+import { RouterHandles } from '@/routes';
+import LangSwitcher from '@/shared/components/LangSwitcher';
 import storageTool from '@/shared/utils/storage';
 import globalStore from '@/store/globalStore';
 import StorageKeys from '@/typings/storage.types';
-
-import { RouterHandles } from '@/routes';
-import AvatarMenu from '../../shared/components/AvatarMenu';
-import styles from './index.module.scss';
-import './index.css';
-import LangSwitcher from '@/shared/components/LangSwitcher';
 
 const Header = ({ isMenuAvaliable, isLogin, userInfo, t }) => {
   if (!isMenuAvaliable) return null;

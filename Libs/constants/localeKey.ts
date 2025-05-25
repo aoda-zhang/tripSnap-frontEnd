@@ -1,5 +1,5 @@
 enum LocaleKeys {
-  zh_CN = "zh_CN",
-  en_US = "en_US",
+  'zh-CN' = "zh-CN",
+  'en-US' = "en-US",
 }
 export default LocaleKeys;

@@ -1,17 +1,26 @@
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import en_US from "./en_US.json";
-import zh_CN from "./zh_CN.json";
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+
+import enUS from './en-US.json';
+import zhCN from './zh-CN.json';
+
+import LocaleKeys from '@/shared/constants/localeKey';
+import getLocale from '@/shared/utils/getLocale';
+
+const defaultLanguage = LocaleKeys['en-US'];
+const languageResources = {
+  'zh-CN': { translation: zhCN },
+  'en-US': { translation: enUS },
+};
+const currentLanguage = getLocale(defaultLanguage, Object.keys(languageResources));
 
 i18n.use(initReactI18next).init({
-  resources: {
-    en_US: { ...en_US },
-    zh_CN: { ...zh_CN },
-  },
-  lng: "zh_CN",
-  fallbackLng: "zh_CN",
-
+  resources: languageResources,
+  lng: currentLanguage,
+  fallbackLng: defaultLanguage,
   interpolation: {
     escapeValue: false,
   },
 });
+
+export default i18n;

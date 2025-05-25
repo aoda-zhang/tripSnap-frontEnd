@@ -1,64 +1,55 @@
-import { Dropdown, type MenuProps, Space } from 'antd';
-import { memo } from 'react';
-import { IoChevronDownOutline } from 'react-icons/io5';
-import China from '@/shared/assets/images/china.svg';
-import USA from '@/shared/assets/images/usa.svg';
-import LocaleKeys from '@/shared/constants/localeKey';
-import globalStore from '@/store/globalStore';
+import { memo, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { FaChevronDown } from 'react-icons/fa';
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
+import { MdOutlineLanguage } from 'react-icons/md';
 import styles from './index.module.scss';
+import storageTool from '@/shared/utils/storage';
+import StorageKeys from '@/typings/storage.types';
 
-const LangSwitcher = () => {
-  const { setLocale, locale } = globalStore();
-  const items: MenuProps['items'] = [
-    {
-      label: (
-        <div className={styles.langItem}>
-          <img
-            style={{ width: '18px', marginRight: '8px' }}
-            src={China}
-            alt="China"
-            title="China"
-          />
-          <span>简体中文</span>
-        </div>
-      ),
-      key: LocaleKeys.zh_CN,
-    },
-    {
-      type: 'divider',
-    },
-    {
-      label: (
-        <div className={styles.langItem}>
-          <img style={{ width: '18px', marginRight: '8px' }} src={USA} alt="UAS" title="USA" />
-          <span>English(USA)</span>
-        </div>
-      ),
-      key: LocaleKeys.en_US,
-    },
-  ];
-  const onSwitchLan = ({ key }) => {
-    setLocale(key);
+const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} arrow classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.arrow}`]: {
+    color: theme.palette.common.white,
+  },
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: theme.palette.common.white,
+  },
+}));
+
+const LanguageSelect = () => {
+  const { i18n, t } = useTranslation();
+  const supportedLanguages =
+    useMemo(() => {
+      return Object.keys(i18n.services.resourceStore.data);
+    }, [i18n.services.resourceStore.data]) ?? [];
+  const setLanguage = (language: string) => {
+    storageTool.set(StorageKeys.I18NKEY, language);
+    i18n.changeLanguage(language);
   };
   return (
-    <div className={styles.lang}>
-      <Dropdown
-        menu={{ items, onClick: onSwitchLan }}
-        trigger={['click', 'hover']}
-        placement="bottom"
-      >
-        <Space>
-          <img
-            width="20px"
-            className="langSwitcherIcon"
-            src={locale === LocaleKeys.zh_CN ? China : USA}
-            alt={locale}
-            title={locale}
-          />
-          <IoChevronDownOutline />
-        </Space>
-      </Dropdown>
+    <div className={styles.languageSelect}>
+      {supportedLanguages.map((item) => (
+        <button key={item} className={styles.item} onClick={() => setLanguage(item)} type="button">
+          {t(`common.${item}`)}
+        </button>
+      ))}
     </div>
+  );
+};
+
+const LangSwitcher = () => {
+  const { i18n, t } = useTranslation();
+  return (
+    <BootstrapTooltip title={<LanguageSelect />}>
+      <div className={styles.lang}>
+        <MdOutlineLanguage size={26} />
+        {t(`common.${i18n.language}`)}
+        <FaChevronDown />
+      </div>
+    </BootstrapTooltip>
   );
 };
 export default memo(LangSwitcher);

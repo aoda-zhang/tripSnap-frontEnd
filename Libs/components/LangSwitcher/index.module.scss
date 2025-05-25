@@ -1,11 +1,24 @@
 .lang {
-  cursor: pointer;
-}
-.langItem {
+  min-width: 200px;
   display: flex;
-  gap: 0.625rem;
   align-items: center;
-}
-.langSwitcherIcon {
+  gap: 0.625rem;
   cursor: pointer;
+}
+.languageSelect {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  padding: 0.625rem;
+  color: $gray8;
+  border-radius: 10%;
+  border: 1px solid $gray4;
+  .item {
+    cursor: pointer;
+    text-align: left;
+    &:hover {
+      border-bottom: 1px solid $gray6;
+    }
+  }
 }

@@ -6,5 +6,8 @@
     "source.fixAll.eslint": "true"
   },
   "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact"],
-  "prettier.requireConfig": true
+  "prettier.requireConfig": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

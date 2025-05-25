@@ -1,7 +1,12 @@
 module.exports = {
+  env: {
+    browser: true,
+  },
   extends: [
     'airbnb',
     'airbnb/hooks',
+    'plugin:import/errors',
+    'plugin:import/warnings',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
@@ -31,6 +36,24 @@ module.exports = {
       },
     ],
     'react/jsx-props-no-spreading': ['off'],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'import/order': [
+      'error',
+      {
+        groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
+        'newlines-between': 'always',
+        alphabetize: { order: 'asc', caseInsensitive: true },
+      },
+    ],
+    'import/default': 'off',
+    'import/no-named-as-default-member': 'off',
+    'import/no-named-as-default': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
+    '@typescript-eslint/explicit-function-return-type': ['off'],
+    '@typescript-eslint/explicit-module-boundary-types': ['off'],
+    '@typescript-eslint/no-empty-function': ['off'],
+    '@typescript-eslint/no-explicit-any': ['off'],
   },
   settings: {
     react: {
