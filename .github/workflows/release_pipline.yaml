@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       deployedApp:
-        description: "The app name to deploy"
+        description: 'The app name to deploy'
         required: true
         type: choice
         options: [apps/auth, apps/security]

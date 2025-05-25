@@ -1,15 +1,15 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-const useDoubleClick = (onDoubleClick) => {
+const useDoubleClick = (onDoubleClick: () => void) => {
   useEffect(() => {
     const handleDoubleClick = () => {
       if (onDoubleClick) {
         onDoubleClick();
       }
     };
-    document.addEventListener("dblclick", handleDoubleClick);
+    document.addEventListener('dblclick', handleDoubleClick);
     return () => {
-      document.removeEventListener("dblclick", handleDoubleClick);
+      document.removeEventListener('dblclick', handleDoubleClick);
     };
   }, [onDoubleClick]);
 };

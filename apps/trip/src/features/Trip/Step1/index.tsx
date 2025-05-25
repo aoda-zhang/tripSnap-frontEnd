@@ -1,17 +1,20 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@mui/material';
 import classNames from 'classnames';
 import { memo, useMemo } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { useMutation } from 'react-query';
-import { zodResolver } from '@hookform/resolvers/zod';
-import styles from '../tripLayout.module.scss';
+import { useNavigate } from 'react-router-dom';
+
 import TripStore from '../store';
+import styles from '../tripLayout.module.scss';
+
+import { getStep1schema, Step1FormMapping, Step1FormType } from './validation';
+
+import { TripAPI } from '@/apis';
 import TransportRadio from '@/components/TransportRadio';
 import FormInput from '@/shared/components/Form/FormInput';
-import { getStep1schema, Step1FormMapping, Step1FormType } from './validation';
-import { TripAPI } from '@/apis';
 
 const Step1 = () => {
   const { t } = useTranslation();

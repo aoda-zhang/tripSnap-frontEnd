@@ -1,8 +1,9 @@
 import path from 'node:path';
+
 import ViteYaml from '@modyfi/vite-plugin-yaml';
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   envPrefix: 'REACT_APP_',

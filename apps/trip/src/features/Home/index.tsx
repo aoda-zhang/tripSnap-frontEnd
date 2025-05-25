@@ -16,7 +16,7 @@ const Home = () => {
   };
   const { data: defaultViews } = useQuery(
     [HomeQueryKes.GET_DEFAULT_TRIP_VIEW],
-    HomeAPI.getDefaultTripView
+    HomeAPI.getDefaultTripView,
   );
 
   return (
@@ -29,7 +29,11 @@ const Home = () => {
         <div className={styles.title}>{t('home.destinations')}</div>
         <ImageList variant="quilted" cols={4} rowHeight={121}>
           {defaultViews?.map((item) => (
-            <ImageListItem key={item?.title} cols={item.cols || 1} rows={item.rows || 1}>
+            <ImageListItem
+              key={item?.title}
+              cols={item.cols || 1}
+              rows={item.rows || 1}
+            >
               <img
                 src={srcset(item.img, 121, item.rows, item.cols).src}
                 srcSet={srcset(item.img, 121, item.rows, item.cols).srcSet}

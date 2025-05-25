@@ -2,4 +2,4 @@ packages:
   - src/shared
 
 onlyBuiltDependencies:
-  - "@parcel/watcher"
+  - '@parcel/watcher'

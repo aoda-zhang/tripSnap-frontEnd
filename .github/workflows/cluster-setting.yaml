@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       deployedEnvironment:
-        description: "The environment to deploy"
+        description: 'The environment to deploy'
         required: true
         type: choice
         options: [uat, test]

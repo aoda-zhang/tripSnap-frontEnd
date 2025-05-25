@@ -59,7 +59,12 @@ interface ContentProps {
 
 const Content = ({ isMenuAvaliable, isLogin, userInfo, t }: ContentProps) => (
   <>
-    <Header isMenuAvaliable={isMenuAvaliable} isLogin={isLogin} userInfo={userInfo} t={t} />
+    <Header
+      isMenuAvaliable={isMenuAvaliable}
+      isLogin={isLogin}
+      userInfo={userInfo}
+      t={t}
+    />
     <main className={styles.content}>
       <Outlet />
     </main>
@@ -71,13 +76,19 @@ const Layout = () => {
   const { userInfo } = globalStore();
   const matches = useMatches();
   const currentRouter = matches?.[matches?.length ?? 0 - 1];
-  const isMenuAvaliable = currentRouter?.handle?.[RouterHandles.isMenuAvaliable] ?? true;
+  const isMenuAvaliable =
+    currentRouter?.handle?.[RouterHandles.isMenuAvaliable] ?? true;
   const isLogin = storageTool.get(StorageKeys.accessToken);
   const { t } = useTranslation();
 
   return (
     <div className={styles.layout}>
-      <Content isMenuAvaliable={isMenuAvaliable} isLogin={isLogin} userInfo={userInfo} t={t} />
+      <Content
+        isMenuAvaliable={isMenuAvaliable}
+        isLogin={isLogin}
+        userInfo={userInfo}
+        t={t}
+      />
     </div>
   );
 };

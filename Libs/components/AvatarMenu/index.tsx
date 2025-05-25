@@ -1,13 +1,14 @@
 import { Avatar, Divider, Dropdown, type MenuProps, Modal } from 'antd';
 import { type FC, memo, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CiSettings } from 'react-icons/ci';
 import { IoLogInOutline } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
-import storageTool from '@/shared/utils/storage';
-
 import styles from './index.module.scss';
+
+import storageTool from '@/shared/utils/storage';
 
 type Props = {
   userInfo: {
@@ -46,7 +47,11 @@ const AvatarMenu: FC<Props> = ({ userInfo }) => {
 
   return (
     <>
-      <Dropdown menu={{ items }} placement="bottomLeft" trigger={['click', 'hover']}>
+      <Dropdown
+        menu={{ items }}
+        placement="bottomLeft"
+        trigger={['click', 'hover']}
+      >
         <Avatar size="large" className={styles.avatar}>
           {userInfo?.userName?.charAt(0)?.toUpperCase()}
         </Avatar>

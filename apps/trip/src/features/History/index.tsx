@@ -1,4 +1,4 @@
-import { type FC, memo } from "react";
+import { type FC, memo } from 'react';
 
 const History: FC = () => {
   return <>History</>;

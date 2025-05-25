@@ -1,4 +1,4 @@
-const getCurrencyCode = (countryCode) => {
+const getCurrencyCode = (countryCode: string | number) => {
   const currencyCodes = {
     'en-US': '$', // United States
     'zh-CN': '¥', // China
@@ -49,7 +49,7 @@ const getCurrencyCode = (countryCode) => {
     'ee-EE': '€', // Estonia
   };
 
-  return currencyCodes[countryCode] ?? '$';
+  return currencyCodes[countryCode as keyof typeof currencyCodes] ?? '$';
 };
 
 export default getCurrencyCode;

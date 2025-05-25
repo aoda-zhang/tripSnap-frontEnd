@@ -9,7 +9,11 @@ import createSRTime from '@/shared/utils/SRTime';
 import type { UserInfoType } from '@/typings/auth.types';
 import type { DestinationItem } from '@/typings/destination.types';
 import StorageKeys from '@/typings/storage.types';
-import type { MapProcessStatusItem, TripFormType, TripProcessStatus } from '@/typings/trip.types';
+import type {
+  MapProcessStatusItem,
+  TripFormType,
+  TripProcessStatus,
+} from '@/typings/trip.types';
 
 type GlobalState = {
   destinations: DestinationItem[];
@@ -57,10 +61,15 @@ const globalStorePersist = persist<GlobalStoreSlice>(
     ...initialState,
     setDestination: (data = []) =>
       set((state) => ({
-        destinations: _.uniqBy([...(state?.destinations ?? []), ...data], 'value'),
+        destinations: _.uniqBy(
+          [...(state?.destinations ?? []), ...data],
+          'value',
+        ),
       })),
     setTripStatus: (mapStatusItem: MapProcessStatusItem) =>
-      set((state) => ({ tripStatus: { ...state.tripStatus, ...mapStatusItem } })),
+      set((state) => ({
+        tripStatus: { ...state.tripStatus, ...mapStatusItem },
+      })),
     setUserInfo: (userInfo: UserInfoType) => set(() => ({ userInfo })),
     setLatestTrip: (latestTrip: TripFormType) => set(() => ({ latestTrip })),
     setDefaultTrip: () => set(() => ({ latestTrip: defaultTrip })),
@@ -75,7 +84,7 @@ const globalStorePersist = persist<GlobalStoreSlice>(
       }
       return undefined;
     }),
-  }
+  },
 );
 
 const globalStore = create<GlobalStoreSlice>()(globalStorePersist);

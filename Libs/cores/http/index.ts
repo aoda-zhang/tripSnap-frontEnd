@@ -3,12 +3,15 @@ import axios, {
   type AxiosResponse,
   type AxiosRequestHeaders,
 } from 'axios';
-import envConfig from '@/config';
+
+import getLocale from '../../utils/getLocale';
 import storage from '../../utils/storage';
+
 import { generateSign, getUTCTimestamp } from './encrypt';
 import httpErrorHandler from './errorHandle';
 import { type HttpResponseType, commonHeader } from './types';
-import getLocale from '../../utils/getLocale';
+
+import envConfig from '@/config';
 
 const Http = axios.create({
   timeout: 20000,
@@ -47,7 +50,11 @@ Http.interceptors.request.use(interceptorsReq, (err) => {
 
 // Success Response Interceptor
 const interceptorsResSuccess = (response: AxiosResponse<HttpResponseType>) => {
-  if (response?.data?.status >= 200 && response?.data?.status < 400 && response?.data?.isSuccess) {
+  if (
+    response?.data?.status >= 200 &&
+    response?.data?.status < 400 &&
+    response?.data?.isSuccess
+  ) {
     return Promise.resolve(response?.data?.data);
   }
   httpErrorHandler(response?.data);
@@ -60,19 +67,35 @@ Http.interceptors.response.use(interceptorsResSuccess, (error) => {
   return Promise.reject(error);
 });
 const httpService = {
-  async get<T>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
+  async get<T>(
+    url: string,
+    params?: Record<string, any>,
+    config?: AxiosRequestConfig,
+  ): Promise<T> {
     // @ts-ignore
     return Http.get<T>(url, { params, ...config });
   },
-  delete<T>(url: string, params?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
+  delete<T>(
+    url: string,
+    params?: Record<string, any>,
+    config?: AxiosRequestConfig,
+  ): Promise<T> {
     // @ts-ignore
     return Http.delete<T>(url, { params, ...config });
   },
-  post<T>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
+  post<T>(
+    url: string,
+    data?: Record<string, any>,
+    config?: AxiosRequestConfig,
+  ): Promise<T> {
     // @ts-ignore
     return Http.post<T>(url, data, { ...config });
   },
-  put<T>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<T> {
+  put<T>(
+    url: string,
+    data?: Record<string, any>,
+    config?: AxiosRequestConfig,
+  ): Promise<T> {
     // @ts-ignore
     return Http.put<T>(url, data, { ...config });
   },

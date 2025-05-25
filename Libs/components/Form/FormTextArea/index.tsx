@@ -1,16 +1,21 @@
-import { FormControl, FormHelperText, TextareaAutosize, type TextareaAutosizeProps } from "@mui/material";
-import classNames from "classnames";
-import React, { memo, useMemo } from "react";
-import { Controller, useFormContext } from "react-hook-form";
-import { useTranslation } from "react-i18next";
-import styles from "../formBase.module.scss";
-import type { BaseFormType } from "../formBase.type";
+import {
+  FormControl,
+  FormHelperText,
+  TextareaAutosize,
+  type TextareaAutosizeProps,
+} from '@mui/material';
+import classNames from 'classnames';
+import React, { memo, useMemo } from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import styles from '../formBase.module.scss';
+import type { BaseFormType } from '../formBase.type';
 
 const FormTextArea: React.FC<BaseFormType & TextareaAutosizeProps> = ({
   name,
   label,
   rules = {},
-  defaultValue = "",
+  defaultValue = '',
   fullWidth = true,
   ...props
 }) => {
@@ -18,7 +23,7 @@ const FormTextArea: React.FC<BaseFormType & TextareaAutosizeProps> = ({
   const { control } = useFormContext();
   const formRules = useMemo(() => {
     if (props?.required && !rules?.required) {
-      return { ...rules, required: `${t(label)} ${t("common.required")}` };
+      return { ...rules, required: `${t(label)} ${t('common.required')}` };
     }
     return rules;
   }, [rules, props?.required, label, t]);
@@ -29,7 +34,10 @@ const FormTextArea: React.FC<BaseFormType & TextareaAutosizeProps> = ({
       control={control}
       defaultValue={defaultValue}
       rules={formRules}
-      render={({ field: { ref: fieldRef, value, ...fieldProps }, fieldState: { error } }) => (
+      render={({
+        field: { ref: fieldRef, value, ...fieldProps },
+        fieldState: { error },
+      }) => (
         <FormControl
           className={classNames([props?.className, styles.baseInputContainer])}
           error={!!error}
@@ -38,7 +46,7 @@ const FormTextArea: React.FC<BaseFormType & TextareaAutosizeProps> = ({
           <div className={styles.label}>{label}</div>
           <TextareaAutosize
             {...fieldProps}
-            value={value ?? ""}
+            value={value ?? ''}
             ref={fieldRef}
             maxRows={props?.minRows ?? 10}
             minRows={props?.minRows ?? 5}

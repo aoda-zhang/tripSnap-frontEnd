@@ -12,7 +12,10 @@ const languageResources = {
   'zh-CN': { translation: zhCN },
   'en-US': { translation: enUS },
 };
-const currentLanguage = getLocale(defaultLanguage, Object.keys(languageResources));
+const currentLanguage = getLocale(
+  defaultLanguage,
+  Object.keys(languageResources),
+);
 
 i18n.use(initReactI18next).init({
   resources: languageResources,

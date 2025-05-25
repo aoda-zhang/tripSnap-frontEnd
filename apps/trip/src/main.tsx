@@ -1,11 +1,11 @@
-import { createRoot } from "react-dom/client";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { createRoot } from 'react-dom/client';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-import App from "./App";
-import envConfig from "./config";
+import App from './App';
+import envConfig from './config';
 
-import "./i18n";
-import React from "react";
+import './i18n';
+import React from 'react';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,7 +14,7 @@ const queryClient = new QueryClient({
     },
   },
 });
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />

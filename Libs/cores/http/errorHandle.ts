@@ -1,8 +1,11 @@
 import { message } from 'antd';
-import envConfig from '@/config';
-import { HttpBusinessMappingCode, commonHeader } from './types';
+
 import storageTool from '../../utils/storage';
+
+import { HttpBusinessMappingCode, commonHeader } from './types';
+
 import { AuthAPI } from '@/apis';
+import envConfig from '@/config';
 
 const jwtExpiredHandle = async () => {
   try {
@@ -10,8 +13,14 @@ const jwtExpiredHandle = async () => {
       const newAuthToken = await AuthAPI.refreshToken({
         refreshToken: storageTool.get(commonHeader.refreshToken),
       });
-      await storageTool.set(commonHeader['access-token'], newAuthToken?.accessToken);
-      await storageTool.set(commonHeader.refreshToken, newAuthToken?.refreshToken);
+      await storageTool.set(
+        commonHeader['access-token'],
+        newAuthToken?.accessToken,
+      );
+      await storageTool.set(
+        commonHeader.refreshToken,
+        newAuthToken?.refreshToken,
+      );
     }
     throw new Error('登陆信息有误，请重新检查');
   } catch (error) {
@@ -25,7 +34,13 @@ const jwtExpiredHandle = async () => {
   }
 };
 
-const httpErrorHandler = async (error) => {
+const httpErrorHandler = async (error: {
+  data: any;
+  isSuccess?: boolean;
+  message: any;
+  status: any;
+  statusCode?: any;
+}) => {
   if (error?.data === HttpBusinessMappingCode.jwtexpired) {
     jwtExpiredHandle();
   }
@@ -39,7 +54,9 @@ const httpErrorHandler = async (error) => {
       break;
     default:
       message.error(
-        error?.message ? error?.message : `${envConfig?.systemSettings?.commonErrorMessage}`
+        error?.message
+          ? error?.message
+          : `${envConfig?.systemSettings?.commonErrorMessage}`,
       );
   }
 };

@@ -12,13 +12,13 @@ on:
   workflow_dispatch:
     inputs:
       deployedEnvironment:
-        description: "The environment to deploy"
+        description: 'The environment to deploy'
         required: true
         type: choice
         options: [uat, test]
         default: uat
       deployedApp:
-        description: "The app name to deploy"
+        description: 'The app name to deploy'
         required: true
         type: choice
         options: [apps/trip, apps/auth]

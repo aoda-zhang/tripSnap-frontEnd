@@ -31,7 +31,11 @@ const Register = () => {
   });
   return (
     <div className={style.register}>
-      <img src="https://s1.locimg.com/2024/08/03/fa988a7907564.png" alt="" className={style.icon} />
+      <img
+        src="https://s1.locimg.com/2024/08/03/fa988a7907564.png"
+        alt=""
+        className={style.icon}
+      />
       <Form
         className={style.form}
         name="login"
@@ -40,7 +44,10 @@ const Register = () => {
         }}
         autoComplete="off"
       >
-        <Form.Item name="userName" rules={[{ required: true, message: '请输入注册账户名' }]}>
+        <Form.Item
+          name="userName"
+          rules={[{ required: true, message: '请输入注册账户名' }]}
+        >
           <Input placeholder={t('login.userName')} />
         </Form.Item>
 

@@ -20,7 +20,12 @@ const routeOptions = [
     path: '/',
     element: <Layout />,
     children: [
-      { path: '/', index: true, element: <Home />, handle: { [RouterHandles.noToken]: true } },
+      {
+        path: '/',
+        index: true,
+        element: <Home />,
+        handle: { [RouterHandles.noToken]: true },
+      },
       {
         path: 'trip',
         element: <Trip />,

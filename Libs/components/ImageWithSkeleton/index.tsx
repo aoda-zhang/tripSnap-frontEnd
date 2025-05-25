@@ -1,9 +1,12 @@
-import { Skeleton } from "antd";
-import React from "react";
-import { useEffect, useState } from "react";
-import LazyLoad from "react-lazyload";
+import { Skeleton } from 'antd';
+import { useEffect, useState } from 'react';
+import LazyLoad from 'react-lazyload';
 
-export default function ImageWithSkeleton({ imgSrc, title = "", className = "" }) {
+const ImageWithSkeleton=()=>({
+  imgSrc,
+  title = '',
+  className = '',
+}) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,10 +23,18 @@ export default function ImageWithSkeleton({ imgSrc, title = "", className = "" }
         </div>
       )}
       {!loading && (
-        <LazyLoad once resize={true}>
-          <img loading="lazy" src={imgSrc} alt="login" title={title} className={className} />
+        <LazyLoad once resize>
+          <img
+            loading="lazy"
+            src={imgSrc}
+            alt="login"
+            title={title}
+            className={className}
+          />
         </LazyLoad>
       )}
     </div>
   );
 }
+
+export default ImageWithSkeleton;

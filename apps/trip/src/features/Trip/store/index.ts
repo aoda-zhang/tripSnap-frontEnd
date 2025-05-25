@@ -1,6 +1,6 @@
-import StorageKeys from "@/typings/storage.types";
-import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
+import StorageKeys from '@/typings/storage.types';
+import { create } from 'zustand';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 type TripState = {
   tripStep: number;
@@ -13,8 +13,8 @@ type TripAction = {
 const initState = {
   tripStep: 1,
   transportationOptions: [
-    { label: "dasdsa", value: 23 },
-    { label: "da", value: "dadsa" },
+    { label: 'dasdsa', value: 23 },
+    { label: 'da', value: 'dadsa' },
   ],
 };
 

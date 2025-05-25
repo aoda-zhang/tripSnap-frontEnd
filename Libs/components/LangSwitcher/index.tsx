@@ -1,10 +1,12 @@
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaChevronDown } from 'react-icons/fa';
-import { styled } from '@mui/material/styles';
-import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import { MdOutlineLanguage } from 'react-icons/md';
+
 import styles from './index.module.scss';
+
 import storageTool from '@/shared/utils/storage';
 import StorageKeys from '@/typings/storage.types';
 
@@ -32,7 +34,12 @@ const LanguageSelect = () => {
   return (
     <div className={styles.languageSelect}>
       {supportedLanguages.map((item) => (
-        <button key={item} className={styles.item} onClick={() => setLanguage(item)} type="button">
+        <button
+          key={item}
+          className={styles.item}
+          onClick={() => setLanguage(item)}
+          type="button"
+        >
           {t(`common.${item}`)}
         </button>
       ))}

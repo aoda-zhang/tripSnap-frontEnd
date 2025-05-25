@@ -1,25 +1,25 @@
 const storageTool = {
-  set(key, value) {
+  set(key: string, value: string | string[]) {
     try {
       localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
-      console.error("localStorage设置数据时出错：", error);
+      console.error('localStorage设置数据时出错：', error);
     }
   },
-  get(key) {
+  get(key: string) {
     try {
       const value = localStorage.getItem(key);
       return value ? JSON.parse(value) : null;
     } catch (error) {
-      console.error("localStorage获取数据时出错：", error);
+      console.error('localStorage获取数据时出错：', error);
       return null;
     }
   },
-  remove(key) {
+  remove(key: string) {
     try {
       localStorage.removeItem(key);
     } catch (error) {
-      console.error("localStorage删除数据时出错：", error);
+      console.error('localStorage删除数据时出错：', error);
     }
   },
   clearAll() {
@@ -28,7 +28,7 @@ const storageTool = {
       localStorage.clear();
       sessionStorage.clear();
     } catch (error) {
-      console.error("localStorage删除数据时出错：", error);
+      console.error('localStorage删除数据时出错：', error);
     }
   },
 };

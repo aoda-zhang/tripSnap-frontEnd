@@ -1,44 +1,47 @@
-import { useWatch, useFormContext } from "react-hook-form";
-import { memo } from "react";
-import FormRadio from "@/shared/components/Form/FormRadio";
-import FormInput from "@/shared/components/Form/FormInput";
-import { useTranslation } from "react-i18next";
+import { memo } from 'react';
+import { useWatch, useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+
+import FormInput from '@/shared/components/Form/FormInput';
+import FormRadio from '@/shared/components/Form/FormRadio';
+
 const TransportationOptions = {
-  car: "Car",
-  plane: "Plane",
-  train: "Train",
+  car: 'Car',
+  plane: 'Plane',
+  train: 'Train',
+};
+
+const TransportSwitch = ({ transport }: { transport: string }) => {
+  switch (transport) {
+    case TransportationOptions.car:
+      return <FormInput name="transportNo" label="Car Plate Number" />;
+    case TransportationOptions.plane:
+      return <FormInput name="transportNo" label="Flight Number" />;
+    case TransportationOptions.train:
+      return <FormInput name="transportNo" label="Train Number" />;
+    default:
+      return null;
+  }
 };
 
 const TransportRadio = () => {
   const { control } = useFormContext();
   const { t } = useTranslation();
-  const transport = useWatch({ control, name: "transport" });
-  const TransportSwitch = () => {
-    switch (transport) {
-      case TransportationOptions.car:
-        return <FormInput name="transportNo" label="Car Plate Number" />;
-      case TransportationOptions.plane:
-        return <FormInput name="transportNo" label="Flight Number" />;
-      case TransportationOptions.train:
-        return <FormInput name="transportNo" label="Train Number" />;
-      default:
-        return null;
-    }
-  };
+  const transport = useWatch({ control, name: 'transport' });
 
   return (
-    <div style={{ width: "50vw" }}>
+    <div style={{ width: '50vw' }}>
       <FormRadio
-        required={true}
+        required
         name="transport"
-        label={t("trip.transportation")}
+        label={t('trip.transportation')}
         options={[
-          { value: TransportationOptions.car, label: t("trip.car") },
-          { value: TransportationOptions.plane, label: t("trip.plane") },
-          { value: TransportationOptions.train, label: t("trip.train") },
+          { value: TransportationOptions.car, label: t('trip.car') },
+          { value: TransportationOptions.plane, label: t('trip.plane') },
+          { value: TransportationOptions.train, label: t('trip.train') },
         ]}
       />
-      <TransportSwitch />
+      <TransportSwitch transport={transport} />
     </div>
   );
 };

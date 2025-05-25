@@ -21,7 +21,12 @@
       "@/*": ["src/*"]
     },
     "composite": true,
-    "types": ["node", "vite/client", "vitest/globals", "@modyfi/vite-plugin-yaml/modules"]
+    "types": [
+      "node",
+      "vite/client",
+      "vitest/globals",
+      "@modyfi/vite-plugin-yaml/modules"
+    ]
   },
   "include": ["src", "src/store", "tailwind.config.js", "postcss.config.js"],
   "exclude": ["node_modules", "src/**/*.spec.ts"],

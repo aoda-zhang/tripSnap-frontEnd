@@ -5,11 +5,11 @@ export type HttpResponseType = {
   status: number;
 };
 export enum commonHeader {
-  "access-token" = "access-token",
-  refreshToken = "refreshToken",
+  'access-token' = 'access-token',
+  refreshToken = 'refreshToken',
 }
 export enum HttpBusinessMappingCode {
   // jwt 过期
-  jwtexpired = "E4001",
-  unauthorized = "Unauthorized",
+  jwtexpired = 'E4001',
+  unauthorized = 'Unauthorized',
 }

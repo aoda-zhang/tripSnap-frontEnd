@@ -1,17 +1,24 @@
-import { FormControl, FormHelperText, MenuItem, Select, type SelectProps } from "@mui/material";
-import classNames from "classnames";
-import React, { memo, useMemo } from "react";
-import { Controller, useFormContext } from "react-hook-form";
-import { useTranslation } from "react-i18next";
-import styles from "../formBase.module.scss";
-import type { BaseFormType, BaseSelectType } from "../formBase.type";
+import {
+  FormControl,
+  FormHelperText,
+  MenuItem,
+  Select,
+  type SelectProps,
+} from '@mui/material';
+import classNames from 'classnames';
+import React, { memo, useMemo } from 'react';
+import { Controller, useFormContext } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+
+import styles from '../formBase.module.scss';
+import type { BaseFormType, BaseSelectType } from '../formBase.type';
 
 const FormSelect: React.FC<BaseFormType & BaseSelectType & SelectProps> = ({
   name,
   label,
   options,
   rules = {},
-  defaultValue = "",
+  defaultValue = '',
   fullWidth = true,
   ...props
 }) => {
@@ -19,7 +26,7 @@ const FormSelect: React.FC<BaseFormType & BaseSelectType & SelectProps> = ({
   const { control } = useFormContext();
   const formRules = useMemo(() => {
     if (props?.required && !rules?.required) {
-      return { ...rules, required: `${t(label)} ${t("common.required")}` };
+      return { ...rules, required: `${t(label)} ${t('common.required')}` };
     }
     return rules;
   }, [rules, props?.required, label, t]);
@@ -40,10 +47,10 @@ const FormSelect: React.FC<BaseFormType & BaseSelectType & SelectProps> = ({
           <Select
             {...field}
             {...props}
-            variant={props?.variant ?? "standard"}
+            variant={props?.variant ?? 'standard'}
             required={props?.required}
           >
-            {options?.map(item => (
+            {options?.map((item) => (
               <MenuItem key={item?.value} value={item?.value}>
                 {item?.label}
               </MenuItem>

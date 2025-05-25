@@ -1,6 +1,7 @@
-import { Button } from "@mui/material";
-import { type FC, memo, useRef, useState } from "react";
-import { GoUpload } from "react-icons/go";
+import { Button } from '@mui/material';
+import React from 'react';
+import { type FC, memo, useRef, useState } from 'react';
+import { GoUpload } from 'react-icons/go';
 
 interface FileUploadProps {
   onUpload: (files: File[]) => void;
@@ -12,12 +13,12 @@ interface FileUploadProps {
 
 const FileUpload: FC<FileUploadProps> = ({
   onUpload,
-  accept = "image/*,.pdf",
+  accept = 'image/*,.pdf',
   multiple = true,
   maxSize = 5, // default 5MB
   className,
 }) => {
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
@@ -26,10 +27,12 @@ const FileUpload: FC<FileUploadProps> = ({
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
-    setError("");
+    setError('');
 
     // Validate file size
-    const invalidFiles = files.filter((file) => file.size > maxSize * 1024 * 1024);
+    const invalidFiles = files.filter(
+      (file) => file.size > maxSize * 1024 * 1024,
+    );
 
     if (invalidFiles.length > 0) {
       setError(`Some files exceed the ${maxSize}MB limit`);
@@ -40,7 +43,7 @@ const FileUpload: FC<FileUploadProps> = ({
 
     // Reset input value to allow uploading the same file again
     if (inputRef.current) {
-      inputRef.current.value = "";
+      inputRef.current.value = '';
     }
   };
 
@@ -54,10 +57,10 @@ const FileUpload: FC<FileUploadProps> = ({
           onChange={handleChange}
           accept={accept}
           multiple={multiple}
-          style={{ display: "none" }}
+          style={{ display: 'none' }}
         />
       </Button>
-      {error && <p style={{ color: "red", marginTop: "8px" }}>{error}</p>}
+      {error && <p style={{ color: 'red', marginTop: '8px' }}>{error}</p>}
     </div>
   );
 };
