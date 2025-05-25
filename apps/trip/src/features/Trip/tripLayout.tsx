@@ -5,14 +5,16 @@ import Stepper from '@mui/material/Stepper';
 import { type FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
+
+import useTripStore from './store';
 import styles from './tripLayout.module.scss';
-import TripStore from './store';
 import './index.css';
+
 const steps = ['trip.step1', 'trip.step2'];
 
 const Trip: FC = () => {
   const { t } = useTranslation();
-  const currentStep = TripStore((state) => state.tripStep);
+  const currentStep = useTripStore((state) => state.tripStep);
   return (
     <div className={styles.trip}>
       <Box sx={{ width: '100%' }}>

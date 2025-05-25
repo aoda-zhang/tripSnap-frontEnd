@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
-import TripStore from '../store';
+import useTripStore from '../store';
 import styles from '../tripLayout.module.scss';
 
 import { getStep1schema, Step1FormMapping, Step1FormType } from './validation';
@@ -22,7 +22,7 @@ const Step1 = () => {
   const formProps = useForm<Step1FormType>({
     resolver: zodResolver(Step1schema),
   });
-  const { setStep } = TripStore();
+  const { setStep } = useTripStore();
   const navigate = useNavigate();
   const { mutate, isLoading } = useMutation({
     mutationFn: TripAPI.addTripBasicInfo,

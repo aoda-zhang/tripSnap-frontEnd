@@ -1,10 +1,12 @@
 import { ImageList, ImageListItem, ImageListItemBar } from '@mui/material';
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
+
 import styles from './index.module.scss';
+
 import { HomeAPI } from '@/apis';
-import { HomeQueryKes } from '@/apis/homeAPI';
+import { HomeQueryKes } from '@/features/Home/apis/homeAPI';
 
 const Home = () => {
   const { t } = useTranslation();

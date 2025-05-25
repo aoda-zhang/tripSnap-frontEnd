@@ -2,14 +2,16 @@ import { Button } from '@mui/material';
 import { type FC, memo } from 'react';
 import { FormProvider, type SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
 import { useMutation } from 'react-query';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import useTripStore from '../store';
 import styles from '../tripLayout.module.scss';
-import TripStore from '../store';
-import storageTool from '@/shared/utils/storage';
-import FormTextArea from '@/shared/components/Form/FormTextArea';
-import FileUpload from '@/shared/components/FileUpload';
+
 import { TripAPI } from '@/apis';
+import FileUpload from '@/shared/components/FileUpload';
+import FormTextArea from '@/shared/components/Form/FormTextArea';
+import storageTool from '@/shared/utils/storage';
 
 export interface Step2FormType {
   tripViews: string[];
@@ -24,10 +26,10 @@ export const Step2FormMapping = {
 
 const Step3: FC = () => {
   const { t } = useTranslation();
-  const { tripId } = useParams();
+  const { tripId } = useParams<{ tripId: string }>();
   const formProps = useForm<Step2FormType>();
   const { handleSubmit } = formProps;
-  const { setStep } = TripStore();
+  const { setStep } = useTripStore();
   const navagite = useNavigate();
 
   const { mutate } = useMutation({
@@ -47,6 +49,10 @@ const Step3: FC = () => {
 
   const onSubmit: SubmitHandler<Step2FormType> = (data) => {
     const tripViews = storageTool.get('tripFiles');
+    if (!tripId) {
+      console.error('tripId is undefined');
+      return;
+    }
     mutate({ ...data, tripId, tripViews });
   };
   const backToPrevious = () => {

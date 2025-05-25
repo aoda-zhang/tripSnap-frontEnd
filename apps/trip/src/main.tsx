@@ -7,6 +7,11 @@ import envConfig from './config';
 
 import './i18n';
 
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error('Root element not found');
+}
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -14,7 +19,7 @@ const queryClient = new QueryClient({
     },
   },
 });
-createRoot(document.getElementById('root')!).render(
+createRoot(rootElement).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <App />

@@ -3,7 +3,6 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
 import envConfig from '@/config';
-import type LocaleKeys from '@/shared/constants/localeKey';
 import getLocale from '@/shared/utils/getLocale';
 import createSRTime from '@/shared/utils/SRTime';
 import type { UserInfoType } from '@/typings/auth.types';
@@ -18,7 +17,6 @@ import type {
 type GlobalState = {
   destinations: DestinationItem[];
   tripStatus: TripProcessStatus;
-  locale: LocaleKeys;
   userInfo: UserInfoType;
   latestTrip: TripFormType;
 };
@@ -26,7 +24,6 @@ type GlobalActions = {
   setDestination: (data: DestinationItem[]) => void;
   setTripStatus: (mapStatusItem: MapProcessStatusItem) => void;
   setUserInfo: (userInfo: UserInfoType) => void;
-  setLocale: (locale: LocaleKeys) => void;
   setLatestTrip: (trip: TripFormType) => void;
   setDefaultTrip: () => void;
 };
@@ -37,7 +34,7 @@ const defaultTrip = {
       from: `${envConfig?.map?.homeStart[getLocale()]}`,
       startTime: createSRTime(),
       to: '',
-      allMileage: null,
+      allMileage: 0, // Updated to a valid number
       spendTime: null,
     },
   ],
@@ -49,7 +46,6 @@ const initialState: GlobalState = {
     isView: false,
     isInfoOpen: false,
   },
-  locale: getLocale(),
   latestTrip: defaultTrip,
   destinations: [],
   userInfo: {
@@ -73,7 +69,6 @@ const globalStorePersist = persist<GlobalStoreSlice>(
     setUserInfo: (userInfo: UserInfoType) => set(() => ({ userInfo })),
     setLatestTrip: (latestTrip: TripFormType) => set(() => ({ latestTrip })),
     setDefaultTrip: () => set(() => ({ latestTrip: defaultTrip })),
-    setLocale: (locale: LocaleKeys) => set(() => ({ locale })),
   }),
   {
     name: StorageKeys.globalState,

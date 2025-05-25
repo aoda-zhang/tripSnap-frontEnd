@@ -1,6 +1,7 @@
-import StorageKeys from '@/typings/storage.types';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
+
+import StorageKeys from '@/typings/storage.types';
 
 type TripState = {
   tripStep: number;
@@ -29,5 +30,5 @@ const persistTripStore = persist<TripState & TripAction>(
   },
 );
 
-const TripStore = create<TripState & TripAction>()(persistTripStore);
-export default TripStore;
+const useTripStore = create<TripState & TripAction>()(persistTripStore);
+export default useTripStore;
