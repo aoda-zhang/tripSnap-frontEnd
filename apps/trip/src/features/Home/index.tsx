@@ -1,9 +1,8 @@
 import { ImageList, ImageListItem, ImageListItemBar } from '@mui/material';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useQuery } from 'react-query';
 
-import * as HomeAPI from './api';
+import { useDefaultViews } from './apis/queries';
 import styles from './index.module.scss';
 
 const Home = () => {
@@ -14,10 +13,7 @@ const Home = () => {
       srcSet: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format&dpr=2 2x`,
     };
   };
-  const { data: defaultViews } = useQuery(
-    [HomeAPI.HomeQueryKes.GET_DEFAULT_TRIP_VIEW],
-    HomeAPI.getDefaultTripView,
-  );
+  const { data: defaultViews } = useDefaultViews();
 
   return (
     <div className={styles.home}>

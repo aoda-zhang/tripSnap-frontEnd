@@ -2,12 +2,14 @@ import '@/shared/assets/styles/default.css';
 import '@/shared/assets/styles/global.css';
 import { FC, Suspense, useMemo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { toast, Toaster } from 'react-hot-toast';
+import { QueryCache, QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { RouterProvider } from 'react-router-dom';
 
-import envConfig from './config';
+import envConfig, { EnvVariables } from './config';
 import routes from './routes';
+import SuspenseFallback from './shared/components/SuspenceFallback';
 
 import ErrorPage from '@/shared/components/Error';
 
@@ -23,13 +25,26 @@ const App: FC = () => {
           retry: 2, // Retry failed requests up to 2 times
         },
       },
+      queryCache: new QueryCache({
+        onError: (error, query) => {
+          // Handle errors globally for queries
+          if (query.state.data !== undefined) {
+            toast.error(
+              envConfig?.env === EnvVariables.prod
+                ? envConfig?.systemSettings?.errorMessage
+                : `Error: ${error instanceof Error ? error?.message : 'Unknown error'}`,
+            );
+          }
+        },
+      }),
     });
   }, []);
   return (
-    <Suspense fallback={<>Loading...</>}>
+    <Suspense fallback={<SuspenseFallback />}>
       <ErrorBoundary FallbackComponent={ErrorPage}>
         <QueryClientProvider client={queryClient}>
-          {import.meta.env.MODE !== 'prod' && (
+          <Toaster />
+          {envConfig?.env !== EnvVariables.prod && (
             <ReactQueryDevtools initialIsOpen />
           )}
           <RouterProvider router={routes} />

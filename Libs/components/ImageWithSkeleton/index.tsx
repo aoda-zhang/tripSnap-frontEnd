@@ -1,12 +1,8 @@
 import { Skeleton } from 'antd';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import LazyLoad from 'react-lazyload';
 
-const ImageWithSkeleton=()=>({
-  imgSrc,
-  title = '',
-  className = '',
-}) {
+const ImageWithSkeleton = ({ imgSrc, title = '', className = '' }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,6 +31,6 @@ const ImageWithSkeleton=()=>({
       )}
     </div>
   );
-}
+};
 
 export default ImageWithSkeleton;

@@ -10,10 +10,7 @@ import styles from './index.module.scss';
 import storageTool from '@/shared/utils/storage';
 
 type Props = {
-  userInfo: {
-    userName: string;
-    [key: string]: unknown;
-  };
+  userInfo: Record<string, any>;
 };
 
 const AvatarMenu: FC<Props> = ({ userInfo }) => {

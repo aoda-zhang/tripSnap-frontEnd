@@ -41,14 +41,14 @@ const interceptorsReq = (config: AxiosRequestHeaders) => {
   return updatedConfig;
 };
 
-// Error Response Interceptor
+// Request Interceptor
 // @ts-ignore
 Http.interceptors.request.use(interceptorsReq, (err) => {
   httpErrorHandler(err);
   return Promise.reject(err?.message);
 });
 
-// Success Response Interceptor
+// Response Interceptor
 const interceptorsResSuccess = (response: AxiosResponse<HttpResponseType>) => {
   if (
     response?.data?.status >= 200 &&
@@ -60,7 +60,6 @@ const interceptorsResSuccess = (response: AxiosResponse<HttpResponseType>) => {
   httpErrorHandler(response?.data);
   return Promise.reject();
 };
-// 响应拦截处理
 // @ts-ignore
 Http.interceptors.response.use(interceptorsResSuccess, (error) => {
   httpErrorHandler(error?.response?.data);
@@ -72,32 +71,28 @@ const httpService = {
     params?: Record<string, any>,
     config?: AxiosRequestConfig,
   ): Promise<T> {
-    // @ts-ignore
-    return Http.get<T>(url, { params, ...config });
+    return Http.get(url, { params, ...config });
   },
   delete<T>(
     url: string,
     params?: Record<string, any>,
     config?: AxiosRequestConfig,
   ): Promise<T> {
-    // @ts-ignore
-    return Http.delete<T>(url, { params, ...config });
+    return Http.delete(url, { params, ...config });
   },
   post<T>(
     url: string,
     data?: Record<string, any>,
     config?: AxiosRequestConfig,
   ): Promise<T> {
-    // @ts-ignore
-    return Http.post<T>(url, data, { ...config });
+    return Http.post(url, data, { ...config });
   },
   put<T>(
     url: string,
     data?: Record<string, any>,
     config?: AxiosRequestConfig,
   ): Promise<T> {
-    // @ts-ignore
-    return Http.put<T>(url, data, { ...config });
+    return Http.put(url, data, { ...config });
   },
 };
 export default httpService;

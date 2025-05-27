@@ -5,14 +5,13 @@ import { useTranslation } from 'react-i18next';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
-import * as AuthAPI from '../api';
+import * as AuthAPI from '../apis';
 
 import style from './index.module.scss';
 
 import envConfig from '@/config';
 import FormInput from '@/shared/components/Form/FormInput';
 import ImageWithSkeleton from '@/shared/components/ImageWithSkeleton';
-import LangSwitcher from '@/shared/components/LangSwitcher';
 import storage from '@/shared/utils/storage';
 import globalStore from '@/store/globalStore';
 import StorageKeys from '@/typings/storage.types';
@@ -45,7 +44,6 @@ const Login: FC = () => {
       <div className={style.loginForm}>
         <div className={style.welcome}>
           <span className={style.text}>{t('login.welcome')}</span>
-          <LangSwitcher />
         </div>
         <FormProvider {...formProps}>
           <form>

@@ -1,10 +1,11 @@
 import classNames from 'classnames';
 import dayjs from 'dayjs';
+import { TFunction } from 'i18next';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, Outlet, useMatches } from 'react-router-dom';
 
-import AvatarMenu from '../../shared/components/AvatarMenu';
+import AvatarMenu from '../AvatarMenu';
 
 import styles from './index.module.scss';
 
@@ -15,7 +16,14 @@ import storageTool from '@/shared/utils/storage';
 import globalStore from '@/store/globalStore';
 import StorageKeys from '@/typings/storage.types';
 
-const Header = ({ isMenuAvaliable, isLogin, userInfo, t }) => {
+interface HeaderProps {
+  isMenuAvaliable: boolean;
+  isLogin: boolean;
+  userInfo: Record<string, any>;
+  t: TFunction<'translation', undefined>;
+}
+
+const Header = ({ isMenuAvaliable, isLogin, userInfo, t }: HeaderProps) => {
   if (!isMenuAvaliable) return null;
 
   return (
@@ -44,7 +52,7 @@ const Header = ({ isMenuAvaliable, isLogin, userInfo, t }) => {
   );
 };
 
-const Footer = ({ t }) => (
+const Footer = ({ t }: { t: TFunction<'translation', undefined> }) => (
   <div className={styles.footer}>
     {t('common.brand')} ©{dayjs().year()}
   </div>
@@ -75,7 +83,9 @@ const Content = ({ isMenuAvaliable, isLogin, userInfo, t }: ContentProps) => (
 const Layout = () => {
   const { userInfo } = globalStore();
   const matches = useMatches();
-  const currentRouter = matches?.[matches?.length ?? 0 - 1];
+  const currentRouter = matches?.[matches?.length ?? 0 - 1] as {
+    handle?: Record<string, any>;
+  };
   const isMenuAvaliable =
     currentRouter?.handle?.[RouterHandles.isMenuAvaliable] ?? true;
   const isLogin = storageTool.get(StorageKeys.accessToken);

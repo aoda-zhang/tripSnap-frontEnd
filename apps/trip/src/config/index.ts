@@ -5,14 +5,20 @@ import uatYaml from './uat/env/index.yaml';
 const environment = import.meta.env;
 const currentEnv = environment?.MODE ?? 'dev';
 
+export const EnvVariables = {
+  dev: 'dev',
+  uat: 'uat',
+  prod: 'prod',
+};
+
 const getConfigs = () => {
   try {
     switch (currentEnv) {
-      case 'dev':
+      case EnvVariables.dev:
         return devYaml;
-      case 'uat':
+      case EnvVariables.uat:
         return uatYaml;
-      case 'prod':
+      case EnvVariables.prod:
         return prodYaml;
       default:
         return devYaml;

@@ -4,11 +4,8 @@ import classNames from 'classnames';
 import { memo, useMemo } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { useMutation } from 'react-query';
-import { useNavigate } from 'react-router-dom';
 
-import * as TripAPI from '../api';
-import useTripStore from '../store';
+import { useAddTrip } from '../apis/queries';
 import styles from '../tripLayout.module.scss';
 
 import { getStep1schema, Step1FormMapping, Step1FormType } from './validation';
@@ -22,15 +19,7 @@ const Step1 = () => {
   const formProps = useForm<Step1FormType>({
     resolver: zodResolver(Step1schema),
   });
-  const { setStep } = useTripStore();
-  const navigate = useNavigate();
-  const { mutate, isLoading } = useMutation({
-    mutationFn: TripAPI.addTripBasicInfo,
-    onSuccess: (data) => {
-      setStep(2);
-      navigate(`/trip/step2/${data?.tripId}`);
-    },
-  });
+  const { mutate, isLoading } = useAddTrip();
 
   const onSubmit: SubmitHandler<Step1FormType> = (data) => {
     mutate(data);

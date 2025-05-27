@@ -2,7 +2,7 @@ import { message } from 'antd';
 import { useMutation } from 'react-query';
 import { NavigateFunction } from 'react-router-dom';
 
-import * as AuthAPI from './api';
+import * as AuthAPI from './apis';
 
 import storage from '@/shared/utils/storage';
 import StorageKeys from '@/typings/storage.types';

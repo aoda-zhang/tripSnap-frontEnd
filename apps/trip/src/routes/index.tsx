@@ -5,7 +5,7 @@ export enum RouterHandles {
   isMenuAvaliable = 'isMenuAvaliable',
   noToken = 'noToken',
 }
-const Layout = lazy(() => import('@/features/Layout'));
+const Layout = lazy(() => import('@/shared/components/RootLayout'));
 const Home = lazy(() => import('@/features/Home'));
 const Trip = lazy(() => import('@/features/Trip/tripLayout'));
 const Step1 = lazy(() => import('@/features/Trip/Step1'));
