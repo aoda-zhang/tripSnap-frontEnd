@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 import * as AuthAPI from '../apis';
 
-import style from './index.module.scss';
+import style from './index.module.css';
 
 import envConfig from '@/config';
 import FormInput from '@/shared/components/Form/FormInput';

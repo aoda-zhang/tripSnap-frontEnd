@@ -1,4 +1,3 @@
-import '@/shared/assets/styles/default.css';
 import '@/shared/assets/styles/global.css';
 import { FC, Suspense, useMemo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';

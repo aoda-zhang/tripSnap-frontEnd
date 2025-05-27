@@ -8,7 +8,6 @@ import { Outlet } from 'react-router-dom';
 
 import useTripStore from './store';
 import styles from './tripLayout.module.scss';
-import './index.css';
 
 const steps = ['trip.step1', 'trip.step2'];
 

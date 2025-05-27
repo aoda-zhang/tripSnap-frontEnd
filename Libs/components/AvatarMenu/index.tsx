@@ -1,13 +1,14 @@
 import { Avatar, Divider, Dropdown, type MenuProps, Modal } from 'antd';
 import { type FC, memo, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CiSettings } from 'react-icons/ci';
 import { IoLogInOutline } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
-import styles from './index.module.scss';
+import storageTool from '../../utils/storage';
 
-import storageTool from '@/shared/utils/storage';
+import styles from './index.module.css';
 
 type Props = {
   userInfo: Record<string, any>;

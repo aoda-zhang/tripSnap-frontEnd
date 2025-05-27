@@ -32,14 +32,9 @@ export default defineConfig({
     },
   },
   css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern-compiler',
-        additionalData: `@use "@/shared/assets/styles/theme.scss" as *;
-        @use "@/shared/assets/styles/medias.scss" as *;
-        @use "@/shared/assets/styles/font.scss" as *;
-        @use "@/shared/assets/styles/common.scss" as *;`,
-      },
+    modules: {
+      // This is the default value, but you can customize it if needed
+      generateScopedName: '[local]__[hash:base64:5]',
     },
   },
 });

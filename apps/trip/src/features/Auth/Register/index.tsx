@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useUserRegister } from '../queries';
 
-import style from './index.module.scss';
+import style from './index.module.css';
 
 import { AuthFieldType } from '@/typings/auth.types';
 

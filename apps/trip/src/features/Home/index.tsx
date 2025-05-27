@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useDefaultViews } from './apis/queries';
-import styles from './index.module.scss';
+import styles from './index.module.css';
 
 const Home = () => {
   const { t } = useTranslation();

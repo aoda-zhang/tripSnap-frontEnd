@@ -1,4 +1,11 @@
-.error {
+@layer components {
+  .error {
+    @apply flex flex-col items-center justify-center;
+    .login {
+    }
+  }
+}
+/* .error {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,4 +17,4 @@
     color: $green6;
     cursor: pointer;
   }
-}
+} */

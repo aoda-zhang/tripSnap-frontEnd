@@ -28,7 +28,7 @@
       "@modyfi/vite-plugin-yaml/modules"
     ]
   },
-  "include": ["src", "src/store", "tailwind.config.js", "postcss.config.js"],
+  "include": ["src", "src/store", "tailwind.config.js", "postcss.config.cjs"],
   "exclude": ["node_modules", "src/**/*.spec.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

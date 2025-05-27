@@ -7,9 +7,8 @@ import { Link, Outlet, useMatches } from 'react-router-dom';
 
 import AvatarMenu from '../AvatarMenu';
 
-import styles from './index.module.scss';
+import styles from './index.module.css';
 
-import './index.css';
 import { RouterHandles } from '@/routes';
 import LangSwitcher from '@/shared/components/LangSwitcher';
 import storageTool from '@/shared/utils/storage';

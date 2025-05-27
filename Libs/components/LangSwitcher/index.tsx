@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { FaChevronDown } from 'react-icons/fa';
 import { MdOutlineLanguage } from 'react-icons/md';
 
-import styles from './index.module.scss';
+import styles from './index.module.css';
 
 import storageTool from '@/shared/utils/storage';
 import StorageKeys from '@/typings/storage.types';

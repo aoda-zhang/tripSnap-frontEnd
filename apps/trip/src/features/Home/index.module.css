@@ -1,0 +1,18 @@
+@layer components {
+  .home {
+    @apply w-full h-full flex flex-col p-1;
+    .slog {
+      @apply flex flex-col justify-center items-center h-[34vh] bg-cover bg-center;
+      background-image: url(https://s1.locimg.com/2024/10/10/0d48bc37701b8.jpg);
+      .title {
+      }
+      .subTitle {
+      }
+    }
+    .destinations {
+      @apply flex flex-col;
+      .title {
+      }
+    }
+  }
+}
