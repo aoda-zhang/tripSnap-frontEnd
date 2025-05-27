@@ -12,7 +12,13 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'prettier'],
+  plugins: [
+    '@typescript-eslint',
+    '@tanstack/query',
+    'react',
+    'react-hooks',
+    'prettier',
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -21,6 +27,7 @@ module.exports = {
     },
   },
   rules: {
+    '@tanstack/query/exhaustive-deps': 'error',
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',

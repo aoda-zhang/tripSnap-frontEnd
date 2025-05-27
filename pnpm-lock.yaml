@@ -11,6 +11,9 @@ importers:
         specifier: ^16.11.6
         version: 16.18.126
     devDependencies:
+      '@tanstack/eslint-plugin-query':
+        specifier: ^5.74.7
+        version: 5.74.7(eslint@8.57.1)(typescript@5.8.3)
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.32.1
         version: 8.32.1(@typescript-eslint/parser@8.32.1(eslint@8.57.1)(typescript@5.8.3))(eslint@8.57.1)(typescript@5.8.3)
@@ -164,6 +167,14 @@ packages:
       {
         integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==,
       }
+
+  '@tanstack/eslint-plugin-query@5.74.7':
+    resolution:
+      {
+        integrity: sha512-EeHuaaYiCOD+XOGyB7LMNEx9OEByAa5lkgP+S3ZggjKJpmIO6iRWeoIYYDKo2F8uc3qXcVhTfC7pn7NddQiNtA==,
+      }
+    peerDependencies:
+      eslint: ^8.57.0 || ^9.0.0
 
   '@tybys/wasm-util@0.9.0':
     resolution:
@@ -2322,6 +2333,14 @@ snapshots:
   '@pkgr/core@0.2.4': {}
 
   '@rtsao/scc@1.1.0': {}
+
+  '@tanstack/eslint-plugin-query@5.74.7(eslint@8.57.1)(typescript@5.8.3)':
+    dependencies:
+      '@typescript-eslint/utils': 8.32.1(eslint@8.57.1)(typescript@5.8.3)
+      eslint: 8.57.1
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   '@tybys/wasm-util@0.9.0':
     dependencies:

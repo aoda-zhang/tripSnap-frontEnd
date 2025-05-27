@@ -1,7 +1,5 @@
-import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
-
 import StorageKeys from '@/typings/storage.types';
+import createStore from '@/utils/createStore';
 
 type TripState = {
   tripStep: number;
@@ -11,24 +9,26 @@ type TripAction = {
   setStep: (step: number) => void;
 };
 
-const initState = {
+const initState: TripState = {
   tripStep: 1,
   transportationOptions: [
     { label: 'dasdsa', value: 23 },
     { label: 'da', value: 'dadsa' },
   ],
 };
+export const setStepAction =
+  (set: any): TripAction['setStep'] =>
+  (step) => {
+    set(() => ({ tripStep: step }));
+  };
 
-const persistTripStore = persist<TripState & TripAction>(
-  (set, _get) => ({
-    ...initState,
-    setStep: (step: number) => set(() => ({ tripStep: step })),
+const useTripStore = createStore<TripState, TripAction>({
+  name: StorageKeys.tripRecord,
+  enablePersist: true,
+  state: initState,
+  actions: () => ({
+    setStep: setStepAction,
   }),
-  {
-    name: StorageKeys.tripRecord,
-    storage: createJSONStorage(() => sessionStorage),
-  },
-);
+});
 
-const useTripStore = create<TripState & TripAction>()(persistTripStore);
 export default useTripStore;

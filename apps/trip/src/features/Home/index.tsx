@@ -3,10 +3,8 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 
+import * as HomeAPI from './api';
 import styles from './index.module.scss';
-
-import { HomeAPI } from '@/apis';
-import { HomeQueryKes } from '@/features/Home/apis/homeAPI';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -17,7 +15,7 @@ const Home = () => {
     };
   };
   const { data: defaultViews } = useQuery(
-    [HomeQueryKes.GET_DEFAULT_TRIP_VIEW],
+    [HomeAPI.HomeQueryKes.GET_DEFAULT_TRIP_VIEW],
     HomeAPI.getDefaultTripView,
   );
 
@@ -29,23 +27,25 @@ const Home = () => {
       </div>
       <div className={styles.destinations}>
         <div className={styles.title}>{t('home.destinations')}</div>
-        <ImageList variant="quilted" cols={4} rowHeight={121}>
-          {defaultViews?.map((item) => (
-            <ImageListItem
-              key={item?.title}
-              cols={item.cols || 1}
-              rows={item.rows || 1}
-            >
-              <img
-                src={srcset(item.img, 121, item.rows, item.cols).src}
-                srcSet={srcset(item.img, 121, item.rows, item.cols).srcSet}
-                alt={item.title}
-                loading="lazy"
-              />
-              <ImageListItemBar title={t(item?.title)} />
-            </ImageListItem>
-          ))}
-        </ImageList>
+        {defaultViews && (
+          <ImageList variant="quilted" cols={4} rowHeight={121}>
+            {defaultViews.map((item) => (
+              <ImageListItem
+                key={item?.title}
+                cols={item.cols || 1}
+                rows={item.rows || 1}
+              >
+                <img
+                  src={srcset(item.img, 121, item.rows, item.cols).src}
+                  srcSet={srcset(item.img, 121, item.rows, item.cols).srcSet}
+                  alt={item.title}
+                  loading="lazy"
+                />
+                <ImageListItemBar title={t(item?.title)} />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        )}
       </div>
     </div>
   );

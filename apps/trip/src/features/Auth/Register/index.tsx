@@ -1,34 +1,18 @@
-import { Button, Form, Input, message } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
-import storage from '@/shared/utils/storage';
-import { AuthFieldType } from '@/typings/auth.types';
-import StorageKeys from '@/typings/storage.types';
+import { useUserRegister } from '../queries';
 
 import style from './index.module.scss';
-import { AuthAPI } from '@/apis';
+
+import { AuthFieldType } from '@/typings/auth.types';
 
 const Register = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { mutate } = useMutation(AuthAPI.register, {
-    onSuccess: async (isRegrester, value) => {
-      if (isRegrester) {
-        const loginInfo = await AuthAPI.login({
-          userName: value?.userName,
-          password: value?.password,
-        });
-        await storage.set(StorageKeys.accessToken, loginInfo.accessToken);
-        await storage.set(StorageKeys.refreshToken, loginInfo.refreshToken);
-        navigate('/trip');
-      }
-    },
-    onError: (error) => {
-      message.error(`注册失败:${error}`);
-    },
-  });
+  const { mutate } = useUserRegister(navigate);
+
   return (
     <div className={style.register}>
       <img

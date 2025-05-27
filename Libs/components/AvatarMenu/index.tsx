@@ -1,6 +1,5 @@
 import { Avatar, Divider, Dropdown, type MenuProps, Modal } from 'antd';
 import { type FC, memo, useState } from 'react';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { CiSettings } from 'react-icons/ci';
 import { IoLogInOutline } from 'react-icons/io5';

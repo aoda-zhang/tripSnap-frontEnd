@@ -1,20 +1,21 @@
+import { Button } from '@mui/material';
 import { type FC, memo } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
-import { FormProvider, useForm } from 'react-hook-form';
 
-import { Button } from '@mui/material';
+import * as AuthAPI from '../api';
+
+import style from './index.module.scss';
+
+import envConfig from '@/config';
+import FormInput from '@/shared/components/Form/FormInput';
+import ImageWithSkeleton from '@/shared/components/ImageWithSkeleton';
+import LangSwitcher from '@/shared/components/LangSwitcher';
 import storage from '@/shared/utils/storage';
 import globalStore from '@/store/globalStore';
 import StorageKeys from '@/typings/storage.types';
-
-import envConfig from '@/config';
-import ImageWithSkeleton from '@/shared/components/ImageWithSkeleton';
-import LangSwitcher from '@/shared/components/LangSwitcher';
-import style from './index.module.scss';
-import { AuthAPI } from '@/apis';
-import FormInput from '@/shared/components/Form/FormInput';
 
 const Login: FC = () => {
   const formProps = useForm({});

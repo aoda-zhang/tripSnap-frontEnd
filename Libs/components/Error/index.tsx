@@ -1,11 +1,10 @@
-import React, { memo, useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './index.module.scss';
 
 import errorImg from '@/shared/assets/images/500.png';
-import storage from '@/shared/utils/storage';
 import storageTool from '@/shared/utils/storage';
 import StorageKeys from '@/typings/storage.types';
 
@@ -16,8 +15,8 @@ const ErrorPage = () => {
     storageTool.clearAll();
   }, []);
   const loginAgain = () => {
-    storage.remove(StorageKeys.accessToken);
-    storage.remove(StorageKeys.refreshToken);
+    storageTool.remove(StorageKeys.accessToken);
+    storageTool.remove(StorageKeys.refreshToken);
     navigate('/login');
   };
   return (

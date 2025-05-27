@@ -7,12 +7,12 @@ import { useTranslation } from 'react-i18next';
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
+import * as TripAPI from '../api';
 import useTripStore from '../store';
 import styles from '../tripLayout.module.scss';
 
 import { getStep1schema, Step1FormMapping, Step1FormType } from './validation';
 
-import { TripAPI } from '@/apis';
 import TransportRadio from '@/components/TransportRadio';
 import FormInput from '@/shared/components/Form/FormInput';
 
