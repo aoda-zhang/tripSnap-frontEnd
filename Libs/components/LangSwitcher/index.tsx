@@ -1,14 +1,13 @@
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
-import storageTool from '@shared/utils/storage';
-import { memo, useMemo } from 'react';
+import { ChevronDown, Globe } from 'lucide-react';
+import React, { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaChevronDown } from 'react-icons/fa';
-import { MdOutlineLanguage } from 'react-icons/md';
+
+import StorageKeys from '../../constants/storageKeys';
+import storageTool from '../../utils/storage';
 
 import styles from './index.module.css';
-
-import StorageKeys from '@/typings/storage.types';
 
 const BootstrapTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} arrow classes={{ popper: className }} />
@@ -52,9 +51,9 @@ const LangSwitcher = () => {
   return (
     <BootstrapTooltip title={<LanguageSelect />}>
       <div className={styles.lang}>
-        <MdOutlineLanguage size={26} />
+        <ChevronDown size={26} />
         {t(`common.${i18n.language}`)}
-        <FaChevronDown />
+        <Globe />
       </div>
     </BootstrapTooltip>
   );

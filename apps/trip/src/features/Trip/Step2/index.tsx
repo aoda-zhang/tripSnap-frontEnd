@@ -9,7 +9,7 @@ import { useMutation } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import useTripStore from '../store';
-import styles from '../tripLayout.module.scss';
+import styles from '../tripLayout.module.css';
 
 import { TripAPI } from '@/apis';
 

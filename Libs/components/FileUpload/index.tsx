@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
+import { Upload } from 'lucide-react';
 import React from 'react';
 import { type FC, memo, useRef, useState } from 'react';
-import { GoUpload } from 'react-icons/go';
 
 interface FileUploadProps {
   onUpload: (files: File[]) => void;
@@ -50,7 +50,7 @@ const FileUpload: FC<FileUploadProps> = ({
   return (
     <div>
       <Button variant="contained" onClick={handleClick} className={className}>
-        <GoUpload />
+        <Upload />
         <input
           ref={inputRef}
           type="file"

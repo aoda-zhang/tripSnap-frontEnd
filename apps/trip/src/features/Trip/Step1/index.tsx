@@ -7,7 +7,7 @@ import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { useAddTrip } from '../apis/queries';
-import styles from '../tripLayout.module.scss';
+import styles from '../tripLayout.module.css';
 
 import { getStep1schema, Step1FormMapping, Step1FormType } from './validation';
 

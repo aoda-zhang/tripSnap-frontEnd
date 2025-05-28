@@ -1,12 +1,12 @@
-import errorImg from '@shared/assets/images/500.png';
-import storageTool from '@shared/utils/storage';
-import { memo, useEffect } from 'react';
+// import systemError from '@assets/images/system_error.png';
+import React, { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-import styles from './index.module.css';
+import StorageKeys from '../../constants/storageKeys';
+import storageTool from '../../utils/storage';
 
-import StorageKeys from '@/typings/storage.types';
+import styles from './index.module.css';
 
 const ErrorPage = () => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const ErrorPage = () => {
   };
   return (
     <div className={styles.error}>
-      <img src={errorImg} alt="" />
+      {/* <img src={systemError} alt="" /> */}
       <div>
         {t('map.sys_error')}
         <span

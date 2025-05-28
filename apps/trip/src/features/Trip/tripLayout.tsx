@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
 
 import useTripStore from './store';
-import styles from './tripLayout.module.scss';
+import styles from './tripLayout.module.css';
 
 const steps = ['trip.step1', 'trip.step2'];
 

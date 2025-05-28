@@ -10,7 +10,7 @@ import React, { memo, useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import styles from '../formBase.module.scss';
+import styles from '../formBase.module.css';
 import type { BaseFormType, BaseSelectType } from '../formBase.type';
 
 const FormSelect: React.FC<BaseFormType & BaseSelectType & SelectProps> = ({

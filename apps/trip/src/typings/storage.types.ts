@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 enum StorageKeys {
   refreshToken = 'refreshToken',
   accessToken = 'access-token',

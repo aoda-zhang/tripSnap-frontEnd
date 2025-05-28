@@ -1,4 +1,3 @@
-import { message } from 'antd';
 import toast from 'react-hot-toast';
 
 import { HttpBusinessMappingCode } from './types';
@@ -52,7 +51,7 @@ const httpErrorHandler = async (error: {
       toast.error(`${envConfig?.systemSettings?.commonErrorMessage}`);
       break;
     default:
-      message.error(
+      toast.error(
         error?.message
           ? error?.message
           : `${envConfig?.systemSettings?.commonErrorMessage}`,

@@ -1,8 +1,18 @@
-import { Skeleton } from 'antd';
+import Skeleton from '@mui/material/Skeleton';
 import React, { useEffect, useState } from 'react';
 import LazyLoad from 'react-lazyload';
 
-const ImageWithSkeleton = ({ imgSrc, title = '', className = '' }) => {
+interface ImageWithSkeletonProps {
+  imgSrc: string;
+  title?: string;
+  className?: string;
+}
+
+const ImageWithSkeleton: React.FC<ImageWithSkeletonProps> = ({
+  imgSrc,
+  title = '',
+  className = '',
+}) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -15,7 +25,7 @@ const ImageWithSkeleton = ({ imgSrc, title = '', className = '' }) => {
     <div>
       {loading && (
         <div>
-          <Skeleton.Image active={loading} className={className} />
+          <Skeleton variant="rectangular" className={className} />
         </div>
       )}
       {!loading && (

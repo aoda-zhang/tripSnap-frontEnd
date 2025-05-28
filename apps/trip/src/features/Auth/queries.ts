@@ -1,5 +1,4 @@
 import storage from '@shared/utils/storage';
-import { message } from 'antd';
 import { useMutation } from 'react-query';
 import { NavigateFunction } from 'react-router-dom';
 
@@ -20,9 +19,6 @@ export const useUserRegister = (navigate: NavigateFunction) => {
         navigate('/trip');
       }
     },
-    onError: (error) => {
-      message.error(`注册失败:${error}`);
-    },
   });
 };
 
@@ -38,9 +34,6 @@ export const useUserLogin = (navigate: NavigateFunction) => {
         await storage.set(StorageKeys.refreshToken, loginInfo.refreshToken);
         navigate('/trip');
       }
-    },
-    onError: (error) => {
-      message.error(`注册失败:${error}`);
     },
   });
 };

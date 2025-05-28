@@ -8,7 +8,8 @@ import classNames from 'classnames';
 import React, { memo, useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import styles from '../formBase.module.scss';
+
+import styles from '../formBase.module.css';
 import type { BaseFormType } from '../formBase.type';
 
 const FormTextArea: React.FC<BaseFormType & TextareaAutosizeProps> = ({

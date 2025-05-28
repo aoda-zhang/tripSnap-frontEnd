@@ -2,10 +2,10 @@ import classNames from 'classnames';
 import { FC, memo } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import formBasestyle from '../formBase.module.scss';
+import formBasestyle from '../formBase.module.css';
 import type { BaseFormType } from '../formBase.type';
 
-import style from './index.module.scss';
+import style from './index.module.css';
 
 interface Option {
   value: string;

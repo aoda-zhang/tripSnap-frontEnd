@@ -1,6 +1,6 @@
 import { Loader } from 'lucide-react';
 
-import styles from './index.module.scss';
+import styles from './index.module.css';
 
 const SuspenseFallback = () => {
   return (
