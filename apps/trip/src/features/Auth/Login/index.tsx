@@ -1,4 +1,7 @@
 import { Button } from '@mui/material';
+import FormInput from '@shared/components/Form/FormInput';
+import ImageWithSkeleton from '@shared/components/ImageWithSkeleton';
+import storage from '@shared/utils/storage';
 import { type FC, memo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -10,9 +13,6 @@ import * as AuthAPI from '../apis';
 import style from './index.module.css';
 
 import envConfig from '@/config';
-import FormInput from '@/shared/components/Form/FormInput';
-import ImageWithSkeleton from '@/shared/components/ImageWithSkeleton';
-import storage from '@/shared/utils/storage';
 import globalStore from '@/store/globalStore';
 import StorageKeys from '@/typings/storage.types';
 

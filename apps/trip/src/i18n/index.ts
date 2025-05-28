@@ -1,11 +1,10 @@
+import LocaleKeys from '@shared/constants/localeKey';
+import getLocale from '@shared/utils/getLocale';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import enUS from './en-US.json';
 import zhCN from './zh-CN.json';
-
-import LocaleKeys from '@/shared/constants/localeKey';
-import getLocale from '@/shared/utils/getLocale';
 
 const defaultLanguage = LocaleKeys['en-US'];
 const languageResources = {

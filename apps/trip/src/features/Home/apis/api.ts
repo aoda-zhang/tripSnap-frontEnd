@@ -1,4 +1,4 @@
-import httpService from '@/shared/cores/http';
+import httpService from '@shared/cores/http';
 
 type TripViewType = {
   img: string;

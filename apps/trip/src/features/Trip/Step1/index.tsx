@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@mui/material';
+import FormInput from '@shared/components/Form/FormInput';
 import classNames from 'classnames';
 import { memo, useMemo } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
@@ -11,7 +12,6 @@ import styles from '../tripLayout.module.scss';
 import { getStep1schema, Step1FormMapping, Step1FormType } from './validation';
 
 import TransportRadio from '@/components/TransportRadio';
-import FormInput from '@/shared/components/Form/FormInput';
 
 const Step1 = () => {
   const { t } = useTranslation();

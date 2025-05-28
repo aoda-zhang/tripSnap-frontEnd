@@ -1,4 +1,5 @@
-import '@/shared/assets/styles/global.css';
+import '@shared/assets/styles/global.css';
+import ErrorPage from '@shared/components/Error';
 import { FC, Suspense, useMemo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { toast, Toaster } from 'react-hot-toast';
@@ -9,8 +10,6 @@ import { RouterProvider } from 'react-router-dom';
 import envConfig, { EnvVariables } from './config';
 import routes from './routes';
 import SuspenseFallback from './shared/components/SuspenceFallback';
-
-import ErrorPage from '@/shared/components/Error';
 
 const App: FC = () => {
   const queryClient = useMemo(() => {

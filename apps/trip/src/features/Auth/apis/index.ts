@@ -1,4 +1,5 @@
-import httpService from '@/shared/cores/http';
+import httpService from '@shared/cores/http';
+
 import { AuthFieldType, LoginInfo } from '@/typings/auth.types';
 
 export const register = (userInfo: AuthFieldType) => {

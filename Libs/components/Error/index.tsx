@@ -1,11 +1,11 @@
+import errorImg from '@shared/assets/images/500.png';
+import storageTool from '@shared/utils/storage';
 import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './index.module.css';
 
-import errorImg from '@/shared/assets/images/500.png';
-import storageTool from '@/shared/utils/storage';
 import StorageKeys from '@/typings/storage.types';
 
 const ErrorPage = () => {

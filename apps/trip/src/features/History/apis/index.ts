@@ -1,4 +1,5 @@
-import httpService from '@/shared/cores/http';
+import httpService from '@shared/cores/http';
+
 import { TripInfo } from '@/typings/trip.types';
 
 export const addmapHistory = (mapHistory: {

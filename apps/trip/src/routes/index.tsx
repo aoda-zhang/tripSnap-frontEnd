@@ -5,7 +5,7 @@ export enum RouterHandles {
   isMenuAvaliable = 'isMenuAvaliable',
   noToken = 'noToken',
 }
-const Layout = lazy(() => import('@/shared/components/RootLayout'));
+const Layout = lazy(() => import('@shared/components/RootLayout'));
 const Home = lazy(() => import('@/features/Home'));
 const Trip = lazy(() => import('@/features/Trip/tripLayout'));
 const Step1 = lazy(() => import('@/features/Trip/Step1'));
@@ -13,7 +13,7 @@ const Step2 = lazy(() => import('@/features/Trip/Step2'));
 const History = lazy(() => import('@/features/History'));
 const Login = lazy(() => import('@/features/Auth/Login'));
 const Register = lazy(() => import('@/features/Auth/Register'));
-const ErrorPage = lazy(() => import('@/shared/components/Error'));
+const ErrorPage = lazy(() => import('@shared/components/Error'));
 
 const routeOptions = [
   {

@@ -1,3 +1,5 @@
+import LangSwitcher from '@shared/components/LangSwitcher';
+import storageTool from '@shared/utils/storage';
 import classNames from 'classnames';
 import dayjs from 'dayjs';
 import { TFunction } from 'i18next';
@@ -10,8 +12,6 @@ import AvatarMenu from '../AvatarMenu';
 import styles from './index.module.css';
 
 import { RouterHandles } from '@/routes';
-import LangSwitcher from '@/shared/components/LangSwitcher';
-import storageTool from '@/shared/utils/storage';
 import globalStore from '@/store/globalStore';
 import StorageKeys from '@/typings/storage.types';
 

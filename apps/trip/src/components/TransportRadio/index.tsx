@@ -1,9 +1,8 @@
+import FormInput from '@shared/components/Form/FormInput';
+import FormRadio from '@shared/components/Form/FormRadio';
 import { memo } from 'react';
 import { useWatch, useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-
-import FormInput from '@/shared/components/Form/FormInput';
-import FormRadio from '@/shared/components/Form/FormRadio';
 
 const TransportationOptions = {
   car: 'Car',

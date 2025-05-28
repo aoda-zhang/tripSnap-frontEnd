@@ -1,12 +1,14 @@
 import { InputAdornment, TextField, type TextFieldProps } from '@mui/material';
+import getCurrencyCode from '@shared/utils/getCurrencyCode';
 import classNames from 'classnames';
 import React, { memo, useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import globalStore from '@/store/globalStore';
-import getCurrencyCode from '@/shared/utils/getCurrencyCode';
+
 import styles from '../formBase.module.scss';
 import type { BaseFormType, BaseTextFieldType } from '../formBase.type';
+
+import globalStore from '@/store/globalStore';
 
 const FormInput: React.FC<
   BaseFormType & TextFieldProps & BaseTextFieldType
