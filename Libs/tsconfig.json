@@ -16,24 +16,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["src/*"],
-      "@shared/*": ["../../Libs/*"]
-    },
-    "composite": true,
-    "types": ["node", "vite/client", "@modyfi/vite-plugin-yaml/modules"]
+    "composite": true
   },
-  "include": [
-    "src",
-    "../../Libs",
-    "src/store",
-    "tailwind.config.js",
-    "postcss.config.cjs"
-  ],
-  "exclude": ["node_modules", "src/**/*.spec.ts"],
-  "references": [
-    { "path": "./tsconfig.node.json" }
-    // { "path": "../../Libs" }
-  ]
+  "exclude": ["node_modules", "dist", "build", "coverage", "src/**/*.spec.ts"]
 }

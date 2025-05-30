@@ -56,10 +56,9 @@
     "build:uat": "tsc && vite build --mode uat"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
     "@types/ramda": "^0.27.44",
     "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3",
-    "postcss-nesting": "^13.0.1",
     "tailwindcss": "^4.1.6"
   },
   "packageManager": "pnpm@10.5.2",

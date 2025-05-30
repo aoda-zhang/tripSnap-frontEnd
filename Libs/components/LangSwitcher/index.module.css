@@ -1,4 +1,18 @@
-.lang {
+@layer components {
+  .lang {
+    @apply flex items-center gap-[.625rem] cursor-pointer min-w-[12.5rem];
+  }
+  .languageSelect {
+    @apply flex flex-col gap-[.625rem] text-[.875rem] p-[.625rem]  rounded-[10%] border;
+    .item {
+      @apply cursor-pointer text-left;
+      &:hover {
+        @apply border-b;
+      }
+    }
+  }
+}
+/* .lang {
   min-width: 200px;
   display: flex;
   align-items: center;
@@ -21,4 +35,4 @@
       border-bottom: 1px solid $gray6;
     }
   }
-}
+} */

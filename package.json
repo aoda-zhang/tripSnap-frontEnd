@@ -7,10 +7,6 @@
     "node": "22.x",
     "pnpm": ">=10"
   },
-  "dependencies": {
-    "@types/node": "^16.11.6",
-    "react-lazyload": "^3.2.1"
-  },
   "scripts": {
     "prepare": "husky",
     "lint-staged": "lint-staged",

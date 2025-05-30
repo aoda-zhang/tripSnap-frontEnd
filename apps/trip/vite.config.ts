@@ -9,7 +9,7 @@ export default defineConfig({
   envPrefix: 'REACT_APP_',
   base: '/',
   server: {
-    port: 4000,
+    port: 2826,
     strictPort: true,
     proxy: {
       '/api': {

@@ -1,4 +1,6 @@
 import '@shared/assets/styles/global.css';
+import { ThemeProvider } from '@mui/material';
+import MUITheme from '@shared/assets/theme/mui-theme';
 import ErrorPage from '@shared/components/Error';
 import SuspenseFallback from '@shared/components/SuspenceFallback';
 import { FC, Suspense, useMemo } from 'react';
@@ -45,7 +47,9 @@ const App: FC = () => {
           {envConfig?.env !== EnvVariables.prod && (
             <ReactQueryDevtools initialIsOpen />
           )}
-          <RouterProvider router={routes} />
+          <ThemeProvider theme={MUITheme}>
+            <RouterProvider router={routes} />
+          </ThemeProvider>
         </QueryClientProvider>
       </ErrorBoundary>
     </Suspense>

@@ -1,11 +1,13 @@
+import RootLayout, { RootLayoutHandles } from '@shared/components/RootLayout';
 import { lazy } from 'react';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-export enum RouterHandles {
-  isMenuAvaliable = 'isMenuAvaliable',
-  noToken = 'noToken',
-}
-const Layout = lazy(() => import('@shared/components/RootLayout'));
+import useGlobalStore from '@/store/globalStore';
+
+const RootLayoutWithProps = () => {
+  const userInfo = useGlobalStore((state) => state?.userInfo);
+  return <RootLayout userInfo={userInfo} />;
+};
 const Home = lazy(() => import('@/features/Home'));
 const Trip = lazy(() => import('@/features/Trip/tripLayout'));
 const Step1 = lazy(() => import('@/features/Trip/Step1'));
@@ -18,13 +20,13 @@ const ErrorPage = lazy(() => import('@shared/components/Error'));
 const routeOptions = [
   {
     path: '/',
-    element: <Layout />,
+    element: <RootLayoutWithProps />,
     children: [
       {
         path: '/',
         index: true,
         element: <Home />,
-        handle: { [RouterHandles.noToken]: true },
+        handle: { [RootLayoutHandles.noToken]: true },
       },
       {
         path: 'trip',

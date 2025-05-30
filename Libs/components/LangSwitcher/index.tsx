@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip';
 import { ChevronDown, Globe } from 'lucide-react';
-import React, { memo, useMemo } from 'react';
+import { memo, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import StorageKeys from '../../constants/storageKeys';
@@ -32,7 +32,7 @@ const LanguageSelect = () => {
   };
   return (
     <div className={styles.languageSelect}>
-      {supportedLanguages.map((item) => (
+      {supportedLanguages?.map((item) => (
         <button
           key={item}
           className={styles.item}
@@ -51,9 +51,9 @@ const LangSwitcher = () => {
   return (
     <BootstrapTooltip title={<LanguageSelect />}>
       <div className={styles.lang}>
-        <ChevronDown size={26} />
-        {t(`common.${i18n.language}`)}
         <Globe />
+        {t(`common.${i18n.language}`)}
+        <ChevronDown size={26} />
       </div>
     </BootstrapTooltip>
   );
