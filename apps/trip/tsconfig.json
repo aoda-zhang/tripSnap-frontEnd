@@ -28,8 +28,8 @@
     "src",
     "../../Libs",
     "src/store",
-    "tailwind.config.js",
-    "postcss.config.cjs"
+    "aaatailwind.config.js",
+    "postcss.config.mjs"
   ],
   "exclude": ["node_modules", "src/**/*.spec.ts"],
   "references": [

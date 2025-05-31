@@ -1,18 +1,18 @@
-@layer components {
-  .home {
-    @apply w-full h-full flex flex-col p-[1rem];
-    .slog {
-      @apply flex flex-col justify-center items-center h-[34vh] bg-cover bg-center bg-[url('../../../../../Libs/assets/images/world.jpg')];
-      .title {
-        @apply text-[1.875rem];
-      }
-      .subTitle {
-      }
+@reference '../../../../../Libs/assets/styles/global.css';
+
+.home {
+  @apply w-full h-full flex flex-col p-[1rem];
+  .slog {
+    @apply flex flex-col justify-center items-center h-[34vh] bg-cover bg-center bg-[url('../../../../../Libs/assets/images/world.jpg')];
+    .title {
+      @apply text-[1.875rem] text-white;
     }
-    .destinations {
-      @apply flex flex-col;
-      .title {
-      }
+    .subTitle {
+    }
+  }
+  .destinations {
+    @apply flex flex-col;
+    .title {
     }
   }
 }

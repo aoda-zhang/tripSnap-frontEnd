@@ -1,5 +1,5 @@
-import '@shared/assets/styles/global.css';
 import { ThemeProvider } from '@mui/material';
+import '@shared/assets/styles/global.css';
 import MUITheme from '@shared/assets/theme/mui-theme';
 import ErrorPage from '@shared/components/Error';
 import SuspenseFallback from '@shared/components/SuspenceFallback';

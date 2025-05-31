@@ -5,6 +5,9 @@
     "source.fixAll": "true",
     "source.fixAll.eslint": "true"
   },
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+  "less.lint.unknownAtRules": "ignore",
   "eslint.validate": [
     "javascript",
     "typescript",
@@ -14,5 +17,10 @@
   "prettier.requireConfig": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["className\\s*=\\s*\"([^\"]*)", 1],
+    ["className\\s*=\\s*{`([^`]*)", 1],
+    ["class\\s*=\\s*\"([^\"]*)", 1]
+  ]
 }

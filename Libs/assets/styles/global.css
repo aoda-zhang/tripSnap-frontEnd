@@ -1,4 +1,8 @@
 @import 'tailwindcss';
+@theme {
+  --color-primary: #1d4ed8;
+  --color-secondary: #f59e0b;
+}
 @layer base {
   html {
     font-size: 16px;
