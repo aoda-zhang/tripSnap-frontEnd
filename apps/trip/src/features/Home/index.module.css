@@ -1,18 +1,26 @@
 @reference '../../../../../Libs/assets/styles/global.css';
 
 .home {
-  @apply w-full h-full flex flex-col p-[1rem];
+  @apply flex flex-col;
   .slog {
-    @apply flex flex-col justify-center items-center h-[34vh] bg-cover bg-center bg-[url('../../../../../Libs/assets/images/world.jpg')];
+    @apply relative flex flex-col justify-center items-center text-center p-[.625rem] mb-5 h-[30vh] lg:h-[40vh] overflow-hidden text-black;
+    &::before {
+      content: '';
+      @apply absolute inset-0 bg-center bg-cover blur-[.0625rem] -z-10;
+      background-image: url('../../../../../Libs/assets/images/world.jpeg');
+    }
     .title {
-      @apply text-[1.875rem] text-white;
+      @apply text-[1.5rem] lg:text-[3.125rem] font-bold;
     }
     .subTitle {
+      @apply text-[1rem] lg:text-[1.875rem];
     }
   }
+
   .destinations {
     @apply flex flex-col;
     .title {
+      @apply text-[1.25rem];
     }
   }
 }

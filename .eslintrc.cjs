@@ -14,6 +14,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: [
     '@typescript-eslint',
+    'react-refresh',
     '@tanstack/query',
     'react',
     'react-hooks',
@@ -27,6 +28,7 @@ module.exports = {
     },
   },
   rules: {
+    'react-refresh/only-export-components': 'warn',
     '@tanstack/query/exhaustive-deps': 'error',
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',

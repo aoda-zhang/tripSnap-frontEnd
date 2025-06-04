@@ -1,58 +1,32 @@
+@reference "../../assets/styles/global.css";
+
 .layout {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 0.38rem;
-  height: 100%;
+  @apply flex flex-col box-border h-screen;
   .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    border-bottom: 1px solid $gray2;
-    position: sticky;
-    background-color: $white;
-    top: 0;
-    padding: 0.62rem;
-    z-index: 999;
+    @apply flex items-center justify-between box-border sticky bg-white top-0 p-[.625rem] z-[999];
     .brand {
-      cursor: pointer;
-      font-size: 1.38rem;
-      font-weight: 800;
+      @apply cursor-pointer text-[1.375rem] font-bold;
     }
     .right {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6vw;
+      @apply flex justify-between items-center gap-[2.5rem];
+      .noMobile {
+        @apply hidden lg:flex;
+      }
+      .mobile {
+        @apply hidden lg:flex;
+      }
       .login {
-        padding: 0.15rem 1.08rem;
-        border-radius: 1.08rem;
-        background-color: $blue6;
-        color: $white;
+        @apply px-[.625rem] py-[.25rem] rounded-[.375rem] bg-primary text-white;
       }
       .item {
-        cursor: pointer;
+        @apply cursor-pointer;
       }
     }
   }
   .content {
-    width: 100%;
-    flex: 1;
-    box-sizing: border-box;
-    padding: 0 3.85rem;
-    background-color: $light;
-    @include medias(($s, $m)) {
-      padding: 0.77rem;
-    }
+    @apply flex-1 box-border p-[.625rem] pt-[1.875rem] lg:p-[3.75rem] lg:pt-[.625rem];
   }
   .footer {
-    padding: 1.88rem;
-    border-top: 1px solid $gray3;
-    background-color: $light;
-    text-align: center;
+    @apply p-[1.125rem] text-center;
   }
-}
-:global(.ant-drawer-close) {
-  font-size: 1.54rem !important;
 }

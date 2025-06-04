@@ -1,38 +1,13 @@
-@layer components {
-  .lang {
-    @apply flex items-center gap-[.625rem] cursor-pointer min-w-[12.5rem];
-  }
-  .languageSelect {
-    @apply flex flex-col gap-[.625rem] text-[.875rem] p-[.625rem]  rounded-[10%] border;
-    .item {
-      @apply cursor-pointer text-left;
-      &:hover {
-        @apply border-b;
-      }
-    }
-  }
-}
-/* .lang {
-  min-width: 200px;
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  cursor: pointer;
+@reference '../../assets/styles/global.css';
+.lang {
+  @apply flex items-center gap-[.625rem] cursor-pointer min-w-[12.5rem];
 }
 .languageSelect {
-  display: flex;
-  flex-direction: column;
-  gap: 0.625rem;
-  font-size: 0.875rem;
-  padding: 0.625rem;
-  color: $gray8;
-  border-radius: 10%;
-  border: 1px solid $gray4;
+  @apply flex flex-col gap-[.625rem] text-[.875rem] p-[.625rem] text-gray-600 border-gray-400 rounded-[10%] border;
   .item {
-    cursor: pointer;
-    text-align: left;
+    @apply cursor-pointer text-left;
     &:hover {
-      border-bottom: 1px solid $gray6;
+      @apply border-b border-gray-500;
     }
   }
-} */
+}

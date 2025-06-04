@@ -1,12 +1,8 @@
+@reference "../../../assets/styles/global.css";
 .radioLabel {
-  display: block;
-  font-size: 1rem;
-  margin-bottom: 0.625rem;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+  @apply cursor-pointer flex items-center text-[1rem] mb-[.625rem];
 }
 
 .radioInput {
-  margin-right: 0.5rem;
+  @apply mr-[.5rem];
 }

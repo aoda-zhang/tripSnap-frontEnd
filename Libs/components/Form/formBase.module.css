@@ -1,17 +1,12 @@
+@reference "../../assets/styles/global.css";
 .label {
-  font-size: 1rem;
-  font-weight: 400;
-  color: $gray8;
-  margin-bottom: 0.62rem;
+  @apply text-[1rem] mb-[.625rem] text-gray-800 font-normal;
 }
 
 .baseInputContainer {
-  min-width: 20vw;
-  margin-bottom: 1.54rem;
+  @apply min-w-[20vw] mb-[1.5rem];
 }
 
 .errorMessage {
-  font-size: 0.8rem;
-  color: $red7;
-  margin-top: 0.5rem;
+  @apply text-[.75rem] text-red-700 mt-[.5rem];
 }

@@ -1,8 +1,8 @@
 import { ThemeProvider } from '@mui/material';
 import '@shared/assets/styles/global.css';
-import MUITheme from '@shared/assets/theme/mui-theme';
+import MUITheme from '@shared/assets/styles/MUI-theme';
 import ErrorPage from '@shared/components/Error';
-import SuspenseFallback from '@shared/components/SuspenceFallback';
+import SuspenseFallback from '@shared/components/SuspenseFeedback';
 import { FC, Suspense, useMemo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { toast, Toaster } from 'react-hot-toast';

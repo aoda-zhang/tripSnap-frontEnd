@@ -9,10 +9,10 @@ import styles from './index.module.css';
 import RootLayoutFooter from './RootLayoutFooter';
 import RootLayoutHeader from './RootLayoutHeader';
 
-export enum RootLayoutHandles {
-  isMenuAvaliable = 'isMenuAvaliable',
-  noToken = 'noToken',
-}
+export const RootLayoutHandles = {
+  isMenuAvailable: 'isMenuAvailable',
+  noToken: 'noToken',
+};
 
 export interface LayoutProps {
   userInfo: {
@@ -25,15 +25,15 @@ const RootLayout = ({ userInfo }: LayoutProps) => {
   const currentRouter = matches?.[matches?.length ?? 0 - 1] as {
     handle?: Record<string, any>;
   };
-  const isMenuAvaliable =
-    currentRouter?.handle?.[RootLayoutHandles.isMenuAvaliable] ?? true;
+  const isMenuAvailable =
+    currentRouter?.handle?.[RootLayoutHandles.isMenuAvailable] ?? true;
   const isLogin = storageTool.get(StorageKeys.accessToken);
   const { t } = useTranslation();
 
   return (
     <div className={styles.layout}>
       <RootLayoutHeader
-        isMenuAvaliable={isMenuAvaliable}
+        isMenuAvailable={isMenuAvailable}
         isLogin={isLogin}
         userInfo={userInfo}
         t={t}

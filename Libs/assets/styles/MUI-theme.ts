@@ -1,11 +1,9 @@
 import { createTheme } from '@mui/material/styles';
 
-import { themeColors } from './tailwind-theme';
-
 const MUITheme = createTheme({
   palette: {
-    primary: { main: themeColors.primary },
-    secondary: { main: themeColors.primary },
+    primary: { main: '#8b0000' }, // Dark Red
+    secondary: { main: '#f59e0b' }, // Amber
   },
   spacing: 8,
 });

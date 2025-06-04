@@ -1,10 +1,64 @@
 @import 'tailwindcss';
 @theme {
-  --color-primary: #1d4ed8;
+  --color-primary: #8b0000;
   --color-secondary: #f59e0b;
+  --color-background: #f3f4f6;
+  --color-text: #111827;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+  --color-accent: #1f2937;
+
+  /* === Brand Colors === */
+  --color-primary-light: #b22222;
+  --color-primary-dark: #5b0a0a;
+
+  /* === Secondary and Accent Colors === */
+  /* --color-accent: #1F2937;  already set above */
+
+  /* === Background and Surface Colors === */
+  --color-surface: #ffffff;
+
+  /* === Neutral Colors === */
+  --color-neutral: #7c4d3a;
+  --color-muted: #e5e7eb;
+
+  /* === Semantic Colors === */
+  --color-error: #ef4444;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+
+  /* === Spacing === */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* === Border Radius === */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-full: 9999px;
+
+  /* === Font Sizes === */
+  --font-size-sm: 0.875rem;
+  --line-height-sm: 1.25rem;
+  --line-height-base: 1.5rem;
+  --line-height-lg: 1.75rem;
+  --font-size-xl: 1.25rem;
+  --line-height-xl: 1.75rem;
+
+  /* === Font Families === */
+  --font-family-sans: 'Inter', sans-serif;
+  --font-family-serif: 'Merriweather', serif;
+  --font-family-mono: 'Menlo', monospace;
+  --font-size-base: 16px;
+  --font-size-lg: 1.125rem;
 }
 @layer base {
   html {
     font-size: 16px;
+    width: 100vw;
+    height: 100vh;
   }
 }
