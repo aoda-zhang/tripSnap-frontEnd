@@ -1,6 +1,10 @@
 import RootLayout, { RootLayoutHandles } from '@shared/components/RootLayout';
 import { lazy } from 'react';
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from 'react-router-dom';
 
 import useGlobalStore from '@/store/globalStore';
 
@@ -67,4 +71,9 @@ const routeOptions = [
   },
 ];
 const routes = createBrowserRouter(routeOptions);
-export default routes;
+
+const AppRouterProvider = () => {
+  return <RouterProvider router={routes} />;
+};
+
+export default AppRouterProvider;
