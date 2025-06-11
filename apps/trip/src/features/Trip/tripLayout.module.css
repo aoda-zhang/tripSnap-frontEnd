@@ -1,50 +1,22 @@
+@reference "../../../../../Libs/assets/styles/global.css";
+
 .trip {
-  display: flex;
-  flex-direction: column;
-  gap: 3.08rem;
-  margin-top: 3.08rem;
-  padding: 0 6.15rem;
-  @include medias(($s, $m)) {
-    padding: 0.46rem;
-  }
+  @apply flex flex-col gap-[3.125rem] mt-[3.125rem] px-[0.46rem]  lg:px-[20%];
   .inputGroup {
-    display: flex;
-    justify-content: space-between;
-    width: 50vw;
-    gap: 10vw;
-    @include medias(($s, $m)) {
-      flex-direction: column;
-      gap: 0;
-      width: 100%;
-    }
+    @apply flex flex-row  justify-between w-full gap-0 lg:flex-col lg:w-[50vw] lg:gap-[10vw];
   }
   .baseForm {
-    width: 50vw;
-    @include medias(($s, $m)) {
-      width: 100%;
-    }
+    @apply w-full lg:w-[40vw];
   }
-  .phoneNumber {
-    min-width: 20vw;
-    margin-bottom: 1.54rem;
+  .baseButton {
+    @apply lg:w-fit;
   }
 
-  .baseButton {
-    @include medias(($l, $xl)) {
-      width: fit-content;
-    }
-  }
   .buttons {
-    display: flex;
-    gap: 1.25rem;
-    margin-bottom: 1.25rem;
-    @include medias(($s, $m)) {
-      flex-direction: column;
-    }
+    @apply flex gap-[1.25rem] mb-[1.25rem] sm:flex-col;
   }
   .caption {
-    font-size: 1.54rem;
-    font-weight: 600;
+    @apply text-[1.54rem] font-semibold;
   }
   :global(.Mui-error) {
     margin-left: 0;

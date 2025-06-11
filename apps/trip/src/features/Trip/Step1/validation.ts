@@ -6,7 +6,6 @@ export enum Step1FormMapping {
   Participants = 'participants',
   Transport = 'transport',
   TransportNo = 'transportNo',
-  Const = 'const',
 }
 // Validation schema
 export const getStep1schema = (t: (key: string) => string) => {
@@ -25,15 +24,8 @@ export const getStep1schema = (t: (key: string) => string) => {
     [Step1FormMapping.Participants]: z
       .number()
       .min(1, 'Participants is required'),
-    [Step1FormMapping.Const]: z.number().optional(),
     [Step1FormMapping.Transport]: z.string(),
-    [Step1FormMapping.TransportNo]: z
-      .string()
-      .min(1, 'Transport number is required')
-      .regex(
-        /^(?=.*[A-Z])(?=.*\d)[A-Z\d]{1,10}$/,
-        'Must include uppercase letters and numbers only, max 10 characters',
-      ),
+    [Step1FormMapping.TransportNo]: z.string(),
   });
 };
 

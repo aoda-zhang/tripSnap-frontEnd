@@ -11,8 +11,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
 import envConfig, { EnvVariables } from '../config';
-
-import AppRouterProvider from './routes';
+import '../i18n';
 
 type AppProviderProps = {
   children: ReactNode;
@@ -32,7 +31,6 @@ const AppProvider = ({ children }: AppProviderProps) => {
           <ThemeProvider theme={MUITheme}>
             <Toaster />
             {children}
-            <AppRouterProvider />
           </ThemeProvider>
         </QueryClientProvider>
       </ErrorBoundary>
