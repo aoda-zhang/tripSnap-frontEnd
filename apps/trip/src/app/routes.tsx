@@ -6,11 +6,12 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import useGlobalStore from '@/store/globalStore';
+import useGlobalStore from './globalStore';
 
 const RootLayoutWithProps = () => {
   const userInfo = useGlobalStore((state) => state?.userInfo);
-  return <RootLayout userInfo={userInfo} />;
+  const menuItems = useGlobalStore((state) => state?.menuItems);
+  return <RootLayout userInfo={userInfo} menuItems={menuItems} />;
 };
 const Home = lazy(() => import('@/features/Home'));
 const Trip = lazy(() => import('@/features/Trip/tripLayout'));

@@ -1,3 +1,10 @@
 # To be a JavaScript FullStack (FrontEnd)
 
-git clone --recurse-submodules <main-repo-url>
+Complete the project by best practice, then share to the social media (Dev, Medium)
+
+## TODO list
+
+- tailwind best practice
+- dynamic token refresh
+- useQuery best practice
+- dark model

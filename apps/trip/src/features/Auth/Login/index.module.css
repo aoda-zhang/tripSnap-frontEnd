@@ -1,18 +1,8 @@
+@reference "../../../../../../Libs/assets/styles/global.css";
 .loginBox {
-  display: flex;
-  justify-content: space-between;
-  @include medias(($s, $m)) {
-    flex-direction: column;
-  }
+  @apply flex justify-between flex-col lg:flex-row;
   .loginForm {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 3.08rem;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 6%;
+    @apply flex flex-1 justify-center flex-row lg:flex-col gap-[3.125rem] box-border p-[6%];
     .welcome {
       display: flex;
       align-items: center;

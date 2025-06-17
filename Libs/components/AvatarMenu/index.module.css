@@ -1,8 +1,7 @@
+@reference "../../../Libs/assets/styles/global.css";
 .item {
-  font-size: 0.92rem !important;
-  padding: 0.62rem 0.31rem !important;
+  @apply text-[1rem] px-[.5625rem] py-[.375rem];
 }
 .avatar {
-  cursor: pointer;
-  background-color: $blue6;
+  @apply cursor-pointer bg-blue-600;
 }

@@ -1,13 +1,14 @@
 import { memo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Outlet, useMatches } from 'react-router-dom';
 
-import StorageKeys from '../../constants/storageKeys';
-import storageTool from '../../utils/storage';
+// import StorageKeys from '../../constants/storageKeys';
+// import storageTool from '../../utils/storage';
 
 import styles from './index.module.css';
 import RootLayoutFooter from './RootLayoutFooter';
-import RootLayoutHeader from './RootLayoutHeader';
+import RootLayoutHeader from './RootLayoutMenu/RootLayoutHeader';
+import { MenuItemType } from './RootLayoutMenu/RootLayoutMenuRender';
+import RootLayoutSidebar from './RootLayoutMenu/RootLayoutSidebar';
 
 export const RootLayoutHandles = {
   isMenuAvailable: 'isMenuAvailable',
@@ -15,33 +16,30 @@ export const RootLayoutHandles = {
 };
 
 export interface LayoutProps {
-  userInfo: {
-    [key: string]: any;
-  };
+  // userInfo: {
+  //   [key: string]: any;
+  // };
+  menuItems: MenuItemType[];
 }
 
-const RootLayout = ({ userInfo }: LayoutProps) => {
+const RootLayout = ({ menuItems = [] }: LayoutProps) => {
   const matches = useMatches();
   const currentRouter = matches?.[matches?.length ?? 0 - 1] as {
     handle?: Record<string, any>;
   };
   const isMenuAvailable =
     currentRouter?.handle?.[RootLayoutHandles.isMenuAvailable] ?? true;
-  const isLogin = storageTool.get(StorageKeys.accessToken);
-  const { t } = useTranslation();
+  // const isLogin = storageTool.get(StorageKeys.accessToken);
 
   return (
     <div className={styles.layout}>
-      <RootLayoutHeader
-        isMenuAvailable={isMenuAvailable}
-        isLogin={isLogin}
-        userInfo={userInfo}
-        t={t}
-      />
+      <RootLayoutHeader isMenuAvailable={isMenuAvailable} menuItems={menuItems}>
+        <RootLayoutSidebar menuItems={menuItems} />
+      </RootLayoutHeader>
       <main className={styles.content}>
         <Outlet />
       </main>
-      <RootLayoutFooter t={t} />
+      <RootLayoutFooter />
     </div>
   );
 };
