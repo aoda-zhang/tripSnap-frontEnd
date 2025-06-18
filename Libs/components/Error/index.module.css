@@ -1,20 +1,8 @@
-@layer components {
-  .error {
-    @apply flex flex-col items-center justify-center;
-    .login {
-    }
+@reference '../../assets/styles/global.css';
+
+.error {
+  @apply flex flex-col items-center justify-center pt-[6%] text-lg;
+  .login {
+    @apply px-0 py-2.5 text-green-600 cursor-pointer;
   }
 }
-/* .error {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 6%;
-  font-size: larger;
-  .login {
-    padding: 0 0.62rem;
-    color: $green6;
-    cursor: pointer;
-  }
-} */

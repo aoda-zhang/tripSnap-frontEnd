@@ -1,6 +1,7 @@
 import { Drawer } from '@mui/material';
 import { useMemo } from 'react';
 
+import styles from './index.module.css';
 import { useRootLayoutHeaderContext } from './RootLayoutHeader';
 import RootLayoutMenuRender, { MenuItemType } from './RootLayoutMenuRender';
 
@@ -23,9 +24,10 @@ const RootLayoutSidebar = ({ menuItems }: RootLayoutSidebarProps) => {
       open={rootHeaderContext?.isSidebarAvailable}
       anchor="right"
       onClose={rootHeaderContext?.onCloseSidebar}
-      className="root-layout-sidebar"
     >
-      <RootLayoutMenuRender menuItems={getMenuOptions} />
+      <div className={styles.rootSidebarPaper}>
+        <RootLayoutMenuRender menuItems={getMenuOptions} />
+      </div>
     </Drawer>
   );
 };

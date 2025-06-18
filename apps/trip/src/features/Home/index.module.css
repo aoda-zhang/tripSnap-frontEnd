@@ -3,17 +3,17 @@
 .home {
   @apply flex flex-col;
   .slog {
-    @apply relative flex flex-col justify-center items-center text-center p-[.625rem] mb-5 h-[30vh] lg:h-[40vh] overflow-hidden text-black;
+    @apply relative flex flex-col justify-center items-center text-center p-[.625rem] mb-5 h-[30vh] lg:h-[40vh] overflow-hidden text-accent;
     &::before {
       content: '';
-      @apply absolute inset-0 bg-center bg-cover blur-[.0625rem] -z-10;
+      @apply absolute inset-0 bg-center bg-cover blur-[.0625rem] z-10;
       background-image: url('../../../../../Libs/assets/images/world.jpeg');
     }
     .title {
-      @apply text-[1.5rem] lg:text-[3.125rem] font-bold;
+      @apply text-[1.5rem] lg:text-[3.125rem] font-bold z-20;
     }
     .subTitle {
-      @apply text-[1rem] lg:text-[1.875rem];
+      @apply text-[1rem] lg:text-[1.875rem] z-20;
     }
   }
 

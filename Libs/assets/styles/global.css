@@ -5,7 +5,7 @@
   --color-background: #f3f4f6;
   --color-text: #111827;
   --color-text-secondary: #6b7280;
-  --color-border: #e5e7eb;
+  --color-border: #cbd5e1;
   --color-accent: #1f2937;
 
   /* === Brand Colors === */
@@ -55,10 +55,43 @@
   --font-size-base: 16px;
   --font-size-lg: 1.125rem;
 }
+
+/* Manual dark mode override */
+.dark {
+  --color-primary: #ff6b6b;
+  --color-secondary: #fbbf24;
+  --color-background: #1f2937;
+  --color-text: #f9fafb;
+  --color-text-secondary: #9ca3af;
+  --color-border: #94a3b8;
+  --color-accent: #6b7280;
+
+  --color-surface: #374151;
+  --color-neutral: #a78bfa;
+  --color-muted: #4b5563;
+
+  --color-error: #f87171;
+  --color-success: #34d399;
+  --color-warning: #facc15;
+}
+
 @layer base {
   html {
     font-size: 16px;
     width: 100vw;
     height: 100vh;
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }
+
+  body {
+    color: var(--color-text);
+    background-color: var(--color-background);
+  }
+
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-border);
   }
 }

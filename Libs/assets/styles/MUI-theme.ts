@@ -5,7 +5,7 @@ const MUITheme = createTheme({
     primary: { main: '#8b0000' }, // Dark Red
     secondary: { main: '#f59e0b' }, // Amber
   },
-  spacing: 8,
+  spacing: 4,
 });
 
 export default MUITheme;

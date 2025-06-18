@@ -1,6 +1,11 @@
 @reference "../../../assets/styles/global.css";
+
 .header {
-  @apply flex items-center gap-14 box-border sticky bg-white top-0 p-[.625rem] z-[999];
+  @apply flex items-center gap-4 box-border sticky top-0 p-[.625rem] z-[999];
+}
+
+.rootSidebarPaper {
+  @apply h-full bg-background text-text;
 }
 
 .brand {
@@ -16,5 +21,5 @@
   @apply px-[.625rem] py-[.25rem] rounded-[.375rem] bg-primary text-white m-4 lg:m-0;
 }
 .item {
-  @apply cursor-pointer text-center p-sm border-b border-gray-300 lg:border-none;
+  @apply cursor-pointer flex justify-center items-center p-sm border-b border-border md:border-none;
 }

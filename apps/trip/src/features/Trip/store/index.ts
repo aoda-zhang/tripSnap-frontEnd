@@ -1,5 +1,5 @@
 import StorageKeys from '@/typings/storage.types';
-import createStore from '@/utils/createStore';
+import createStore from '@/utils/createStoreSlice';
 
 type TripState = {
   tripStep: number;

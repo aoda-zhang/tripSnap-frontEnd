@@ -1,7 +1,7 @@
 import type { UserInfoType } from '@/typings/auth.types';
 import StorageKeys from '@/typings/storage.types';
 import type {} from '@/typings/trip.types';
-import createStoreSlice from '@/utils/createStore';
+import createStoreSlice from '@/utils/createStoreSlice';
 
 type GlobalState = {
   userInfo: UserInfoType;
@@ -55,11 +55,18 @@ const initialState: GlobalState = {
       },
       type: 'component',
     },
+    {
+      label: 'common.darkMode',
+      component: 'DarkModeToggle',
+      classNames: ['item'],
+      type: 'component',
+    },
   ],
 };
 const useGlobalStore = createStoreSlice<GlobalState, GlobalActions>({
   name: StorageKeys.globalState,
   state: initialState,
+  enablePersist: true,
   actions: (set) => ({
     setUserInfo: (userInfo: UserInfoType) => set(() => ({ userInfo })),
   }),

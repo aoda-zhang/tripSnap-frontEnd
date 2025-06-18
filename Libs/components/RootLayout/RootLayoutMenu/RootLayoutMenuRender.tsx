@@ -4,6 +4,7 @@ import { cloneElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
+import DarkModeToggle from '../../DarkModeToggle';
 import LangSwitcher from '../../LangSwitcher';
 
 import styles from './index.module.css';
@@ -33,6 +34,7 @@ const RootLayoutMenuRender = (props: MenuRenderType) => {
   const HeaderComponentMappings = {
     LangSwitcher: <LangSwitcher />,
     AlignJustify: <AlignJustify />,
+    DarkModeToggle: <DarkModeToggle />,
   };
   const { menuItems } = props;
   const rootHeaderContext = useRootLayoutHeaderContext();
@@ -72,16 +74,25 @@ const RootLayoutMenuRender = (props: MenuRenderType) => {
           item.component as keyof typeof HeaderComponentMappings
         ];
       return (
-        <button
-          key={item.label}
-          type="button"
+        <div
+          className={classNames(itemClassNames)}
+          key={item?.label}
+          role="button"
+          tabIndex={0}
           onClick={() => {
             if (!item.action) return;
             handleHeaderAction(item.action, item?.props ?? {});
           }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              if (!item.action) return;
+              handleHeaderAction(item.action, item?.props ?? {});
+            }
+          }}
         >
           {Component && cloneElement(Component, item.props ?? {})}
-        </button>
+        </div>
       );
     }
 
