@@ -2,59 +2,59 @@ import { create } from 'zustand';
 import { devtools, persist, createJSONStorage } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
-type ActionBuilder<S, A> = (
+import envConfig, { EnvVariables } from '@/config';
+
+type ActionBuilder<State, Actions> = (
   set: (
-    partial: Partial<S & A> | ((state: S & A) => Partial<S & A>),
+    partial:
+      | Partial<State & Actions>
+      | ((state: State & Actions) => Partial<State & Actions>),
     replace?: boolean,
   ) => void,
-  get: () => S & A,
-) => A;
+  get: () => State & Actions,
+) => Actions;
 
-type CreateStoreOptions<S, A> = {
+type CreateStoreOptions<State, Actions> = {
   name: string;
-  state: S;
-  actions: ActionBuilder<S, A>;
+  state: State;
+  actions: ActionBuilder<State, Actions>;
   enablePersist?: boolean;
   useSessionStorage?: boolean;
+  partialize?: (state: State & Actions) => Partial<State>;
 };
 
-const createStoreSlice = <S, A>({
+const createStoreSlice = <State, Actions>({
   name,
   state,
   actions,
   enablePersist = false,
   useSessionStorage = true,
-}: CreateStoreOptions<S, A>) => {
-  // Create a base store with immer for immutability
-  const base = immer<S & A>((set, get) => ({
+  // partialize,
+}: CreateStoreOptions<State, Actions>) => {
+  const base = immer<State & Actions>((set, get) => ({
     ...state,
     ...actions(set, get),
   }));
 
   const storage = createJSONStorage(() => {
-    try {
-      return useSessionStorage ? sessionStorage : localStorage;
-    } catch {
-      return undefined;
-    }
+    return useSessionStorage ? sessionStorage : localStorage;
   });
 
   let storeCreator = base;
 
-  if (process.env.NODE_ENV !== 'production') {
-    // Enable devtools only in development mode
+  if (envConfig?.env !== EnvVariables.prod) {
     storeCreator = devtools(storeCreator, { name });
   }
 
   if (enablePersist) {
-    // Enable persistence if specified
     storeCreator = persist(storeCreator, {
       name,
       storage,
+      // partialize,
     });
   }
 
-  return create<S & A>()(storeCreator);
+  return create<State & Actions>()(storeCreator);
 };
 
 export default createStoreSlice;

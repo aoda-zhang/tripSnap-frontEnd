@@ -9,66 +9,22 @@ type GlobalState = {
 };
 type GlobalActions = {
   setUserInfo: (userInfo: UserInfoType) => void;
+  setMenuItems: (menuItems: any[]) => void;
 };
 const initialState: GlobalState = {
   userInfo: {
     userName: '',
   },
-  menuItems: [
-    {
-      label: 'common.brand',
-      isAvailableOnMobile: true,
-      to: '/',
-      classNames: ['brand'],
-      type: 'link',
-    },
-    {
-      label: 'common.record',
-      to: '/trip/step1',
-      classNames: ['item'],
-      type: 'link',
-    },
-    {
-      label: 'common.history',
-      to: '/trip/history',
-      classNames: ['item'],
-      type: 'link',
-    },
-    {
-      label: 'common.login',
-      to: '/login',
-      classNames: ['item', 'login'],
-      type: 'link',
-    },
-    {
-      label: 'common.language',
-      component: 'LangSwitcher',
-      type: 'component',
-    },
-    {
-      label: 'common.mobileMenu',
-      isOnlyMobile: true,
-      component: 'AlignJustify',
-      action: 'openSidebarMenu',
-      props: {
-        size: 30,
-      },
-      type: 'component',
-    },
-    {
-      label: 'common.darkMode',
-      component: 'DarkModeToggle',
-      classNames: ['item'],
-      type: 'component',
-    },
-  ],
+  menuItems: [],
 };
 const useGlobalStore = createStoreSlice<GlobalState, GlobalActions>({
   name: StorageKeys.globalState,
   state: initialState,
   enablePersist: true,
+  // useSessionStorage: true,
   actions: (set) => ({
     setUserInfo: (userInfo: UserInfoType) => set(() => ({ userInfo })),
+    setMenuItems: (menuItems: any[]) => set(() => ({ menuItems })),
   }),
 });
 export default useGlobalStore;

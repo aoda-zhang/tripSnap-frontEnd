@@ -1,9 +1,11 @@
 import { ImageList, ImageListItem, ImageListItemBar } from '@mui/material';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useDefaultViews } from './apis/queries';
+import { useDefaultMenu, useDefaultViews } from './apis/queries';
 import styles from './index.module.css';
+
+import useGlobalStore from '@/app/globalStore';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -14,6 +16,11 @@ const Home = () => {
     };
   };
   const { data: defaultViews } = useDefaultViews();
+  const { data: menuItems } = useDefaultMenu();
+  const { setMenuItems } = useGlobalStore();
+  useEffect(() => {
+    setMenuItems(menuItems ?? []);
+  }, [menuItems, setMenuItems]);
 
   return (
     <div className={styles.home}>
