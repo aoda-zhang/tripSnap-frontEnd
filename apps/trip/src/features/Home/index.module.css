@@ -1,4 +1,4 @@
-@reference '../../../../../Libs/assets/styles/global.css';
+@reference '../../../../../Libs/assets/theme/global.css';
 
 .home {
   @apply flex flex-col;

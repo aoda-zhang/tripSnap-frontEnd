@@ -12,7 +12,7 @@ import * as AuthAPI from '../apis';
 
 import style from './index.module.css';
 
-import globalStore from '@/app/globalStore';
+import { useGlobalActions } from '@/app/globalStore';
 import envConfig from '@/config';
 import StorageKeys from '@/typings/storage.types';
 
@@ -20,7 +20,7 @@ const Login: FC = () => {
   const formProps = useForm({});
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { setUserInfo } = globalStore();
+  const { setUserInfo } = useGlobalActions();
   const { mutate, isLoading } = useMutation(AuthAPI.login, {
     onSuccess: (loginInfo) => {
       if (loginInfo?.accessToken && loginInfo?.refreshToken) {

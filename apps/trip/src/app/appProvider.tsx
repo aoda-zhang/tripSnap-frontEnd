@@ -1,10 +1,11 @@
 import { ThemeProvider } from '@mui/material';
-import '@shared/assets/styles/global.css';
-import MUITheme from '@shared/assets/styles/MUI-theme';
+import '@shared/assets/theme/global.css';
+import initializeThemeClass from '@shared/assets/theme/initializeThemeClass';
+import MUITheme from '@shared/assets/theme/MUI-theme';
 import ErrorPage from '@shared/components/Error';
 import SuspenseFallback from '@shared/components/SuspenseFeedback';
 import getReactQueryOptions from '@shared/cores/react-query';
-import { ReactNode, Suspense, useState } from 'react';
+import { ReactNode, Suspense, useEffect, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Toaster } from 'react-hot-toast';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -21,6 +22,9 @@ const AppProvider = ({ children }: AppProviderProps) => {
   const [queryClient] = useState(() => {
     return new QueryClient(getReactQueryOptions(envConfig));
   });
+  useEffect(() => {
+    initializeThemeClass();
+  }, []);
   return (
     <Suspense fallback={<SuspenseFallback />}>
       <ErrorBoundary FallbackComponent={ErrorPage}>

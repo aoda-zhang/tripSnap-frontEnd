@@ -1,4 +1,4 @@
-@reference "../../../Libs/assets/styles/global.css";
+@reference "../../../Libs/assets/theme/global.css";
 .item {
   @apply text-[1rem] px-[.5625rem] py-[.375rem];
 }

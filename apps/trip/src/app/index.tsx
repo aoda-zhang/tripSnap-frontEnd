@@ -1,4 +1,4 @@
-import '@shared/assets/styles/global.css';
+import '@shared/assets/theme/global.css';
 import { FC } from 'react';
 
 import AppProvider from './appProvider';

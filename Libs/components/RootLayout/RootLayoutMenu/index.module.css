@@ -1,4 +1,4 @@
-@reference "../../../assets/styles/global.css";
+@reference "../../../assets/theme/global.css";
 
 .header {
   @apply flex items-center gap-4 box-border sticky top-0 p-[.625rem] z-[999];

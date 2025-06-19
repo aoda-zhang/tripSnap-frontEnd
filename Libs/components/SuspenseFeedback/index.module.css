@@ -1,4 +1,4 @@
-@reference "../../assets/styles/global.css";
+@reference "../../assets/theme/global.css";
 
 .feedback {
   @apply h-full w-full flex flex-col items-center justify-center;

@@ -1,13 +1,13 @@
 import { useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
-import useTripStore from '../store';
+import { useTripActions } from '../store';
 
 import * as TripAPI from './api';
 
 export const useAddTrip = () => {
   const navigate = useNavigate();
-  const { setStep } = useTripStore();
+  const { setStep } = useTripActions();
 
   return useMutation(TripAPI.addTripBasicInfo, {
     onSuccess: (data) => {
@@ -19,7 +19,7 @@ export const useAddTrip = () => {
 
 export const useGetTrip = () => {
   const navigate = useNavigate();
-  const { setStep } = useTripStore();
+  const { setStep } = useTripActions();
 
   return useMutation(TripAPI.addTripBasicInfo, {
     onSuccess: (data) => {

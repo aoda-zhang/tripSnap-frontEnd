@@ -1,12 +1,9 @@
 import { MoonStar, SunMoon } from 'lucide-react';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 
+import initializeThemeClass from '../../assets/theme/initializeThemeClass';
+import ThemeKey from '../../constants/themeKey';
 import storageTool from '../../utils/storage';
-
-const ThemeKey = {
-  LIGHT: 'light',
-  DARK: 'dark',
-};
 
 const ModeIcon = ({ isLight }: { isLight: boolean }) => {
   return isLight ? (
@@ -22,24 +19,11 @@ const DarkModeToggle = () => {
     return value === ThemeKey.LIGHT || !value;
   });
 
-  const handleDarkRootClass = useCallback((light: boolean) => {
-    if (light) {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
-    }
-  }, []);
-
-  useEffect(() => {
-    // Initialize the dark mode based on state
-    handleDarkRootClass(isLight);
-  }, [isLight, handleDarkRootClass]);
-
   const handleModeToggle = () => {
     const newTheme = !isLight;
     setIsLight(newTheme);
     storageTool.set('darkMode', newTheme ? ThemeKey.LIGHT : ThemeKey.DARK);
-    handleDarkRootClass(newTheme);
+    initializeThemeClass();
   };
 
   return (

@@ -1,16 +1,12 @@
-@reference "../../../../../../Libs/assets/styles/global.css";
+@reference "../../../../../../Libs/assets/theme/global.css";
 .loginBox {
   @apply flex justify-between flex-col lg:flex-row;
   .loginForm {
-    @apply flex flex-1 justify-center flex-row lg:flex-col gap-[3.125rem] box-border p-[6%];
+    @apply flex flex-1 justify-center flex-col lg:flex-col gap-[3.125rem] box-border p-[6%];
     .welcome {
-      display: flex;
-      align-items: center;
-      gap: 1.54rem;
+      @apply flex items-center justify-center gap-6;
       .text {
-        font-size: 2.31rem;
-        font-family: $en-font-1, $zh-font-1;
-        color: $blue6;
+        @apply text-4xl;
       }
     }
     .icon {

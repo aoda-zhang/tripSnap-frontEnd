@@ -1,4 +1,4 @@
-@reference '../../assets/styles/global.css';
+@reference '../../assets/theme/global.css';
 
 .error {
   @apply flex flex-col items-center justify-center pt-[6%] text-lg;

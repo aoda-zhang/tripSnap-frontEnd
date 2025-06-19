@@ -1,4 +1,4 @@
-@reference "../../../assets/styles/global.css";
+@reference "../../../assets/theme/global.css";
 .radioLabel {
   @apply cursor-pointer flex items-center text-[1rem] mb-[.625rem];
 }

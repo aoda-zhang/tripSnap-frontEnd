@@ -8,10 +8,9 @@ import { useTranslation } from 'react-i18next';
 import { useMutation } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import useTripStore from '../store';
+import { TripAPI } from '../api/tripAPI';
+import { useTripActions } from '../store';
 import styles from '../tripLayout.module.css';
-
-import { TripAPI } from '@/apis';
 
 export interface Step2FormType {
   tripViews: string[];
@@ -29,7 +28,7 @@ const Step3: FC = () => {
   const { tripId } = useParams<{ tripId: string }>();
   const formProps = useForm<Step2FormType>();
   const { handleSubmit } = formProps;
-  const { setStep } = useTripStore();
+  const { setStep } = useTripActions();
   const navagite = useNavigate();
 
   const { mutate } = useMutation({

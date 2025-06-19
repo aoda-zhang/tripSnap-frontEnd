@@ -1,6 +1,6 @@
-@reference "../../assets/styles/global.css";
+@reference "../../assets/theme/global.css";
 .label {
-  @apply text-[1rem] mb-[.625rem] text-gray-800 font-normal;
+  @apply text-[1rem] mb-[.625rem] font-normal;
 }
 
 .baseInputContainer {

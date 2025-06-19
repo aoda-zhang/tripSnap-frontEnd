@@ -1,4 +1,4 @@
-@reference "../../assets/styles/global.css";
+@reference "../../assets/theme/global.css";
 
 .layout {
   @apply flex flex-col box-border h-screen;
