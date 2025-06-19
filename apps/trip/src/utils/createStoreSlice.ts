@@ -1,60 +1,62 @@
 import { create } from 'zustand';
-import { devtools, persist, createJSONStorage } from 'zustand/middleware';
+import { devtools, persist, subscribeWithSelector } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
-import envConfig, { EnvVariables } from '@/config';
-
-type ActionBuilder<State, Actions> = (
-  set: (
-    partial:
-      | Partial<State & Actions>
-      | ((state: State & Actions) => Partial<State & Actions>),
-    replace?: boolean,
-  ) => void,
-  get: () => State & Actions,
-) => Actions;
-
-type CreateStoreOptions<State, Actions> = {
-  name: string;
-  state: State;
-  actions: ActionBuilder<State, Actions>;
+interface CreateStoreOptions<State = Record<string, any>> {
   enablePersist?: boolean;
-  useSessionStorage?: boolean;
-  partialize?: (state: State & Actions) => Partial<State>;
+  persistKey?: string;
+  partializeFields?: (keyof State)[];
+  version?: number;
+}
+
+export type SetFn<T> = (fn: (state: T) => void) => void;
+
+const pickPersistFields = <T extends unknown>(state: T, keys: (keyof T)[]) => {
+  return keys.reduce((acc, key) => {
+    acc[key] = state[key];
+    return acc;
+  }, {} as Partial<T>);
 };
 
-const createStoreSlice = <State, Actions>({
-  name,
-  state,
-  actions,
-  enablePersist = false,
-  useSessionStorage = true,
-  // partialize,
-}: CreateStoreOptions<State, Actions>) => {
-  const base = immer<State & Actions>((set, get) => ({
-    ...state,
-    ...actions(set, get),
-  }));
+const partialize = <State>(state: State, options: CreateStoreOptions) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { actions, ...rest } = state as State & {
+    actions?: Record<string, any>;
+  };
+  if ((options?.partializeFields ?? []).length > 0) {
+    return pickPersistFields<State>(
+      state,
+      (options.partializeFields ?? []) as (keyof State)[],
+    );
+  }
+  return rest;
+};
 
-  const storage = createJSONStorage(() => {
-    return useSessionStorage ? sessionStorage : localStorage;
-  });
+const createStoreSlice = <State, Actions>(
+  initializer: (
+    set: (...args: any) => void,
+    get: () => State & Actions,
+  ) => State & Actions,
+  options: CreateStoreOptions = {},
+) => {
+  let storeCreator = subscribeWithSelector(immer(initializer)) as any;
 
-  let storeCreator = base;
-
-  if (envConfig?.env !== EnvVariables.prod) {
-    storeCreator = devtools(storeCreator, { name });
+  // Devtool for develop
+  if (process.env.NODE_ENV !== 'production') {
+    storeCreator = devtools(storeCreator) as any;
   }
 
-  if (enablePersist) {
+  // Persist settings
+  if (options.enablePersist && options.persistKey) {
     storeCreator = persist(storeCreator, {
-      name,
-      storage,
-      // partialize,
+      name: options.persistKey,
+      version: options.version ?? 1,
+      partialize: (state) => partialize(state, options),
     });
   }
 
-  return create<State & Actions>()(storeCreator);
+  const useStore = create<State & Actions>()(storeCreator);
+  return useStore;
 };
 
 export default createStoreSlice;

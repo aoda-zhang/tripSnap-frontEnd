@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useDefaultMenu, useDefaultViews } from './apis/queries';
 import styles from './index.module.css';
 
-import useGlobalStore from '@/app/globalStore';
+import { useGlobalActions } from '@/app/globalStore';
 
 const Home = () => {
   const { t } = useTranslation();
@@ -17,7 +17,8 @@ const Home = () => {
   };
   const { data: defaultViews } = useDefaultViews();
   const { data: menuItems } = useDefaultMenu();
-  const { setMenuItems } = useGlobalStore();
+  const { setMenuItems } = useGlobalActions();
+
   useEffect(() => {
     setMenuItems(menuItems ?? []);
   }, [menuItems, setMenuItems]);
