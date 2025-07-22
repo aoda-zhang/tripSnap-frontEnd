@@ -6,7 +6,7 @@ import { memo, useMemo } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { useAddTrip } from '../apis/queries';
+import { useAddBasicTrip } from '../apis/queries';
 import { useTripActions, useTripStep1Data } from '../store';
 import styles from '../tripLayout.module.css';
 
@@ -22,7 +22,7 @@ const Step1 = () => {
     defaultValues: useTripStep1Data(),
     resolver: zodResolver(Step1schema),
   });
-  const { mutate: addTripStep1, isLoading } = useAddTrip();
+  const { mutate: addTripStep1, isLoading } = useAddBasicTrip();
 
   const onSubmit: SubmitHandler<Step1FormType> = (data) => {
     setTripStep1Data(data);

@@ -16,13 +16,14 @@ const RootLayoutWithProps = () => {
   return <RootLayout menuItems={menuItems} />;
 };
 const Home = lazy(() => import('@/features/Home'));
-const Trip = lazy(() => import('@/features/Trip/tripLayout'));
-const Step1 = lazy(() => import('@/features/Trip/Step1'));
-const Step2 = lazy(() => import('@/features/Trip/Step2'));
+const TripLayout = lazy(() => import('@/features/Trip/tripLayout'));
+const TripStep1 = lazy(() => import('@/features/Trip/Step1'));
+const TripStep2 = lazy(() => import('@/features/Trip/Step2'));
+const TripDetail = lazy(() => import('@/features/Trip/Detail'));
 const History = lazy(() => import('@/features/History'));
 const Login = lazy(() => import('@/features/Auth/Login'));
 const Register = lazy(() => import('@/features/Auth/Register'));
-const ErrorPage = lazy(() => import('@shared/components/Error'));
+const NotFund = lazy(() => import('@shared/components/NotFund'));
 const routeOptions = [
   {
     path: routeKeys.home,
@@ -41,7 +42,7 @@ const routeOptions = [
         path: routeKeys.trip,
         element: (
           <GuardRoute>
-            <Trip />
+            <TripLayout />
           </GuardRoute>
         ),
         children: [
@@ -49,7 +50,7 @@ const routeOptions = [
             path: routeKeys.tripStep1,
             element: (
               <GuardRoute>
-                <Step1 />
+                <TripStep1 />
               </GuardRoute>
             ),
           },
@@ -57,11 +58,19 @@ const routeOptions = [
             path: routeKeys.tripStep2,
             element: (
               <GuardRoute>
-                <Step2 />
+                <TripStep2 />
               </GuardRoute>
             ),
           },
         ],
+      },
+      {
+        path: routeKeys.tripDetail,
+        element: (
+          <GuardRoute>
+            <TripDetail />
+          </GuardRoute>
+        ),
       },
       {
         path: routeKeys.history,
@@ -82,13 +91,13 @@ const routeOptions = [
     element: <Register />,
   },
   {
-    path: routeKeys.error,
-    element: <ErrorPage />,
+    path: routeKeys.notFund,
+    element: <NotFund />,
   },
 
   {
     path: '*',
-    element: <Navigate to={routeKeys.home} replace />,
+    element: <Navigate to={routeKeys.notFund} replace />,
   },
 ];
 const routes = createBrowserRouter(routeOptions);

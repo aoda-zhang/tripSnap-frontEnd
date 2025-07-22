@@ -9,7 +9,10 @@
     "save_continue": "Save & Continue",
     "previous": "Previous",
     "zh-CN": "中文(简体)",
-    "en-US": "English(USA)"
+    "en-US": "English(USA)",
+    "go_to_home": "GO TO HOMEPAGE",
+    "not_found": "PAGE NOT FOUND",
+    "not_found_info": "The page you are looking for might have been removed had its name changed or is temporary unavailable."
   },
   "trip": {
     "login_again": "login again",

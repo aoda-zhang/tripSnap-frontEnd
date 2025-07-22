@@ -11,7 +11,8 @@
     "prepare": "husky",
     "lint-staged": "lint-staged",
     "lint": "eslint .ts,.tsx,.js,.jsx",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "dev:trip": "pnpm --filter ./apps/trip dev"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [

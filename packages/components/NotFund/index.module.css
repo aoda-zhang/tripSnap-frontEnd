@@ -2,6 +2,12 @@
 
 .error {
   @apply flex flex-col items-center justify-center pt-[6%] text-lg;
+  .errorImage {
+    @apply w-[20%] h-auto mb-4;
+  }
+  .goToHome {
+    @apply px-4 py-2 bg-primary rounded-lg hover:bg-primary transition-colors duration-300 mt-4;
+  }
   .login {
     @apply px-0 py-2.5 text-green-600 cursor-pointer;
   }
