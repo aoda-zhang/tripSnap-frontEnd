@@ -24,8 +24,8 @@ export const useUserRegister = (navigate: NavigateFunction) => {
 
 export const useUserLogin = (navigate: NavigateFunction) => {
   return useMutation(AuthAPI.register, {
-    onSuccess: async (isRegrester, value) => {
-      if (isRegrester) {
+    onSuccess: async (isRegretter, value) => {
+      if (isRegretter) {
         const loginInfo = await AuthAPI.login({
           userName: value?.userName,
           password: value?.password,

@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     './src/features/**/*.{js,ts,jsx,tsx}',
-    '../../Libs/components/**/*.{js,ts,jsx,tsx}', // Components in the Libs directory
+    '../../packages/components/**/*.{js,ts,jsx,tsx}', // Components in the packages directory
   ],
   theme: {
     extend: {},

@@ -9,7 +9,7 @@ export default defineConfig({
   envPrefix: 'REACT_APP_',
   base: '/',
   server: {
-    port: 2826,
+    port: 5173,
     strictPort: true,
     proxy: {
       '/api': {
@@ -29,7 +29,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
-      '@shared': path.resolve(__dirname, '../../Libs'),
+      '@shared': path.resolve(__dirname, '../../packages'),
     },
   },
   css: {

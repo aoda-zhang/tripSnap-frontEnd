@@ -1,39 +1,15 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "experimentalDecorators": true,
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@shared/*": ["../../Libs/*"]
+      "@/*": ["./src/*"],
+      "@shared/*": ["../../packages/*"]
     },
-    "composite": true,
+    "outDir": "build",
     "types": ["node", "vite/client", "@modyfi/vite-plugin-yaml/modules"]
   },
-  "include": [
-    "src",
-    "../../Libs",
-    "src/store",
-    "aaatailwind.config.js",
-    "postcss.config.mjs"
-  ],
-  "exclude": ["node_modules", "src/**/*.spec.ts"],
-  "references": [
-    { "path": "./tsconfig.node.json" }
-    // { "path": "../../Libs" }
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "src/**/*.spec.ts", "tailwind.config.js"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

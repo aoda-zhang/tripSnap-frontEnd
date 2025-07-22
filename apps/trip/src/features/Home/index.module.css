@@ -1,4 +1,4 @@
-@reference '../../../../../Libs/assets/theme/global.css';
+@reference '../../../../../packages/assets/theme/global.css';
 
 .home {
   @apply flex flex-col;
@@ -7,7 +7,7 @@
     &::before {
       content: '';
       @apply absolute inset-0 bg-center bg-cover blur-[.0625rem] z-10;
-      background-image: url('../../../../../Libs/assets/images/world.jpeg');
+      background-image: url('../../../../../packages/assets/images/world.jpeg');
     }
     .title {
       @apply text-[1.5rem] lg:text-[3.125rem] font-bold z-20;

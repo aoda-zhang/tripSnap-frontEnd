@@ -1,6 +1,5 @@
 import { ThemeProvider } from '@mui/material';
 import '@shared/assets/theme/global.css';
-import initializeThemeClass from '@shared/assets/theme/initializeThemeClass';
 import MUITheme from '@shared/assets/theme/MUI-theme';
 import ErrorPage from '@shared/components/Error';
 import SuspenseFallback from '@shared/components/SuspenseFeedback';
@@ -11,6 +10,7 @@ import { Toaster } from 'react-hot-toast';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
+import initializeThemeClass from '../../../../packages/assets/theme/initializeThemeClass';
 import envConfig, { EnvVariables } from '../config';
 import '../i18n';
 
