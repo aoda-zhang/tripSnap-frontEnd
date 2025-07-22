@@ -7,6 +7,7 @@ import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { useAddTrip } from '../apis/queries';
+import { useTripActions, useTripStep1Data } from '../store';
 import styles from '../tripLayout.module.css';
 
 import { getStep1schema, Step1FormMapping, Step1FormType } from './validation';
@@ -16,13 +17,16 @@ import TransportRadio from '@/components/TransportRadio';
 const Step1 = () => {
   const { t } = useTranslation();
   const Step1schema = useMemo(() => getStep1schema(t), [t]);
+  const { setTripStep1Data } = useTripActions();
   const formProps = useForm<Step1FormType>({
+    defaultValues: useTripStep1Data(),
     resolver: zodResolver(Step1schema),
   });
-  const { mutate, isLoading } = useAddTrip();
+  const { mutate: addTripStep1, isLoading } = useAddTrip();
 
   const onSubmit: SubmitHandler<Step1FormType> = (data) => {
-    mutate(data);
+    setTripStep1Data(data);
+    addTripStep1(data);
   };
   return (
     <FormProvider {...formProps}>
@@ -41,7 +45,6 @@ const Step1 = () => {
           className={styles.baseForm}
           name={Step1FormMapping.Participants}
           label={t('trip.numOfTravelers')}
-          type="number"
         />
         <TransportRadio />
       </form>

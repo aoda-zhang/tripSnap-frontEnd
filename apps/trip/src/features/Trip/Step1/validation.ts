@@ -22,8 +22,9 @@ export const getStep1schema = (t: (key: string) => string) => {
       .min(1, 'Destination is required')
       .max(50, 'Destination is too long'),
     [Step1FormMapping.Participants]: z
-      .number()
-      .min(1, 'Participants is required'),
+      .string()
+      .min(1, 'Number of Travelers is required')
+      .regex(/^\d+$/, 'Only numbers are allowed'),
     [Step1FormMapping.Transport]: z.string(),
     [Step1FormMapping.TransportNo]: z.string(),
   });

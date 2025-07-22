@@ -1,4 +1,5 @@
-import RootLayout, { RootLayoutHandles } from '@shared/components/RootLayout';
+import GuardRoute from '@shared/components/GuardRoute';
+import RootLayout from '@shared/components/RootLayout';
 import { lazy } from 'react';
 import {
   createBrowserRouter,
@@ -7,6 +8,8 @@ import {
 } from 'react-router-dom';
 
 import { useMenuItems } from './globalStore';
+
+import routeKeys from '@/constants/routeKeys';
 
 const RootLayoutWithProps = () => {
   const menuItems = useMenuItems();
@@ -20,54 +23,72 @@ const History = lazy(() => import('@/features/History'));
 const Login = lazy(() => import('@/features/Auth/Login'));
 const Register = lazy(() => import('@/features/Auth/Register'));
 const ErrorPage = lazy(() => import('@shared/components/Error'));
-
 const routeOptions = [
   {
-    path: '/',
+    path: routeKeys.home,
     element: <RootLayoutWithProps />,
     children: [
       {
-        path: '/',
+        path: routeKeys.home,
         index: true,
-        element: <Home />,
-        handle: { [RootLayoutHandles.noToken]: true },
+        element: (
+          <GuardRoute isRequireUserLogin={false}>
+            <Home />
+          </GuardRoute>
+        ),
       },
       {
-        path: 'trip',
-        element: <Trip />,
+        path: routeKeys.trip,
+        element: (
+          <GuardRoute>
+            <Trip />
+          </GuardRoute>
+        ),
         children: [
           {
-            path: 'step1',
-            element: <Step1 />,
+            path: routeKeys.tripStep1,
+            element: (
+              <GuardRoute>
+                <Step1 />
+              </GuardRoute>
+            ),
           },
           {
-            path: 'step2/:id',
-            element: <Step2 />,
+            path: routeKeys.tripStep2,
+            element: (
+              <GuardRoute>
+                <Step2 />
+              </GuardRoute>
+            ),
           },
         ],
       },
       {
-        path: 'history',
-        element: <History />,
+        path: routeKeys.history,
+        element: (
+          <GuardRoute>
+            <History />
+          </GuardRoute>
+        ),
       },
     ],
   },
   {
-    path: 'login',
+    path: routeKeys.login,
     element: <Login />,
   },
   {
-    path: 'register',
+    path: routeKeys.register,
     element: <Register />,
   },
   {
-    path: 'error',
+    path: routeKeys.error,
     element: <ErrorPage />,
   },
 
   {
     path: '*',
-    element: <Navigate to="/" replace />,
+    element: <Navigate to={routeKeys.home} replace />,
   },
 ];
 const routes = createBrowserRouter(routeOptions);

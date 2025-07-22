@@ -2,7 +2,7 @@ import { ThemeProvider } from '@mui/material';
 import '@shared/assets/theme/global.css';
 import MUITheme from '@shared/assets/theme/MUI-theme';
 import ErrorPage from '@shared/components/Error';
-import SuspenseFallback from '@shared/components/SuspenseFeedback';
+import Loading from '@shared/components/Loading';
 import getReactQueryOptions from '@shared/cores/react-query';
 import { ReactNode, Suspense, useEffect, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -26,7 +26,7 @@ const AppProvider = ({ children }: AppProviderProps) => {
     initializeThemeClass();
   }, []);
   return (
-    <Suspense fallback={<SuspenseFallback />}>
+    <Suspense fallback={<Loading />}>
       <ErrorBoundary FallbackComponent={ErrorPage}>
         <QueryClientProvider client={queryClient}>
           {envConfig?.env !== EnvVariables.prod && (

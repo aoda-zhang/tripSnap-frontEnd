@@ -1,9 +1,6 @@
 import { memo } from 'react';
 import { Outlet, useMatches } from 'react-router-dom';
 
-// import StorageKeys from '../../constants/storageKeys';
-// import storageTool from '../../utils/storage';
-
 import styles from './index.module.css';
 import RootLayoutFooter from './RootLayoutFooter';
 import RootLayoutHeader from './RootLayoutMenu/RootLayoutHeader';
@@ -12,7 +9,7 @@ import RootLayoutSidebar from './RootLayoutMenu/RootLayoutSidebar';
 
 export const RootLayoutHandles = {
   isMenuAvailable: 'isMenuAvailable',
-  noToken: 'noToken',
+  requireUserLogin: 'requireUserLogin',
 };
 
 export interface LayoutProps {
@@ -24,12 +21,11 @@ export interface LayoutProps {
 
 const RootLayout = ({ menuItems = [] }: LayoutProps) => {
   const matches = useMatches();
-  const currentRouter = matches?.[matches?.length ?? 0 - 1] as {
+  const currentRouter = matches?.[(matches?.length ?? 0) - 1] as {
     handle?: Record<string, any>;
   };
   const isMenuAvailable =
     currentRouter?.handle?.[RootLayoutHandles.isMenuAvailable] ?? true;
-  // const isLogin = storageTool.get(StorageKeys.accessToken);
 
   return (
     <div className={styles.layout}>
