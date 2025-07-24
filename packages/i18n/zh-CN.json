@@ -12,7 +12,8 @@
     "en-US": "English(USA)",
     "go_to_home": "前往主页",
     "not_found": "页面未找到",
-    "not_found_info": "你访问的页面可能已被删除、名称已更改或暂时不可用。"
+    "not_found_info": "你访问的页面可能已被删除、名称已更改或暂时不可用。",
+    "sys_error": "<heading>哎呀！出了点问题。</heading><para>请尝试刷新页面或稍后再试。</para><para>如果问题仍然存在，请联系支持。</para><link>返回 <a href='/'>主页</a></link>"
   },
   "trip": {
     "login_again": "重新登录",

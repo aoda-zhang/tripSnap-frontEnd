@@ -9,7 +9,7 @@
     "outDir": "build",
     "types": ["node", "vite/client", "@modyfi/vite-plugin-yaml/modules"]
   },
-  "include": ["src"],
+  "include": ["src", "../../packages/i18n"],
   "exclude": ["node_modules", "src/**/*.spec.ts", "tailwind.config.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

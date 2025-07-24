@@ -1,8 +1,8 @@
 import { ThemeProvider } from '@mui/material';
 import '@shared/assets/theme/global.css';
 import MUITheme from '@shared/assets/theme/MUI-theme';
-import ErrorPage from '@shared/components/Error';
 import Loading from '@shared/components/Loading';
+import ErrorPage from '@shared/components/SystemError';
 import getReactQueryOptions from '@shared/cores/react-query';
 import { ReactNode, Suspense, useEffect, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -12,7 +12,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 
 import initializeThemeClass from '../../../../packages/assets/theme/initializeThemeClass';
 import envConfig, { EnvVariables } from '../config';
-import '../i18n';
+import '@shared/i18n';
 
 type AppProviderProps = {
   children: ReactNode;

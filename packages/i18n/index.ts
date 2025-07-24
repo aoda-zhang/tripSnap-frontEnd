@@ -1,7 +1,8 @@
-import LocaleKeys from '@shared/constants/localeKey';
-import getLocale from '@shared/utils/getLocale';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+
+import LocaleKeys from '../constants/localeKey';
+import getLocale from '../utils/getLocale';
 
 import enUS from './en-US.json';
 import zhCN from './zh-CN.json';
@@ -17,9 +18,9 @@ const currentLanguage = getLocale(
 );
 
 i18n.use(initReactI18next).init({
-  resources: languageResources,
-  lng: currentLanguage,
-  fallbackLng: defaultLanguage,
+  resources: languageResources as { [key: string]: { translation: any } },
+  lng: currentLanguage as string,
+  fallbackLng: defaultLanguage as string,
   interpolation: {
     escapeValue: false,
   },
