@@ -6,14 +6,15 @@ import { type FC, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
 
-import { useTripStep } from './store';
 import styles from './tripLayout.module.css';
+import { useTripState } from './tripSlice';
 
 const steps = ['trip.step1', 'trip.step2'];
 
 const Trip: FC = () => {
   const { t } = useTranslation();
-  const currentStep = useTripStep();
+  const currentStep = useTripState().tripStep;
+
   return (
     <div className={styles.trip}>
       <Box sx={{ width: '100%' }}>

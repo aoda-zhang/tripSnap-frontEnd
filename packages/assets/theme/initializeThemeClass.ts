@@ -11,7 +11,7 @@ const getHtmlThemeClass = () => {
 };
 
 const initializeThemeClass = () => {
-  const savedTheme = storageTool.get('darkMode');
+  const savedTheme = storageTool.get('darkMode') as string | null;
   const currentHtmlTheme = getHtmlThemeClass();
 
   // Set default theme if no saved theme and no current class

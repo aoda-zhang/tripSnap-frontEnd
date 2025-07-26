@@ -1,19 +1,14 @@
 import Button from '@mui/material/Button';
-import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import systemError from '../../assets/images/sysError.svg';
-import storageTool from '../../utils/storage';
 
 import styles from './index.module.css';
 
 const NotFund = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  useEffect(() => {
-    storageTool.clearAll();
-  }, []);
 
   const goToHome = () => {
     navigate('/');

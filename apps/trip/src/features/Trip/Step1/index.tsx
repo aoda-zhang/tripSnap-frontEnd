@@ -7,8 +7,8 @@ import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { useAddBasicTrip } from '../apis/queries';
-import { useTripActions, useTripStep1Data } from '../store';
 import styles from '../tripLayout.module.css';
+import { useTripState } from '../tripSlice';
 
 import { getStep1schema, Step1FormMapping, Step1FormType } from './validation';
 
@@ -17,15 +17,14 @@ import TransportRadio from '@/components/TransportRadio';
 const Step1 = () => {
   const { t } = useTranslation();
   const Step1schema = useMemo(() => getStep1schema(t), [t]);
-  const { setTripStep1Data } = useTripActions();
+  const { tripStep1Data } = useTripState();
   const formProps = useForm<Step1FormType>({
-    defaultValues: useTripStep1Data(),
+    defaultValues: tripStep1Data,
     resolver: zodResolver(Step1schema),
   });
   const { mutate: addTripStep1, isLoading } = useAddBasicTrip();
 
   const onSubmit: SubmitHandler<Step1FormType> = (data) => {
-    setTripStep1Data(data);
     addTripStep1(data);
   };
   return (
