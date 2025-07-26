@@ -13,7 +13,7 @@
   }
 
   .buttons {
-    @apply flex gap-[1.25rem] mb-[1.25rem] sm:flex-col;
+    @apply flex gap-[1.25rem] sm:flex-col;
   }
   .caption {
     @apply text-[1.54rem] font-semibold;

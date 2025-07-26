@@ -3,8 +3,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Step1FormType } from './Step1/validation';
 import { Step2FormType } from './Step2';
 
-import ReducerNames from '@/constants/ReducerNames';
-import { useReduxSelector } from '@/hooks/reduxStoreHook';
+import ReducerNames from '@/constants/reducerNames';
+import { useReduxSelector } from '@/hooks/reduxHooks';
 
 interface TripState {
   tripStep: number;

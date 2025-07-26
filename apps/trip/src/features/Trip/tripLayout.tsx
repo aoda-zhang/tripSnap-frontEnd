@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
 
 import styles from './tripLayout.module.css';
-import { useTripState } from './tripSlice';
+import { useTripState } from './tripReducer';
 
 const steps = ['trip.step1', 'trip.step2'];
 

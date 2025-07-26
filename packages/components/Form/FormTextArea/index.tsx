@@ -24,7 +24,10 @@ const FormTextArea: React.FC<BaseFormType & TextareaAutosizeProps> = ({
   const { control } = useFormContext();
   const formRules = useMemo(() => {
     if (props?.required && !rules?.required) {
-      return { ...rules, required: `${t(label)} ${t('common.required')}` };
+      return {
+        ...rules,
+        required: `${t(String(label || ''))} ${t('common.required')}`,
+      };
     }
     return rules;
   }, [rules, props?.required, label, t]);
@@ -46,6 +49,11 @@ const FormTextArea: React.FC<BaseFormType & TextareaAutosizeProps> = ({
         >
           <div className={styles.label}>{label}</div>
           <TextareaAutosize
+            style={{
+              border: '1px solid #ccc',
+              padding: '8px',
+              borderRadius: '4px',
+            }}
             {...fieldProps}
             value={value ?? ''}
             ref={fieldRef}

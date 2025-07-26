@@ -1,6 +1,8 @@
+import React from 'react';
+
 export interface BaseFormType {
   name: string;
-  label: string;
+  label: string | React.ReactNode;
   rules?: Record<string, unknown>;
   defaultValue?: string | number;
   type?: string;

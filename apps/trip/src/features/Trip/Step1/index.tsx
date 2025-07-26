@@ -2,20 +2,22 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@mui/material';
 import FormInput from '@shared/components/Form/FormInput';
 import classNames from 'classnames';
-import { memo, useMemo } from 'react';
+import { memo, useEffect, useMemo } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { useAddBasicTrip } from '../apis/queries';
 import styles from '../tripLayout.module.css';
-import { useTripState } from '../tripSlice';
+import { setStep, useTripState } from '../tripReducer';
 
 import { getStep1schema, Step1FormMapping, Step1FormType } from './validation';
 
 import TransportRadio from '@/components/TransportRadio';
+import { useReduxDispatch } from '@/hooks/reduxHooks';
 
 const Step1 = () => {
   const { t } = useTranslation();
+  const dispatch = useReduxDispatch();
   const Step1schema = useMemo(() => getStep1schema(t), [t]);
   const { tripStep1Data } = useTripState();
   const formProps = useForm<Step1FormType>({
@@ -23,6 +25,10 @@ const Step1 = () => {
     resolver: zodResolver(Step1schema),
   });
   const { mutate: addTripStep1, isLoading } = useAddBasicTrip();
+
+  useEffect(() => {
+    dispatch(setStep({ step: 1 }));
+  }, [dispatch]);
 
   const onSubmit: SubmitHandler<Step1FormType> = (data) => {
     addTripStep1(data);

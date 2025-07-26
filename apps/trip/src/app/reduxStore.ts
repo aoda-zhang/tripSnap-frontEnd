@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 // Constant key names used for dynamically registering reducers
-import ReducerNames from '@/constants/ReducerNames';
-import tripReducer from '@/features/Trip/tripSlice';
+import ReducerNames from '@/constants/reducerNames';
+import tripReducer from '@/features/Trip/tripReducer';
 
 // Create the Redux store and register the trip slice under a dynamic key
 export const store = configureStore({
