@@ -12,8 +12,8 @@ import * as AuthAPI from '../apis';
 
 import style from './index.module.css';
 
-import { useGlobalActions } from '@/app/globalStore';
 import envConfig from '@/config';
+import { useGlobalActions } from '@/store/globalReducer';
 import StorageKeys from '@/typings/storage.types';
 
 const Login: FC = () => {

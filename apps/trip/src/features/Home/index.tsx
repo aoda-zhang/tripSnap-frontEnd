@@ -5,10 +5,12 @@ import { useTranslation } from 'react-i18next';
 import { useDefaultMenu, useDefaultViews } from './apis/queries';
 import styles from './index.module.css';
 
-import { useGlobalActions } from '@/app/globalStore';
+import { useReduxDispatch } from '@/hooks/reduxHooks';
+import { setMenuItems } from '@/store/globalReducer';
 
 const Home = () => {
   const { t } = useTranslation();
+  const dispatch = useReduxDispatch();
   const srcset = (image: string, size: number, rows = 1, cols = 1) => {
     return {
       src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
@@ -17,11 +19,10 @@ const Home = () => {
   };
   const { data: defaultViews } = useDefaultViews();
   const { data: menuItems } = useDefaultMenu();
-  const { setMenuItems } = useGlobalActions();
 
   useEffect(() => {
-    setMenuItems(menuItems ?? []);
-  }, [menuItems, setMenuItems]);
+    dispatch(setMenuItems(menuItems ?? []));
+  }, [menuItems, dispatch]);
 
   return (
     <div className={styles.home}>

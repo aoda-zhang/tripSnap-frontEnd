@@ -1,68 +1,115 @@
-import { Button } from '@mui/material';
+import { Box, Typography, Button, Grid } from '@mui/material';
 import { Upload } from 'lucide-react';
-import React from 'react';
-import { type FC, memo, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
-interface FileUploadProps {
-  onUpload: (files: File[]) => void;
+type MultiFileUploaderProps = {
   accept?: string;
+  maxSizeMB?: number;
   multiple?: boolean;
-  maxSize?: number;
-  className?: string;
-}
+  onFilesChange?: (files: File[]) => void;
+};
 
-const FileUpload: FC<FileUploadProps> = ({
-  onUpload,
-  accept = 'image/*,.pdf',
+const MultiFileUploader: React.FC<MultiFileUploaderProps> = ({
+  accept = 'image/*',
+  maxSizeMB = 5,
   multiple = true,
-  maxSize = 5, // default 5MB
-  className,
+  onFilesChange,
 }) => {
-  const [error, setError] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
+  const [files, setFiles] = useState<File[]>([]);
+  const [previews, setPreviews] = useState<string[]>([]);
+  const [error, setError] = useState('');
 
-  const handleClick = () => {
-    inputRef.current?.click();
-  };
+  const handleSelectFiles = (selectedFiles: FileList | null) => {
+    if (!selectedFiles) return;
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files || []);
+    const validFiles: File[] = [];
+    Array.from(selectedFiles).forEach((file) => {
+      if (file.size > maxSizeMB * 1024 * 1024) {
+        setError(`File ${file.name} exceeds ${maxSizeMB}MB`);
+        return;
+      }
+
+      validFiles.push(file);
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setPreviews((prev) => [...prev, reader.result as string]);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    setFiles((prev) => [...prev, ...validFiles]);
     setError('');
-
-    // Validate file size
-    const invalidFiles = files.filter(
-      (file) => file.size > maxSize * 1024 * 1024,
-    );
-
-    if (invalidFiles.length > 0) {
-      setError(`Some files exceed the ${maxSize}MB limit`);
-      return;
-    }
-
-    onUpload(files);
-
-    // Reset input value to allow uploading the same file again
-    if (inputRef.current) {
-      inputRef.current.value = '';
-    }
+    onFilesChange?.(validFiles);
   };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleSelectFiles(e.target.files);
+  };
+
+  const handleClick = () => inputRef.current?.click();
 
   return (
-    <div>
-      <Button variant="contained" onClick={handleClick} className={className}>
-        <Upload />
-        <input
-          ref={inputRef}
-          type="file"
-          onChange={handleChange}
-          accept={accept}
-          multiple={multiple}
-          style={{ display: 'none' }}
-        />
-      </Button>
-      {error && <p style={{ color: 'red', marginTop: '8px' }}>{error}</p>}
-    </div>
+    <Box>
+      <input
+        ref={inputRef}
+        type="file"
+        hidden
+        accept={accept}
+        multiple={multiple}
+        onChange={handleInputChange}
+      />
+
+      <Box mt={2}>
+        <Button variant="outlined" startIcon={<Upload />} onClick={handleClick}>
+          Upload Files
+        </Button>
+      </Box>
+
+      {error && (
+        <Typography color="error" mt={2}>
+          {error}
+        </Typography>
+      )}
+
+      {files.length > 0 && (
+        <Box mt={2}>
+          <Typography variant="subtitle2">Selected files:</Typography>
+          <ul style={{ paddingLeft: 20 }}>
+            {files.map((file) => (
+              <li key={file.name}>
+                {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
+              </li>
+            ))}
+          </ul>
+        </Box>
+      )}
+
+      {previews.length > 0 && (
+        <Box mt={2}>
+          <Typography variant="subtitle2">Image Preview:</Typography>
+          <Grid container spacing={2}>
+            {previews.map((url, idx) => (
+              <Grid item xs={4} sm={3} key={url}>
+                <img
+                  src={url}
+                  alt={`preview-${idx}`}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    borderRadius: 6,
+                    objectFit: 'cover',
+                  }}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      )}
+    </Box>
   );
 };
 
-export default memo(FileUpload);
+export default MultiFileUploader;

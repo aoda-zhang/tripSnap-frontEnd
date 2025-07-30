@@ -1,9 +1,8 @@
-import { ReactNode, Suspense, useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import StorageKeys from '../../constants/storageKeys';
+import storageKeys from '../../constants/storageKeys';
 import storageTool from '../../utils/storage';
-import Loading from '../Loading';
 
 interface GuardRouteProps {
   isRequireUserLogin?: boolean;
@@ -13,15 +12,15 @@ const GuardRoute = (props: GuardRouteProps) => {
   const { isRequireUserLogin = true, children } = props;
   const navigate = useNavigate();
   useEffect(() => {
-    // Default to aks user login if not specified
+    // Default to ask user login if not specified
     if (isRequireUserLogin) {
-      const isUserLogged = storageTool.get(StorageKeys.accessToken);
+      const isUserLogged = storageTool.get(storageKeys.accessToken);
       if (!isUserLogged) {
         navigate('/login');
       }
     }
   }, [isRequireUserLogin, navigate]);
-  return <Suspense fallback={<Loading />}>{children}</Suspense>;
+  return <div>{children}</div>;
 };
 
 export default GuardRoute;

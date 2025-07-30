@@ -3,8 +3,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Step1FormType } from './Step1/validation';
 import { Step2FormType } from './Step2';
 
-import ReducerNames from '@/constants/reducerNames';
 import { useReduxSelector } from '@/hooks/reduxHooks';
+import reducerNames from '@/store/reducerNames';
 
 interface TripState {
   tripStep: number;
@@ -25,8 +25,8 @@ const initialState: TripState = {
   tripImages: [],
 };
 
-const tripSlice = createSlice({
-  name: ReducerNames.trip,
+const tripReducer = createSlice({
+  name: reducerNames.trip,
   initialState,
   reducers: {
     setStep: (state: TripState, action: PayloadAction<{ step: number }>) => {
@@ -56,9 +56,9 @@ const tripSlice = createSlice({
 });
 
 export const { setStep, setTripStep1Data, setTripStep2Data, setTripImageIDs } =
-  tripSlice.actions;
+  tripReducer.actions;
 
 export const useTripState = () => {
-  return useReduxSelector((state) => state.trip ?? {});
+  return useReduxSelector((state) => state?.trip ?? {});
 };
-export default tripSlice.reducer;
+export default tripReducer.reducer;

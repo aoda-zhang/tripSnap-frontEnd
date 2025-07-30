@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import FileUpload from '@shared/components/FileUpload';
+import MultiFileUploader from '@shared/components/FileUpload';
 import FormTextArea from '@shared/components/Form/FormTextArea';
 import classNames from 'classnames';
 import { type FC, memo, useEffect } from 'react';
@@ -52,11 +52,15 @@ const Step2: FC = () => {
     <FormProvider {...formProps}>
       <form className={styles.record}>
         <h3 className="text-xl font-semibold mb-10">{t('trip.tripViews')}</h3>
-        <FileUpload
-          className={styles.baseButton}
-          onUpload={(event) => {
-            uploadTripImgs(event);
-          }}
+        <MultiFileUploader
+          accept="image/*,application/pdf"
+          maxSizeMB={3}
+          onFilesChange={uploadTripImgs}
+          // className={styles.baseButton}
+          // maxSize={20}
+          // onUpload={(event) => {
+          //   uploadTripImgs(event);
+          // }}
         />
         <FormTextArea
           className={classNames([styles.baseForm])}

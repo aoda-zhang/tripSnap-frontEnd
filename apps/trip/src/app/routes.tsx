@@ -7,12 +7,11 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import { useMenuItems } from './globalStore';
-
 import routeKeys from '@/constants/routeKeys';
+import { useGlobalState } from '@/store/globalReducer';
 
 const RootLayoutWithProps = () => {
-  const menuItems = useMenuItems();
+  const { menuItems } = useGlobalState();
   return <RootLayout menuItems={menuItems} />;
 };
 const Home = lazy(() => import('@/features/Home'));
