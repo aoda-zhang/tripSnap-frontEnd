@@ -1,25 +1,22 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+
 @theme {
-  --color-primary: #8b0000;
-  --color-secondary: #f59e0b;
-  --color-background: #f3f4f6;
+  /* === Core Colors === */
+  --color-primary: #2acfcf;
+  --color-primary-light: #6ff3f3;
+  --color-primary-dark: #149e9e;
+
+  --color-secondary: #ffa726;
+  --color-background: #f7f9fc;
+  --color-surface: #ffffff;
+
   --color-text: #111827;
   --color-text-secondary: #6b7280;
   --color-border: #cbd5e1;
-  --color-accent: #1f2937;
-
-  /* === Brand Colors === */
-  --color-primary-light: #b22222;
-  --color-primary-dark: #5b0a0a;
-
-  /* === Secondary and Accent Colors === */
-  /* --color-accent: #1F2937;  already set above */
-
-  /* === Background and Surface Colors === */
-  --color-surface: #ffffff;
+  --color-accent: #3b82f6; /* 蓝色强调按钮/链接 */
 
   /* === Neutral Colors === */
-  --color-neutral: #7c4d3a;
+  --color-neutral: #9ca3af;
   --color-muted: #e5e7eb;
 
   /* === Semantic Colors === */
@@ -43,31 +40,35 @@
   /* === Font Sizes === */
   --font-size-sm: 0.875rem;
   --line-height-sm: 1.25rem;
+  --font-size-base: 1rem;
   --line-height-base: 1.5rem;
+  --font-size-lg: 1.125rem;
   --line-height-lg: 1.75rem;
   --font-size-xl: 1.25rem;
   --line-height-xl: 1.75rem;
 
   /* === Font Families === */
-  --font-family-sans: 'Inter', sans-serif;
-  --font-family-serif: 'Merriweather', serif;
-  --font-family-mono: 'Menlo', monospace;
-  --font-size-base: 16px;
-  --font-size-lg: 1.125rem;
+  --font-family-sans: "Inter", sans-serif;
+  --font-family-serif: "Merriweather", serif;
+  --font-family-mono: "Menlo", monospace;
 }
 
-/* Manual dark mode override */
+/* === Dark Mode Override === */
 .dark {
-  --color-primary: #ff6b6b;
+  --color-primary: #20b2aa;
+  --color-primary-light: #4dd0d0;
+  --color-primary-dark: #147c7c;
+
   --color-secondary: #fbbf24;
   --color-background: #1f2937;
+  --color-surface: #374151;
+
   --color-text: #f9fafb;
   --color-text-secondary: #9ca3af;
-  --color-border: #94a3b8;
-  --color-accent: #6b7280;
+  --color-border: #475569;
+  --color-accent: #60a5fa;
 
-  --color-surface: #374151;
-  --color-neutral: #a78bfa;
+  --color-neutral: #a1a1aa;
   --color-muted: #4b5563;
 
   --color-error: #f87171;

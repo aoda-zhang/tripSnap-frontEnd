@@ -1,11 +1,50 @@
+// src/theme/muiTheme.ts
 import { createTheme } from '@mui/material/styles';
+
+import designTokens from './designTokens';
 
 const MUITheme = createTheme({
   palette: {
-    primary: { main: '#8b0000' }, // Dark Red
-    secondary: { main: '#f59e0b' }, // Amber
+    mode: 'light',
+    primary: {
+      main: designTokens.colors.primary,
+      light: designTokens.colors.primaryLight,
+      dark: designTokens.colors.primaryDark,
+      contrastText: '#ffffff',
+    },
+    secondary: {
+      main: designTokens.colors.secondary,
+      light: designTokens.colors.secondaryLight,
+      dark: designTokens.colors.secondaryDark,
+      contrastText: '#ffffff',
+    },
+    background: {
+      default: designTokens.colors.background,
+      paper: designTokens.colors.surface,
+    },
+    text: {
+      primary: designTokens.colors.textPrimary,
+      secondary: designTokens.colors.textSecondary,
+    },
+    divider: designTokens.colors.divider,
+    error: {
+      main: designTokens.colors.error,
+    },
+    success: {
+      main: designTokens.colors.success,
+    },
+    warning: {
+      main: designTokens.colors.warning,
+    },
+    info: {
+      main: designTokens.colors.accent,
+    },
   },
-  spacing: 4,
+  spacing: designTokens.spacing.base,
+  typography: {
+    fontFamily: designTokens.font.familySans,
+    fontSize: designTokens.font.baseSize,
+  },
 });
 
 export default MUITheme;

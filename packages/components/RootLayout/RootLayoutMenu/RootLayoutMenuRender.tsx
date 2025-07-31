@@ -4,7 +4,6 @@ import { cloneElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import DarkModeToggle from '../../DarkModeToggle';
 import LangSwitcher from '../../LangSwitcher';
 
 import styles from './index.module.css';
@@ -34,7 +33,6 @@ const RootLayoutMenuRender = (props: MenuRenderType) => {
   const HeaderComponentMappings = {
     LangSwitcher: <LangSwitcher />,
     AlignJustify: <AlignJustify />,
-    DarkModeToggle: <DarkModeToggle />,
   };
   const { menuItems } = props;
   const rootHeaderContext = useRootLayoutHeaderContext();
