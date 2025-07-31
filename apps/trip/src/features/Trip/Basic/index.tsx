@@ -5,33 +5,34 @@ import classNames from 'classnames';
 import { memo, useEffect, useMemo } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
-import { useAddBasicTrip } from '../apis/queries';
 import styles from '../tripLayout.module.css';
-import { setStep, useTripState } from '../tripReducer';
+import { setStep, setTripBasic, useTripState } from '../tripReducer';
 
-import { getStep1schema, Step1FormMapping, Step1FormType } from './validation';
+import { getTripBasicSchema, Step1FormMapping, TripBasic } from './validation';
 
 import TransportRadio from '@/components/TransportRadio';
 import { useReduxDispatch } from '@/hooks/reduxHooks';
 
 const Step1 = () => {
   const { t } = useTranslation();
+  const navagate = useNavigate();
   const dispatch = useReduxDispatch();
-  const Step1schema = useMemo(() => getStep1schema(t), [t]);
-  const { tripStep1Data } = useTripState();
-  const formProps = useForm<Step1FormType>({
-    defaultValues: tripStep1Data,
-    resolver: zodResolver(Step1schema),
+  const tripBasicSchema = useMemo(() => getTripBasicSchema(t), [t]);
+  const { tripInfo } = useTripState();
+  const formProps = useForm<TripBasic>({
+    defaultValues: tripInfo?.tripBasic,
+    resolver: zodResolver(tripBasicSchema),
   });
-  const { mutate: addTripStep1, isLoading } = useAddBasicTrip();
 
   useEffect(() => {
     dispatch(setStep({ step: 1 }));
   }, [dispatch]);
 
-  const onSubmit: SubmitHandler<Step1FormType> = (data) => {
-    addTripStep1(data);
+  const onSubmit: SubmitHandler<TripBasic> = (data) => {
+    dispatch(setTripBasic(data));
+    navagate('/trip/detail');
   };
   return (
     <FormProvider {...formProps}>
@@ -58,7 +59,6 @@ const Step1 = () => {
         type="submit"
         variant="contained"
         color="primary"
-        loading={isLoading}
         onClick={formProps?.handleSubmit(onSubmit)}
       >
         {t('common.save_continue')}

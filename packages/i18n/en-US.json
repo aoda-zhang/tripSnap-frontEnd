@@ -13,7 +13,8 @@
     "go_to_home": "GO TO HOMEPAGE",
     "not_found": "PAGE NOT FOUND",
     "not_found_info": "The page you are looking for might have been removed had its name changed or is temporary unavailable.",
-    "sys_error": "<1>Oops! Something went wrong.</1><2>Please try refreshing the page or come back later.</2><3>If the problem persists, contact support.</3><4>Go back to <5>home</5></4>"
+    "sys_error": "<1>Oops! Something went wrong.</1><2>Please try refreshing the page or come back later.</2><3>If the problem persists, contact support.</3><4>Go back to <5>home</5></4>",
+    "no_data": "No data available"
   },
   "trip": {
     "login_again": "login again",
@@ -40,7 +41,18 @@
     "car": "Car",
     "plane": "Plane",
     "train": "Train",
-    "trip_name_rules": "Trip name can only contain letters and numbers"
+    "trip_name_rules": "Trip name can only contain letters and numbers",
+    "summary_title": "Trip Summary",
+    "summary_description": "Please review your trip information before submitting",
+    "basic_info": "Basic Information",
+    "detail_info": "Trip Details",
+    "tripImages": "Trip Images",
+    "image": "Image",
+    "confirm_submit": "Confirm & Submit",
+    "transport": "Transport",
+    "success_title": "Trip Submitted Successfully!",
+    "success_description": "Your trip has been recorded successfully. You can view it in your trip history.",
+    "trip_id": "Trip ID"
   },
   "login": {
     "primary_login": "LOGIN",

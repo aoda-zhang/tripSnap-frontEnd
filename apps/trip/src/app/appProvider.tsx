@@ -10,11 +10,12 @@ import { Toaster } from 'react-hot-toast';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import initializeThemeClass from '../../../../packages/assets/theme/initializeThemeClass';
 import envConfig, { EnvVariables } from '../config';
 import '@shared/i18n';
-import { store } from '../store/reduxStore';
+import { store, persistor } from '../store/reduxStore';
 
 type AppProviderProps = {
   children: ReactNode;
@@ -29,19 +30,21 @@ const AppProvider = ({ children }: AppProviderProps) => {
   }, []);
   return (
     <Provider store={store}>
-      <Suspense fallback={<Loading />}>
-        <ErrorBoundary FallbackComponent={ErrorPage}>
-          <QueryClientProvider client={queryClient}>
-            {envConfig?.env !== EnvVariables.prod && (
-              <ReactQueryDevtools initialIsOpen />
-            )}
-            <ThemeProvider theme={MUITheme}>
-              <Toaster />
-              {children}
-            </ThemeProvider>
-          </QueryClientProvider>
-        </ErrorBoundary>
-      </Suspense>
+      <PersistGate loading={<Loading />} persistor={persistor}>
+        <Suspense fallback={<Loading />}>
+          <ErrorBoundary FallbackComponent={ErrorPage}>
+            <QueryClientProvider client={queryClient}>
+              {envConfig?.env !== EnvVariables.prod && (
+                <ReactQueryDevtools initialIsOpen />
+              )}
+              <ThemeProvider theme={MUITheme}>
+                <Toaster />
+                {children}
+              </ThemeProvider>
+            </QueryClientProvider>
+          </ErrorBoundary>
+        </Suspense>
+      </PersistGate>
     </Provider>
   );
 };

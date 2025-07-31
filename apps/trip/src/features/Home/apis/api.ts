@@ -22,7 +22,7 @@ export const getDefaultDynamicMenu = () => {
     },
     {
       label: 'common.record',
-      to: '/trip/step1',
+      to: '/trip/basic',
       classNames: ['item'],
       type: 'link',
     },

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Step1FormType } from './Step1/validation';
-import { Step2FormType } from './Step2';
+import { TripBasic } from './Basic/validation';
+import { TripDeatil } from './Detail';
 
 import { useReduxSelector } from '@/hooks/reduxHooks';
 import reducerNames from '@/store/reducerNames';
@@ -9,8 +9,11 @@ import reducerNames from '@/store/reducerNames';
 interface TripState {
   tripStep: number;
   transportationOptions: { label: string; value: string | number }[];
-  tripStep1Data: Step1FormType | {};
-  tripStep2Data?: (Step2FormType & { tripImages: string[] }) | {};
+  tripInfo: {
+    tripBasic: TripBasic | {};
+    tripDetail?: (TripDeatil & { tripImages: string[] }) | {};
+  };
+
   tripImages: string[];
 }
 
@@ -20,8 +23,10 @@ const initialState: TripState = {
     { label: 'dasdsa', value: 23 },
     { label: 'da', value: 'dadsa' },
   ],
-  tripStep1Data: {},
-  tripStep2Data: {},
+  tripInfo: {
+    tripBasic: {},
+    tripDetail: {},
+  },
   tripImages: [],
 };
 
@@ -32,19 +37,14 @@ const tripReducer = createSlice({
     setStep: (state: TripState, action: PayloadAction<{ step: number }>) => {
       state.tripStep = action.payload.step;
     },
-    setTripStep1Data: (
-      state: TripState,
-      action: PayloadAction<{ tripStep1Data: Step1FormType }>,
-    ) => {
-      state.tripStep1Data = action.payload.tripStep1Data;
+    setTripBasic: (state: TripState, action: PayloadAction<TripBasic>) => {
+      if (!state.tripInfo) {
+        state.tripInfo = { tripBasic: {}, tripDetail: {} };
+      }
+      state.tripInfo.tripBasic = action.payload;
     },
-    setTripStep2Data: (
-      state: TripState,
-      action: PayloadAction<{
-        tripStep2Data: Step2FormType;
-      }>,
-    ) => {
-      state.tripStep2Data = action.payload.tripStep2Data;
+    setTripDetail: (state: TripState, action: PayloadAction<TripDeatil>) => {
+      state.tripInfo.tripDetail = action.payload;
     },
     setTripImageIDs: (
       state: TripState,
@@ -55,10 +55,10 @@ const tripReducer = createSlice({
   },
 });
 
-export const { setStep, setTripStep1Data, setTripStep2Data, setTripImageIDs } =
+export const { setStep, setTripBasic, setTripDetail, setTripImageIDs } =
   tripReducer.actions;
 
-export const useTripState = () => {
-  return useReduxSelector((state) => state?.trip ?? {});
+export const useTripState = (): TripState => {
+  return useReduxSelector((state) => state?.trip ?? initialState);
 };
 export default tripReducer.reducer;

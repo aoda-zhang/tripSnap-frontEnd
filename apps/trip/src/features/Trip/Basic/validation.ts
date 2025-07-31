@@ -8,7 +8,7 @@ export enum Step1FormMapping {
   TransportNo = 'transportNo',
 }
 // Validation schema
-export const getStep1schema = (t: (key: string) => string) => {
+export const getTripBasicSchema = (t: (key: string) => string) => {
   return z.object({
     [Step1FormMapping.TripName]: z
       .string()
@@ -31,4 +31,4 @@ export const getStep1schema = (t: (key: string) => string) => {
 };
 
 // Export the schema Type
-export type Step1FormType = z.infer<ReturnType<typeof getStep1schema>>;
+export type TripBasic = z.infer<ReturnType<typeof getTripBasicSchema>>;

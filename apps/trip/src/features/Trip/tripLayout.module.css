@@ -18,6 +18,9 @@
   .caption {
     @apply text-[1.54rem] font-semibold;
   }
+  .container {
+    @apply w-full max-w-4xl mx-auto;
+  }
   :global(.Mui-error) {
     margin-left: 0;
   }

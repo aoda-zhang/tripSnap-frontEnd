@@ -13,7 +13,8 @@
     "go_to_home": "前往主页",
     "not_found": "页面未找到",
     "not_found_info": "你访问的页面可能已被删除、名称已更改或暂时不可用。",
-    "sys_error": "<heading>哎呀！出了点问题。</heading><para>请尝试刷新页面或稍后再试。</para><para>如果问题仍然存在，请联系支持。</para><link>返回 <a href='/'>主页</a></link>"
+    "sys_error": "<heading>哎呀！出了点问题。</heading><para>请尝试刷新页面或稍后再试。</para><para>如果问题仍然存在，请联系支持。</para><link>返回 <a href='/'>主页</a></link>",
+    "no_data": "暂无数据"
   },
   "trip": {
     "login_again": "重新登录",
@@ -41,7 +42,18 @@
     "car": "汽车",
     "plane": "飞机",
     "train": "火车",
-    "trip_name_rules": "Trip 的名字必须包含大写字母和数字"
+    "trip_name_rules": "Trip 的名字必须包含大写字母和数字",
+    "summary_title": "旅行总结",
+    "summary_description": "请确认您的旅行信息后提交",
+    "basic_info": "基本信息",
+    "detail_info": "旅行详情",
+    "tripImages": "旅行图片",
+    "image": "图片",
+    "confirm_submit": "确认提交",
+    "transport": "交通方式",
+    "success_title": "旅行记录提交成功！",
+    "success_description": "您的旅行已成功记录。您可以在旅行历史中查看。",
+    "trip_id": "旅行ID"
   },
   "login": {
     "primary_login": "登录",

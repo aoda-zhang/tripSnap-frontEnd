@@ -9,7 +9,7 @@ import { Outlet } from 'react-router-dom';
 import styles from './tripLayout.module.css';
 import { useTripState } from './tripReducer';
 
-const steps = ['trip.step1', 'trip.step2'];
+const steps = ['trip.step1', 'trip.step2', 'trip.step3'];
 
 const Trip: FC = () => {
   const { t } = useTranslation();

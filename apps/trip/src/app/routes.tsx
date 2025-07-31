@@ -16,9 +16,10 @@ const RootLayoutWithProps = () => {
 };
 const Home = lazy(() => import('@/features/Home'));
 const TripLayout = lazy(() => import('@/features/Trip/tripLayout'));
-const TripStep1 = lazy(() => import('@/features/Trip/Step1'));
-const TripStep2 = lazy(() => import('@/features/Trip/Step2'));
+const TripBasic = lazy(() => import('@/features/Trip/Basic'));
 const TripDetail = lazy(() => import('@/features/Trip/Detail'));
+const TripSummary = lazy(() => import('@/features/Trip/Summary'));
+const TripSuccess = lazy(() => import('@/features/Trip/Success'));
 const History = lazy(() => import('@/features/History'));
 const Login = lazy(() => import('@/features/Auth/Login'));
 const Register = lazy(() => import('@/features/Auth/Register'));
@@ -46,30 +47,38 @@ const routeOptions = [
         ),
         children: [
           {
-            path: routeKeys.tripStep1,
+            path: routeKeys.tripBasic,
             element: (
               <GuardRoute>
-                <TripStep1 />
+                <TripBasic />
               </GuardRoute>
             ),
           },
           {
-            path: routeKeys.tripStep2,
+            path: routeKeys.tripDetail,
             element: (
               <GuardRoute>
-                <TripStep2 />
+                <TripDetail />
+              </GuardRoute>
+            ),
+          },
+          {
+            path: routeKeys.tripSummary,
+            element: (
+              <GuardRoute>
+                <TripSummary />
+              </GuardRoute>
+            ),
+          },
+          {
+            path: routeKeys.tripSuccess,
+            element: (
+              <GuardRoute>
+                <TripSuccess />
               </GuardRoute>
             ),
           },
         ],
-      },
-      {
-        path: routeKeys.tripDetail,
-        element: (
-          <GuardRoute>
-            <TripDetail />
-          </GuardRoute>
-        ),
       },
       {
         path: routeKeys.history,
