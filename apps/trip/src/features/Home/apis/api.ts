@@ -14,13 +14,6 @@ export const getDefaultDynamicMenu = () => {
   // Image this data from API server side
   return [
     {
-      label: 'common.brand',
-      isAvailableOnMobile: true,
-      to: '/',
-      classNames: ['brand'],
-      type: 'link',
-    },
-    {
       label: 'common.record',
       to: '/trip/basic',
       classNames: ['item'],
@@ -33,7 +26,7 @@ export const getDefaultDynamicMenu = () => {
       type: 'link',
     },
     {
-      label: 'common.login',
+      label: 'common.signin',
       to: '/login',
       classNames: ['item', 'login'],
       type: 'link',

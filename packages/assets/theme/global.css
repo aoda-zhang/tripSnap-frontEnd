@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   /* === Core Colors === */
@@ -13,7 +13,7 @@
   --color-text: #111827;
   --color-text-secondary: #6b7280;
   --color-border: #cbd5e1;
-  --color-accent: #3b82f6; /* 蓝色强调按钮/链接 */
+  --color-accent: #3b82f6;
 
   /* === Neutral Colors === */
   --color-neutral: #9ca3af;
@@ -48,9 +48,9 @@
   --line-height-xl: 1.75rem;
 
   /* === Font Families === */
-  --font-family-sans: "Inter", sans-serif;
-  --font-family-serif: "Merriweather", serif;
-  --font-family-mono: "Menlo", monospace;
+  --font-family-sans: 'Inter', sans-serif;
+  --font-family-serif: 'Merriweather', serif;
+  --font-family-mono: 'Menlo', monospace;
 }
 
 /* === Dark Mode Override === */

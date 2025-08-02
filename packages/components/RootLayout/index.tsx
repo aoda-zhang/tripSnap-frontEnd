@@ -3,9 +3,9 @@ import { Outlet, useMatches } from 'react-router-dom';
 
 import styles from './index.module.css';
 import RootLayoutFooter from './RootLayoutFooter';
-import RootLayoutHeader from './RootLayoutMenu/RootLayoutHeader';
-import { MenuItemType } from './RootLayoutMenu/RootLayoutMenuRender';
-import RootLayoutSidebar from './RootLayoutMenu/RootLayoutSidebar';
+import RootLayoutHeader from './RootLayoutHeader';
+import { MenuItemType } from './RootLayoutMenuRender';
+import RootLayoutSidebar from './RootLayoutSidebar';
 
 export const RootLayoutHandles = {
   isMenuAvailable: 'isMenuAvailable',

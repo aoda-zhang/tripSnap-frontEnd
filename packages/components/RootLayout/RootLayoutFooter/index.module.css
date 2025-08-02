@@ -1,5 +1,0 @@
-@reference "../../../assets/theme/global.css";
-
-.footer {
-  @apply p-[1.125rem] text-center;
-}

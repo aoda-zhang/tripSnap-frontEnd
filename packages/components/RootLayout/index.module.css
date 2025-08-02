@@ -2,7 +2,33 @@
 
 .layout {
   @apply flex flex-col box-border h-screen;
+  .header {
+    @apply flex items-center gap-4 box-border sticky top-0 p-[.625rem] z-[999] border-b-1 px-6;
+    .brand {
+      @apply h-18 w-auto mr-auto;
+    }
+    .login {
+      @apply px-[.625rem] py-[.25rem] rounded-[.375rem] bg-primary text-white m-4 lg:m-0;
+    }
+    .item {
+      @apply cursor-pointer flex justify-center items-center p-sm border-b border-border md:border-none;
+    }
+  }
   .content {
     @apply flex-1 box-border p-[.625rem] pt-[1.875rem] lg:p-[3.75rem] lg:pt-[.625rem];
+  }
+
+  .footer {
+    @apply p-[1.125rem] text-center;
+  }
+
+  .rootSidebarPaper {
+    @apply h-full bg-background text-text;
+  }
+  .noMobile {
+    @apply hidden lg:flex;
+  }
+  .mobile {
+    @apply hidden lg:flex;
   }
 }

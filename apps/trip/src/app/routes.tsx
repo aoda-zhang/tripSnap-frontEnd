@@ -1,4 +1,3 @@
-import GuardRoute from '@shared/components/GuardRoute';
 import RootLayout from '@shared/components/RootLayout';
 import { lazy } from 'react';
 import {
@@ -7,6 +6,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
+import GuardRoute from '@/components/GuardRoute';
 import routeKeys from '@/constants/routeKeys';
 import { useGlobalState } from '@/store/globalReducer';
 
