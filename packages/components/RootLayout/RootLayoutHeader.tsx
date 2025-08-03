@@ -1,4 +1,5 @@
 import { ReactNode, useMemo, createContext, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import brand from '../../assets/images/brand.png';
 import useIsMobile from '../../hooks/useIsMobile';
@@ -36,6 +37,7 @@ const RootLayoutHeader = ({
   children,
 }: RootLayoutHeaderProps) => {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
   const [isSidebarAvailable, setSidebarAvailable] = useState(false);
 
   const onOpenSidebar = () => setSidebarAvailable(true);
@@ -61,7 +63,16 @@ const RootLayoutHeader = ({
   return (
     <RootLayoutHeaderContext.Provider value={sidebarContextValue}>
       <header className={styles.header}>
-        <img src={brand} alt="brand" className={styles.brand} />
+        <button
+          type="button"
+          className={styles.brandButton}
+          onClick={() => {
+            navigate('/');
+          }}
+        >
+          <img src={brand} alt="brand" className={styles.brand} />
+        </button>
+
         <RootLayoutMenuRender menuItems={getMenuOptions} />
         {children}
       </header>

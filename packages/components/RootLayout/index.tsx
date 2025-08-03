@@ -32,10 +32,12 @@ const RootLayout = ({ menuItems = [] }: LayoutProps) => {
       <RootLayoutHeader isMenuAvailable={isMenuAvailable} menuItems={menuItems}>
         <RootLayoutSidebar menuItems={menuItems} />
       </RootLayoutHeader>
-      <main className={styles.content}>
-        <Outlet />
-      </main>
-      <RootLayoutFooter />
+      <div className={styles.main}>
+        <div className={styles.content}>
+          <Outlet />
+        </div>
+        <RootLayoutFooter />
+      </div>
     </div>
   );
 };

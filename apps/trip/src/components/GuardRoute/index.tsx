@@ -3,6 +3,8 @@ import storageTool from '@shared/utils/storage';
 import { ReactNode, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import routeKeys from '@/constants/routeKeys';
+
 interface GuardRouteProps {
   isRequireUserLogin?: boolean;
   children: ReactNode;
@@ -15,7 +17,7 @@ const GuardRoute = (props: GuardRouteProps) => {
     if (isRequireUserLogin) {
       const isUserLogged = storageTool.get(storageKeys.accessToken);
       if (!isUserLogged) {
-        navigate('/login');
+        navigate(routeKeys.login);
       }
     }
   }, [isRequireUserLogin, navigate]);

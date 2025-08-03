@@ -15,7 +15,13 @@
     "not_found": "页面未找到",
     "not_found_info": "你访问的页面可能已被删除、名称已更改或暂时不可用。",
     "sys_error": "<heading>哎呀！出了点问题。</heading><para>请尝试刷新页面或稍后再试。</para><para>如果问题仍然存在，请联系支持。</para><link>返回 <a href='/'>主页</a></link>",
-    "no_data": "暂无数据"
+    "no_data": "暂无数据",
+    "quick_links": "快速链接",
+    "contact_me": "联系我",
+    "email": "Email",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "owner_text": "© 2023 TripSnap by Aoda Zhang. 为学习和分享而建。保留所有权利。"
   },
   "trip": {
     "login_again": "重新登录",
@@ -58,7 +64,7 @@
   "login": {
     "primary_login": "登录",
     "newUser": "新用户注册",
-    "welcome": "欢迎来到旅行",
+    "welcome": "欢迎来到记录旅行",
     "userName": "用户名或邮箱",
     "password": "密码",
     "userName_required": "请输入你的账户名",
@@ -67,6 +73,7 @@
     "current_lan": "简体中文"
   },
   "home": {
+    "home_page": "主页",
     "title": "使用TripSnap记录你的短途旅行",
     "subTitle": "探索新的游玩地，记录属于你的美好回忆",
     "destinations": "最佳目的地",
