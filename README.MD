@@ -1,69 +1,69 @@
-# 🧩 FullStack Frontend
+[English](READM.MD) | [中文](READMECN.MD)
+
+# PawHaven
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232a?logo=react&logoColor=61dafb)
 ![pnpm](https://img.shields.io/badge/Package-pnpm-F69220?logo=pnpm&logoColor=white)
 ![License](https://img.shields.io/github/license/aoda-zhang/fullStack-frontEnd)
 
----
+## ✨ What is this?
 
-### ✨ What is this?
+PawHaven is more than just an app — it’s a movement to unite tech with heart. Our mission is to empower everyday people with a simple, user-friendly tool to make a real difference in the lives of stray animals. By crowdsourcing information about strays, we enable faster rescue and better care.
 
-This project is a fullstack application built with [**React**](https://github.com/aoda-zhang/fullStack-frontEnd) (frontend) and [**NestJS**](https://github.com/aoda-zhang/fullStack-backEnd) (backend), implementing a modular, scalable architecture with a clear separation of concerns.
-
-It leverages a modern toolchain aligned with [roadmap.sh](https://roadmap.sh)'s recommended technologies to ensure high code quality, maintainability, and performance. The backend and frontend are fully decoupled yet seamlessly integrated for API communication and shared logic patterns.
+Additionally, PawHaven is a full-stack project designed for developers who want to grow their skills in modern web development. Whether you are a beginner or looking to deepen your knowledge, this project provides practical experience across the entire stack — from frontend UI to backend APIs and deployment.
 
 ---
 
 ## 🚀 Features
 
-- ⚛️ React + TypeScript
-- ⚡️ Vite for fast development
-- 🪄 Zustand for state management
-- 📦 React Query for data fetching
-- 🎨 MUI (Material UI) for UI components
-- ✅ Form validation with React Hook Form
-- 🔧 ESLint + Prettier + Husky for code quality
-- 📁 Modular file structure for scalability
+- **Record & Share:** Quickly log sightings of stray animals around you with photos and location details.
+- **Community Rescue:** See nearby rescue opportunities and volunteer to help.
+- **User Registration & Profiles:** Sign up to become part of the PawHaven family and track your rescue activities.
+- **Short Link Sharing:** Easily share rescue stories and animal profiles via short links and email invitations.
+- **Responsive Design:** Works smoothly on both mobile and desktop devices.
 
 ---
 
-## 📦 Tech Stack
+## 🛠️ Technology Stack
 
-| Tech         | Purpose                   |
-|--------------|----------------------------|
-| React        | UI library                |
-| TypeScript   | Type safety               |
-| Vite         | Frontend build tool       |
-| Zustand      | Lightweight state manager |
-| React Query  | Server state sync         |
-| MUI          | Component library         |
-| React Hook Form | Form handling         |
+- **Frontend:** React, TypeScript, Tailwind CSS, React Hook Form
+- **Backend:** NestJS, Node.js, REST & RPC APIs
+- **Database:** PostgreSQL (or your preferred SQL database)
+- **Authentication:** JWT-based auth with role management
+- **Deployment:** Kubernetes, Docker, GitHub Actions CI/CD
+- **Other Tools:** pnpm package manager, Zustand state management, MUI component library
 
----
-
-## 🔗 Backend Repository
-
-This frontend works with the backend here:
-👉 [fullStack-backEnd](https://github.com/aoda-zhang/fullStack-backEnd)
+By contributing, you get hands-on experience with this cutting-edge tech stack, building scalable and maintainable applications.
 
 ---
 
-## 🧪 Getting Started
+## 🤝 Join Our Caring Community
 
-```bash
-pnpm install
-pnpm dev
-```
+Are you passionate about animals and technology? Join us! PawHaven is an open invitation to developers, designers, animal lovers, and anyone who believes in building technology with warmth and purpose.
+
+Your contributions — whether in code, design, testing, or spreading the word — make this project stronger and the world kinder.
+
+Together, let's create a safe haven for every paw in need.
 
 ---
 
-🧠 Want Smart, Instant Documentation?
+## 📩 How to Contribute
 
-Click the Ask DeepWiki button below — it’s an AI-powered documentation assistant trained on this project. You can ask it any question about the codebase, and it will respond with context-aware answers.
+1. **Fork the repository** and create your feature branch.
+2. **Submit pull requests** with clear descriptions of your improvements.
+3. **Report issues** or suggest features via GitHub Issues.
+4. Spread the word and invite friends to contribute too!
 
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/aoda-zhang/fullStack-frontEnd)
+---
 
-## 📄 License
+## 🔗 Links
 
-This project is licensed under the MIT License.
+- GitHub repo: https://github.com/aoda-zhang/PawHaven-frontEnd
+- Contact:
+  - Email: aodazhang666@gmail.com
+  - Linkedin: https://www.linkedin.com/in/aodazhang
+
+---
+
+Thank you for being part of PawHaven — where technology meets compassion, and every paw matters! 🐾❤️
