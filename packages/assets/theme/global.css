@@ -1,27 +1,27 @@
 @import 'tailwindcss';
 
 @theme {
-  /* === Core Colors === */
-  --color-primary: #2acfcf;
-  --color-primary-light: #6ff3f3;
-  --color-primary-dark: #149e9e;
+  /* === Core Colors (Warm & Friendly) === */
+  --color-primary: #f4a261; /* warm orange */
+  --color-primary-light: #f6bd85;
+  --color-primary-dark: #e0762f;
 
-  --color-secondary: #ffa726;
-  --color-background: #f7f9fc;
+  --color-secondary: #4caf50; /* nature green */
+  --color-background: #faf6f1; /* warm off-white */
   --color-surface: #ffffff;
 
-  --color-text: #111827;
-  --color-text-secondary: #6b7280;
-  --color-border: #cbd5e1;
-  --color-accent: #3b82f6;
+  --color-text: #2f2f2f;
+  --color-text-secondary: #6b6b6b;
+  --color-border: #dcd7d3;
+  --color-accent: #3b82f6; /* sky blue */
 
   /* === Neutral Colors === */
-  --color-neutral: #9ca3af;
-  --color-muted: #e5e7eb;
+  --color-neutral: #a8a29e;
+  --color-muted: #e7e5e4;
 
   /* === Semantic Colors === */
   --color-error: #ef4444;
-  --color-success: #10b981;
+  --color-success: #4caf50;
   --color-warning: #f59e0b;
 
   /* === Spacing === */
@@ -48,31 +48,31 @@
   --line-height-xl: 1.75rem;
 
   /* === Font Families === */
-  --font-family-sans: 'Inter', sans-serif;
+  --font-family-sans: 'Inter', 'Nunito', sans-serif;
   --font-family-serif: 'Merriweather', serif;
-  --font-family-mono: 'Menlo', monospace;
+  --font-family-handwriting: 'Patrick Hand', cursive;
 }
 
-/* === Dark Mode Override === */
+/* === Dark Mode Override (Still Warm) === */
 .dark {
-  --color-primary: #20b2aa;
-  --color-primary-light: #4dd0d0;
-  --color-primary-dark: #147c7c;
+  --color-primary: #f4a261;
+  --color-primary-light: #f6bd85;
+  --color-primary-dark: #e0762f;
 
-  --color-secondary: #fbbf24;
-  --color-background: #1f2937;
-  --color-surface: #374151;
+  --color-secondary: #81c784;
+  --color-background: #1f1f1f;
+  --color-surface: #2b2b2b;
 
-  --color-text: #f9fafb;
-  --color-text-secondary: #9ca3af;
-  --color-border: #475569;
+  --color-text: #f9f9f9;
+  --color-text-secondary: #bdbdbd;
+  --color-border: #444;
   --color-accent: #60a5fa;
 
   --color-neutral: #a1a1aa;
-  --color-muted: #4b5563;
+  --color-muted: #4b4b4b;
 
   --color-error: #f87171;
-  --color-success: #34d399;
+  --color-success: #81c784;
   --color-warning: #facc15;
 }
 
@@ -83,6 +83,7 @@
     height: 100vh;
     color: var(--color-text);
     background-color: var(--color-background);
+    font-family: var(--font-family-sans);
   }
 
   body {
@@ -99,5 +100,5 @@
 
 /* Common style class */
 .link {
-  @apply text-primary;
+  @apply text-primary hover:underline;
 }

@@ -1,24 +1,24 @@
 const designTokens = {
   colors: {
-    primary: '#2ACFCF',
-    primaryLight: '#6FF3F3',
-    primaryDark: '#149E9E',
+    primary: '#F4A261',
+    primaryLight: '#F6BD85',
+    primaryDark: '#E0762F',
 
-    secondary: '#FFA726',
-    secondaryLight: '#FFCC80',
-    secondaryDark: '#EF6C00',
+    secondary: '#4CAF50',
+    secondaryLight: '#81C784',
+    secondaryDark: '#388E3C',
 
-    background: '#F7F9FC',
-    surface: '#ffffff',
+    background: '#FAF6F1',
+    surface: '#FFFFFF',
 
-    textPrimary: '#111827',
-    textSecondary: '#6B7280',
+    textPrimary: '#2F2F2F',
+    textSecondary: '#6B6B6B',
 
-    divider: '#CBD5E1',
+    divider: '#DCD7D3',
     accent: '#3B82F6',
 
     error: '#EF4444',
-    success: '#10B981',
+    success: '#4CAF50',
     warning: '#F59E0B',
   },
   spacing: {

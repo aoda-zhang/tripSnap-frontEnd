@@ -12,7 +12,7 @@
     "lint-staged": "lint-staged",
     "lint": "eslint .ts,.tsx,.js,.jsx",
     "format": "prettier --write .",
-    "dev:trip": "pnpm --filter ./apps/trip dev"
+    "dev:pawHaven": "pnpm --filter ./apps/pawHaven dev"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [

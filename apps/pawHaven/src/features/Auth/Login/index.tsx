@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import LoginImg from '@shared/assets/images/login.png';
 import FormInput from '@shared/components/Form/FormInput';
 import ImageWithSkeleton from '@shared/components/ImageWithSkeleton';
 import storageKeys from '@shared/constants/storageKeys';
@@ -13,7 +14,6 @@ import * as AuthAPI from '../apis';
 
 import style from './index.module.css';
 
-import envConfig from '@/config';
 import { setUserInfo } from '@/store/globalReducer';
 
 const Login: FC = () => {
@@ -34,7 +34,7 @@ const Login: FC = () => {
     <div className={style.loginBox}>
       <div className={style.welcomeBanner}>
         <ImageWithSkeleton
-          imgSrc={envConfig?.login?.loginBannerURL}
+          imgSrc={LoginImg}
           title={t('login.welcome')}
           className={style.loginBG}
         />

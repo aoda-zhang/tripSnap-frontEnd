@@ -8,7 +8,7 @@
       @apply mr-auto cursor-pointer;
     }
     .brand {
-      @apply h-6 lg:h-8 w-auto;
+      @apply h-10 lg:h-12 w-auto;
     }
   }
   .main {

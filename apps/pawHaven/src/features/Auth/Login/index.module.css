@@ -39,14 +39,7 @@
   }
   .welcomeBanner {
     .loginBG {
-      min-width: 50vw;
-      min-height: 50vh;
-      height: 100vh;
-      width: auto;
-      @include medias(($s, $m)) {
-        width: 100vw;
-        height: auto;
-      }
+      @apply min-w-[50vw] min-h-[50vh] h-full w-auto lg:w-full lg:h-auto;
     }
   }
 }
