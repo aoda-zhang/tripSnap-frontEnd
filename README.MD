@@ -1,6 +1,7 @@
 [English](README.MD) | [中文](READMECN.MD)
 
 # PawHaven
+[![brand.png](https://i.postimg.cc/pTjjMYt8/brand.png)](https://postimg.cc/Q9XCp7Cx)
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232a?logo=react&logoColor=61dafb)
