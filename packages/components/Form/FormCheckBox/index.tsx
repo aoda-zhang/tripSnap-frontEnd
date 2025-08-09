@@ -1,28 +1,32 @@
-import { TextField, type TextFieldProps } from '@mui/material';
+import {
+  Checkbox,
+  FormControlLabel,
+  FormHelperText,
+  type CheckboxProps,
+} from '@mui/material';
 import classNames from 'classnames';
 import React, { memo, useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import styles from '../formBase.module.css';
-import type { BaseFormType, BaseTextFieldType } from '../formBase.type';
+import type { BaseFormType } from '../formBase.type';
 
-const FormInput: React.FC<
-  BaseFormType & TextFieldProps & BaseTextFieldType
-> = ({
+const FormCheckbox: React.FC<BaseFormType & CheckboxProps> = ({
   name,
   label,
   rules = {},
-  defaultValue = '',
-  type = 'text',
-  fullWidth = true,
+  defaultValue = false,
   ...props
 }) => {
   const { t } = useTranslation();
   const { control } = useFormContext();
   const formRules = useMemo(() => {
     if (props?.required && !rules?.required) {
-      return { ...rules, required: `${t(label)} ${t('common.required')}` };
+      return {
+        ...rules,
+        required: `${t(label)} ${t('common.required')}`,
+      };
     }
     return rules;
   }, [rules, props?.required, label, t]);
@@ -38,20 +42,22 @@ const FormInput: React.FC<
           className={classNames([props?.className, styles.baseFormContainer])}
         >
           <div className={styles.label}>{label}</div>
-          <TextField
-            {...field}
-            {...props}
-            fullWidth={fullWidth}
-            variant={props?.variant ?? 'standard'}
-            required={props?.required}
-            error={!!error}
-            type={type}
-            helperText={error?.message}
+          <FormControlLabel
+            control={
+              <Checkbox
+                {...field}
+                {...props}
+                checked={!!field.value}
+                onChange={(e) => field.onChange(e.target.checked)}
+              />
+            }
+            label={label}
           />
+          {error && <FormHelperText error>{error.message}</FormHelperText>}
         </div>
       )}
     />
   );
 };
 
-export default memo(FormInput);
+export default memo(FormCheckbox);

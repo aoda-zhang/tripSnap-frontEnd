@@ -33,13 +33,12 @@ const FormSelect: React.FC<BaseFormType & BaseSelectType & SelectProps> = ({
   return (
     <Controller
       name={name}
-      // @ts-ignore
       control={control}
       defaultValue={defaultValue}
       rules={formRules}
       render={({ field, fieldState: { error } }) => (
         <FormControl
-          className={classNames([props?.className, styles.baseInputContainer])}
+          className={classNames([props?.className, styles.baseFormContainer])}
           error={!!error}
           fullWidth={fullWidth}
         >

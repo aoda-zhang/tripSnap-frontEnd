@@ -1,5 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@mui/material';
+import FormCheckbox from '@shared/components/Form/FormCheckBox';
+import FormSingleDateRanger from '@shared/components/Form/FormDateRanger';
 import FormInput from '@shared/components/Form/FormInput';
 import classNames from 'classnames';
 import { memo, useEffect, useMemo } from 'react';
@@ -12,17 +14,16 @@ import { setStep, setTripBasic, useTripState } from '../tripReducer';
 
 import { getTripBasicSchema, Step1FormMapping, TripBasic } from './validation';
 
-import TransportRadio from '@/components/TransportRadio';
 import { useReduxDispatch } from '@/hooks/reduxHooks';
 
 const Step1 = () => {
   const { t } = useTranslation();
-  const navagate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useReduxDispatch();
   const tripBasicSchema = useMemo(() => getTripBasicSchema(t), [t]);
   const { tripInfo } = useTripState();
   const formProps = useForm<TripBasic>({
-    defaultValues: tripInfo?.tripBasic,
+    defaultValues: tripInfo?.tripBasic ?? {},
     resolver: zodResolver(tripBasicSchema),
   });
 
@@ -32,27 +33,25 @@ const Step1 = () => {
 
   const onSubmit: SubmitHandler<TripBasic> = (data) => {
     dispatch(setTripBasic(data));
-    navagate('/trip/detail');
+    navigate('/trip/detail');
   };
   return (
     <FormProvider {...formProps}>
       <form className={styles.record}>
         <FormInput
-          className={styles.baseForm}
           name={Step1FormMapping.TripName}
           label={t('trip.trip_name')}
         />
+        <FormSingleDateRanger
+          name="date"
+          label={t('trip.departure_return_date')}
+        />
         <FormInput
-          className={styles.baseForm}
           name={Step1FormMapping.Destination}
           label={t('trip.destination')}
         />
-        <FormInput
-          className={styles.baseForm}
-          name={Step1FormMapping.Participants}
-          label={t('trip.numOfTravelers')}
-        />
-        <TransportRadio />
+        {/* 和谁去的 */}
+        <FormCheckbox name="dasda " label="ceshi" />
       </form>
       <Button
         className={classNames([styles.buttons, styles.baseButton])}

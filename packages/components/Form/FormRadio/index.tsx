@@ -29,7 +29,7 @@ const FormRadio: FC<BaseFormType & FormRadioProps> = ({
 
   return (
     <div
-      className={classNames(formBasestyle.baseInputContainer, {
+      className={classNames(formBasestyle.baseFormContainer, {
         [formBasestyle.error]: !!errors[name],
       })}
     >

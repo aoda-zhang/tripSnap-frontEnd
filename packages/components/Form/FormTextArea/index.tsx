@@ -34,7 +34,6 @@ const FormTextArea: React.FC<BaseFormType & TextareaAutosizeProps> = ({
   return (
     <Controller
       name={name}
-      // @ts-ignore
       control={control}
       defaultValue={defaultValue}
       rules={formRules}
@@ -43,7 +42,7 @@ const FormTextArea: React.FC<BaseFormType & TextareaAutosizeProps> = ({
         fieldState: { error },
       }) => (
         <FormControl
-          className={classNames([props?.className, styles.baseInputContainer])}
+          className={classNames([props?.className, styles.baseFormContainer])}
           error={!!error}
           fullWidth={fullWidth}
         >

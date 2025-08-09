@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { TripBasic } from './Basic/validation';
-import { TripDeatil } from './Detail';
+import { TripDetail } from './Detail';
 
 import { useReduxSelector } from '@/hooks/reduxHooks';
 import reducerNames from '@/store/reducerNames';
@@ -10,8 +10,8 @@ interface TripState {
   tripStep: number;
   transportationOptions: { label: string; value: string | number }[];
   tripInfo: {
-    tripBasic: TripBasic | {};
-    tripDetail?: (TripDeatil & { tripImages: string[] }) | {};
+    tripBasic?: TripBasic | null;
+    tripDetail?: (TripDetail & { tripViews: string[] }) | null;
   };
 
   tripImages: string[];
@@ -24,8 +24,8 @@ const initialState: TripState = {
     { label: 'da', value: 'dadsa' },
   ],
   tripInfo: {
-    tripBasic: {},
-    tripDetail: {},
+    tripBasic: null,
+    tripDetail: null,
   },
   tripImages: [],
 };
@@ -39,12 +39,12 @@ const tripReducer = createSlice({
     },
     setTripBasic: (state: TripState, action: PayloadAction<TripBasic>) => {
       if (!state.tripInfo) {
-        state.tripInfo = { tripBasic: {}, tripDetail: {} };
+        state.tripInfo = { tripBasic: null, tripDetail: null };
       }
       state.tripInfo.tripBasic = action.payload;
     },
-    setTripDetail: (state: TripState, action: PayloadAction<TripDeatil>) => {
-      state.tripInfo.tripDetail = action.payload;
+    setTripDetail: (state: TripState, action: PayloadAction<TripDetail>) => {
+      state.tripInfo.tripDetail = action?.payload ?? null;
     },
     setTripImageIDs: (
       state: TripState,

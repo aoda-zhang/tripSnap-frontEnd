@@ -1,22 +1,19 @@
 @reference "../../../../../packages/assets/theme/global.css";
 
 .trip {
-  @apply flex flex-col gap-[3.125rem] mt-[3.125rem] px-[0.46rem]  lg:px-[20%];
+  @apply flex flex-col gap-10 mt-8 px-2  lg:px-[20%];
   .inputGroup {
     @apply flex flex-row  justify-between w-full gap-0 lg:flex-col lg:w-[50vw] lg:gap-[10vw];
-  }
-  .baseForm {
-    @apply w-full lg:w-[40vw];
   }
   .baseButton {
     @apply lg:w-fit;
   }
 
   .buttons {
-    @apply flex gap-[1.25rem] sm:flex-col;
+    @apply flex gap-5 sm:flex-col;
   }
   .caption {
-    @apply text-[1.54rem] font-semibold;
+    @apply text-3xl font-semibold;
   }
   .container {
     @apply w-full max-w-4xl mx-auto;

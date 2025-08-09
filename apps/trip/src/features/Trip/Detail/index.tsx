@@ -12,12 +12,12 @@ import { setStep, setTripDetail } from '../tripReducer';
 import routeKeys from '@/constants/routeKeys';
 import { useReduxDispatch } from '@/hooks/reduxHooks';
 
-export interface TripDeatil {
+export interface TripDetail {
   tripViews: string[];
   memory: string;
 }
 
-export interface Step2SubmitType extends TripDeatil {
+export interface Step2SubmitType extends TripDetail {
   tripID: string;
 }
 
@@ -29,7 +29,7 @@ export const Step2FormMapping = {
 const Step2: FC = () => {
   const { t } = useTranslation();
   const dispatch = useReduxDispatch();
-  const formProps = useForm<TripDeatil>();
+  const formProps = useForm<TripDetail>();
   const { handleSubmit } = formProps;
   const navigate = useNavigate();
 
@@ -37,7 +37,7 @@ const Step2: FC = () => {
     dispatch(setStep({ step: 2 }));
   }, [dispatch]);
 
-  const onSubmit: SubmitHandler<TripDeatil> = (data) => {
+  const onSubmit: SubmitHandler<TripDetail> = (data) => {
     dispatch(setTripDetail(data));
     navigate(routeKeys.tripSummary);
   };
@@ -47,6 +47,12 @@ const Step2: FC = () => {
   return (
     <FormProvider {...formProps}>
       <form className={styles.record}>
+        {/* 实际花费 */}
+        {/* 币种 */}
+        {/* 具体行程 */}
+        {/* 美图分享 */}
+        {/* 有何感想 */}
+
         <FormTextArea
           className={classNames([styles.baseForm])}
           name={Step2FormMapping.memory}
@@ -59,7 +65,7 @@ const Step2: FC = () => {
       <div className="flex flex-col gap-4 lg:flex-row">
         <Button
           className={styles.baseButton}
-          variant="contained"
+          variant="outlined"
           color="primary"
           onClick={backToPrevious}
         >

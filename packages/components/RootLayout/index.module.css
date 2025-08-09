@@ -8,31 +8,31 @@
       @apply mr-auto cursor-pointer;
     }
     .brand {
-      @apply h-8 w-auto;
+      @apply h-6 lg:h-8 w-auto;
     }
   }
   .main {
     @apply flex-1 flex flex-col;
     .content {
-      @apply flex-1 box-border px-20 pt-10 pb-20;
+      @apply flex-1 box-border px-4 lg:px-14 pt-10 pb-20;
     }
   }
 
   .footer {
-    @apply overflow-hidden px-4 lg:px-16 py-6 text-center bg-slate-900 text-white;
+    @apply flex justify-between gap-2 text-center items-center flex-col lg:flex-row px-4 lg:px-16 py-6 bg-slate-900 text-white;
     .items {
-      @apply flex justify-between text-left;
+      @apply flex flex-col justify-between items-center lg:items-start text-left;
+      .link {
+        @apply hover:text-primary transition-colors;
+      }
       .title {
         @apply text-xl font-bold;
       }
     }
-    .owner {
-      @apply text-center;
-    }
   }
 
   .rootSidebarPaper {
-    @apply h-full bg-background text-text;
+    @apply h-full bg-background text-text mt-20;
   }
 }
 

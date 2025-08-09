@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Stepper from '@mui/material/Stepper';
-import { type FC, memo } from 'react';
+import { type FC } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Outlet } from 'react-router-dom';
 
@@ -25,14 +25,14 @@ const Trip: FC = () => {
         >
           {steps.map((label) => (
             <Step key={label}>
-              <StepLabel>{t(label)}</StepLabel>
+              <StepLabel />
             </Step>
           ))}
         </Stepper>
       </Box>
-      <div className={styles.caption}>{t(`trip.step${currentStep}_title`)}</div>
+      <p className={styles.caption}>{t(`trip.step${currentStep}`)}</p>
       <Outlet />
     </div>
   );
 };
-export default memo(Trip);
+export default Trip;

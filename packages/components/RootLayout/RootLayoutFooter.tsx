@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 import myPersonal from '../../constants/myPerson';
 
@@ -8,34 +9,28 @@ const RootLayoutFooter = () => {
   const { t } = useTranslation();
   return (
     <div className={styles.footer}>
-      <div className={styles.items}>
-        <div>
-          <div className={styles.title}>{t('common.quick_links')}</div>
-          <p>{t('home.home_page')}</p>
-          <p>{t('common.record')}</p>
-        </div>
-        <div className={styles.contact}>
-          <h3 className={styles.title}>{t('common.contact_me')}</h3>
-          <ul>
-            <li>
-              <a href={myPersonal.email} target="_black">
-                {t('common.email')}
-              </a>
-            </li>
-            <li>
-              <a href={myPersonal.github} target="_black">
-                {t('common.github')}
-              </a>
-            </li>
-            <li>
-              <a href={myPersonal.linkedin} target="_black">
-                {t('common.linkedin')}
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <p className={styles.owner}>{t('common.owner_text')}</p>
+      <p className={styles.items}>
+        <span className={styles.title}>{t('common.quick_links')}</span>
+        <Link className={styles.link} to="/">
+          {t('home.home_page')}
+        </Link>
+        <Link className={styles.link} to="/trip/basic">
+          {t('common.record')}
+        </Link>
+      </p>
+      <p dangerouslySetInnerHTML={{ __html: t('common.owner_text') }} />
+      <p className={styles.items}>
+        <span className={styles.title}>{t('common.contact_me')}</span>
+        <a href={myPersonal.github} className={styles.link} target="_black">
+          {t('common.github')}
+        </a>
+        <a href={myPersonal.email} className={styles.link} target="_black">
+          {t('common.email')}
+        </a>
+        <a href={myPersonal.linkedin} className={styles.link} target="_black">
+          {t('common.linkedin')}
+        </a>
+      </p>
     </div>
   );
 };

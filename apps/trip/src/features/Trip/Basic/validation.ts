@@ -4,8 +4,6 @@ export enum Step1FormMapping {
   TripName = 'tripName',
   Destination = 'destination',
   Participants = 'participants',
-  Transport = 'transport',
-  TransportNo = 'transportNo',
 }
 // Validation schema
 export const getTripBasicSchema = (t: (key: string) => string) => {
@@ -25,8 +23,6 @@ export const getTripBasicSchema = (t: (key: string) => string) => {
       .string()
       .min(1, 'Number of Travelers is required')
       .regex(/^\d+$/, 'Only numbers are allowed'),
-    [Step1FormMapping.Transport]: z.string(),
-    [Step1FormMapping.TransportNo]: z.string(),
   });
 };
 

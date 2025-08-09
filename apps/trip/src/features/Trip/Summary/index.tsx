@@ -1,16 +1,11 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  Typography,
-  Chip,
-  Box,
-} from '@mui/material';
-import { memo, useEffect } from 'react';
+import { Button } from '@mui/material';
+import Phase from '@shared/components/Phase';
+import { memo, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 import { useAddTrip } from '../apis/queries';
+import { Step1FormMapping, TripBasic } from '../Basic/validation';
 import styles from '../tripLayout.module.css';
 import { setStep, useTripState } from '../tripReducer';
 
@@ -32,134 +27,70 @@ const Step3 = () => {
     const submitData = {
       tripBasic: tripInfo.tripBasic,
       tripDetail: {
-        ...tripInfo.tripDetail,
+        ...(tripInfo?.tripDetail ?? {}),
         tripImages,
       },
     };
     submitTrip(submitData);
   };
+  const basicInfo = useMemo(() => {
+    const tripBasic = tripInfo?.tripBasic as TripBasic;
+    if (!tripBasic || Object.keys(tripBasic).length === 0) {
+      return [];
+    }
+    return [
+      {
+        label: t('trip.trip_name'),
+        value: tripBasic[Step1FormMapping.TripName],
+      },
+      {
+        label: t('trip.start_date'),
+        value: tripBasic[Step1FormMapping.Participants],
+      },
+      {
+        label: t('trip.end_date'),
+        value: tripBasic[Step1FormMapping.Participants],
+      },
+      {
+        label: t('trip.destination'),
+        value: tripBasic[Step1FormMapping.Destination],
+      },
+    ];
+  }, [t, tripInfo.tripBasic]);
+  const detailInfo = useMemo(() => {
+    const tripBasic = tripInfo?.tripBasic as TripBasic;
+    if (!tripBasic || Object.keys(tripBasic).length === 0) {
+      return [];
+    }
+    return [
+      {
+        label: t('trip.trip_name'),
+        value: tripBasic[Step1FormMapping.TripName],
+      },
+      {
+        label: t('trip.start_date'),
+        value: tripBasic[Step1FormMapping.Participants],
+      },
+      {
+        label: t('trip.end_date'),
+        value: tripBasic[Step1FormMapping.Participants],
+      },
+      {
+        label: t('trip.destination'),
+        value: tripBasic[Step1FormMapping.Destination],
+      },
+    ];
+  }, [t, tripInfo.tripBasic]);
 
   const backToPrevious = () => {
     navigate(routeKeys.tripDetail);
   };
 
-  const renderBasicInfo = () => {
-    const basic = tripInfo.tripBasic as any;
-    if (!basic || Object.keys(basic).length === 0) {
-      return (
-        <Typography color="text.secondary">{t('common.no_data')}</Typography>
-      );
-    }
-
-    return (
-      <Box className="space-y-3">
-        <Box className="flex justify-between items-center">
-          <Typography variant="body2" color="text.secondary">
-            {t('trip.trip_name')}:
-          </Typography>
-          <Typography variant="body1" fontWeight="medium">
-            {basic.tripName}
-          </Typography>
-        </Box>
-        <Box className="flex justify-between items-center">
-          <Typography variant="body2" color="text.secondary">
-            {t('trip.destination')}:
-          </Typography>
-          <Typography variant="body1" fontWeight="medium">
-            {basic.destination}
-          </Typography>
-        </Box>
-        <Box className="flex justify-between items-center">
-          <Typography variant="body2" color="text.secondary">
-            {t('trip.numOfTravelers')}:
-          </Typography>
-          <Typography variant="body1" fontWeight="medium">
-            {basic.participants}
-          </Typography>
-        </Box>
-        <Box className="flex justify-between items-center">
-          <Typography variant="body2" color="text.secondary">
-            {t('trip.transport')}:
-          </Typography>
-          <Typography variant="body1" fontWeight="medium">
-            {basic.transport} {basic.transportNo && `(${basic.transportNo})`}
-          </Typography>
-        </Box>
-      </Box>
-    );
-  };
-
-  const renderDetailInfo = () => {
-    const detail = tripInfo.tripDetail as any;
-    if (!detail || Object.keys(detail).length === 0) {
-      return (
-        <Typography color="text.secondary">{t('common.no_data')}</Typography>
-      );
-    }
-
-    return (
-      <Box className="space-y-3">
-        <Box>
-          <Typography variant="body2" color="text.secondary" className="mb-2">
-            {t('trip.tripMemories')}:
-          </Typography>
-          <Typography variant="body1" className="bg-gray-50 p-3 rounded">
-            {detail.memory || t('common.no_data')}
-          </Typography>
-        </Box>
-        {tripImages && tripImages.length > 0 && (
-          <Box>
-            <Typography variant="body2" color="text.secondary" className="mb-2">
-              {t('trip.tripImages')}:
-            </Typography>
-            <Box className="flex flex-wrap gap-2">
-              {tripImages.map((imageId) => (
-                <Chip
-                  key={imageId}
-                  label={`${t('trip.image')} ${imageId}`}
-                  size="small"
-                  color="primary"
-                  variant="outlined"
-                />
-              ))}
-            </Box>
-          </Box>
-        )}
-      </Box>
-    );
-  };
-
   return (
     <div className={styles.container}>
-      <Typography variant="h4" className="mb-6 font-semibold">
-        {t('trip.summary_title')}
-      </Typography>
-
-      <Typography variant="body1" color="text.secondary" className="mb-6">
-        {t('trip.summary_description')}
-      </Typography>
-
-      <div className="space-y-6">
-        {/* Basic Information Card */}
-        <Card>
-          <CardContent>
-            <Typography variant="h6" className="mb-4 font-medium">
-              {t('trip.basic_info')}
-            </Typography>
-            {renderBasicInfo()}
-          </CardContent>
-        </Card>
-
-        {/* Detail Information Card */}
-        <Card>
-          <CardContent>
-            <Typography variant="h6" className="mb-4 font-medium">
-              {t('trip.detail_info')}
-            </Typography>
-            {renderDetailInfo()}
-          </CardContent>
-        </Card>
-      </div>
+      <h2 className="text-2xl mb-4"> {t('trip.summary_description')}</h2>
+      <Phase title={t('trip.step1')} sections={basicInfo} />
+      <Phase title={t('trip.step2')} sections={detailInfo} />
 
       <div className="flex flex-col gap-4 lg:flex-row mt-8">
         <Button

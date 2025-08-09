@@ -96,3 +96,8 @@
     border-color: var(--color-border);
   }
 }
+
+/* Common style class */
+.link {
+  @apply text-primary;
+}

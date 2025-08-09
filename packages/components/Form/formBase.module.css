@@ -3,10 +3,10 @@
   @apply text-[1rem] mb-[.625rem] font-normal;
 }
 
-.baseInputContainer {
-  @apply min-w-[20vw] mb-[1.5rem];
+.baseFormContainer {
+  @apply w-full lg:max-w-[40vw]  mb-[1.5rem];
 }
 
 .errorMessage {
-  @apply text-[.75rem] text-red-700 mt-[.5rem];
+  @apply text-[.75rem] text-error mt-[.5rem];
 }

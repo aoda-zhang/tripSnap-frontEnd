@@ -21,7 +21,7 @@
     "email": "Email",
     "github": "GitHub",
     "linkedin": "LinkedIn",
-    "owner_text": "© 2023 TripSnap by Aoda Zhang. 为学习和分享而建。保留所有权利。"
+    "owner_text": "© 2023 TripSnap 由 <a href='https://aoda.vercel.app' target='_blank' rel='noopener noreferrer' class='link'>Aoda Zhang</a> 开发。旨在学习和分享。保留所有权利。"
   },
   "trip": {
     "login_again": "重新登录",
@@ -29,11 +29,8 @@
     "type_mapDetails": "填写详情",
     "view": "查看",
     "step1": "基本信息",
-    "step1_title": "旅途记录：基本信息",
     "step2": "旅行详情",
-    "step2_title": "旅途：旅行详情",
-    "step3": "旅行体验和总结",
-    "step3_title": "旅途：旅行体验和总结",
+    "step3": "总结",
     "trip_name": "旅行名称",
     "departure_return_date": "出发和返程日期",
     "destination": "旅途目的地",
@@ -42,8 +39,8 @@
     "hotel_contact": "酒店联系方式",
     "cost": "花费",
     "precautions": "其他注意事项",
-    "tripViews": "📸 美丽大片",
-    "tripMemories": "📝 特殊记忆",
+    "tripViews": "美丽大片",
+    "tripMemories": "特殊记忆",
     "numOfTravelers": "同行人数",
     "car": "汽车",
     "plane": "飞机",

@@ -1,0 +1,13 @@
+@reference '../../assets/theme/global.css';
+.phase {
+  @apply border-b-1 border-border pb-5 mb-3;
+  .title {
+    @apply text-2xl font-bold;
+  }
+  .section {
+    @apply flex flex-row items-center justify-between mt-4 text-lg;
+    .label {
+      @apply text-gray-500;
+    }
+  }
+}
